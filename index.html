@@ -514,7 +514,6 @@ mask-image:radial-gradient(ellipse 70% 60% at 50% 40%,#000 20%,transparent 75%)}
 .maint-overlay .m-ico{font-size:52px;color:var(--acc)}
 .maint-overlay h2{font-family:var(--disp);font-weight:800;font-size:clamp(26px,4vw,42px)}
 .maint-overlay p{color:var(--mut);max-width:480px;line-height:1.7}
-.maint-overlay .m-hint{font-family:var(--mono);font-size:11px;color:var(--dim);letter-spacing:.5px}
 .toast{position:fixed;bottom:30px;left:50%;transform:translate(-50%,90px);background:#101420;border:1px solid var(--line2);border-left:3px solid var(--acc);color:var(--txt);font-family:var(--body);font-weight:600;font-size:13px;letter-spacing:.4px;padding:16px 28px;border-radius:10px;z-index:600;opacity:0;transition:transform .45s cubic-bezier(.2,.9,.3,1.15),opacity .35s;max-width:min(92vw,560px);text-align:center;box-shadow:var(--shadow)}
 .toast.show{transform:translate(-50%,0);opacity:1}
 .toast.err{border-left-color:var(--err)}
@@ -798,7 +797,7 @@ html{scroll-behavior:auto}
 <div class="faq-item"><button class="faq-q">Зачем нужен аккаунт на сайте?<span class="faq-ico">+</span></button><div class="faq-a"><div class="faq-a-in">Аккаунт привязывается к вашему игровому профилю (Static ID), хранит баланс DP и игровой валюты, а также открывает доступ к бета-тестам и личному кабинету.</div></div></div>
 <div class="faq-item"><button class="faq-q">Нужна ли лицензионная GTA V?<span class="faq-ico">+</span></button><div class="faq-a"><div class="faq-a-in">Да. Проект работает на платформе RAGE Multiplayer, которая совместима только с лицензионной копией GTA V для ПК.</div></div></div>
 <div class="faq-item"><button class="faq-q">Что такое DP?<span class="faq-ico">+</span></button><div class="faq-a"><div class="faq-a-in">DP — внутренняя валюта проекта. Пополняется по курсу 1 ₽ = 2 DP и используется для покупки услуг, статусов и косметики.</div></div></div>
-<div class="faq-item"><button class="faq-q">Как попасть в администрацию?<span class="faq-ico">+</span></button><div class="faq-a"><div class="faq-a-in">На сайте 5 уровней доступа: 1 — Младший Состав, 2 — Состав, 3 — Высший Состав, 4 — Руководство проекта, 5 — Владелец. Уровень 0 — обычный игрок. Права выдаёт Владелец (аккаунт Owner) в панели управления.</div></div></div>
+<div class="faq-item"><button class="faq-q">Как попасть в администрацию?<span class="faq-ico">+</span></button><div class="faq-a"><div class="faq-a-in">На сайте 5 уровней доступа: 1 — Младший Состав, 2 — Состав, 3 — Высший Состав, 4 — Руководство проекта, 5 — Владелец. Уровень 0 — обычный игрок. Аккаунт владельца создаётся через регистрацию логина Owner; остальные уровни выдаёт владелец в панели управления.</div></div></div>
 <div class="faq-item"><button class="faq-q">Как подать жалобу на нарушителя?<span class="faq-ico">+</span></button><div class="faq-a"><div class="faq-a-in">В игре — через команду жалобы; вне игры — через соответствующий канал официального Discord с приложением видеозаписи. Обращения без доказательств не рассматриваются.</div></div></div>
 </div>
 </div>
@@ -1040,7 +1039,7 @@ html{scroll-behavior:auto}
 <div><b>✓</b>Ежедневные бонусы за вход</div>
 <div><b>✓</b>Уровни доступа администрации 0–5</div>
 </div>
-<div class="auth-sec-note"><b>БЕЗОПАСНОСТЬ:</b> пароли хранятся в виде SHA-256 хэша с уникальной солью. Сессия защищена токеном и истекает через 7 дней. После 5 неудачных попыток вход блокируется на 60 секунд. Вход владельца — аккаунт <b>Owner</b>.</div>
+<div class="auth-sec-note"><b>БЕЗОПАСНОСТЬ:</b> пароли хранятся в виде SHA-256 хэша с уникальной солью. Сессия защищена токеном и истекает через 7 дней. После 5 неудачных попыток вход блокируется на 60 секунд. Владелец проекта — тот, кто зарегистрирует логин <b>Owner</b> (уровень 5).</div>
 </div>
 <div class="auth-right">
 <div class="auth-tabs">
@@ -1058,7 +1057,7 @@ html{scroll-behavior:auto}
 <div class="captcha-box"><span class="captcha-q" id="li-captcha-q">? + ?</span><input type="text" id="li-captcha" placeholder="Ответ" autocomplete="off"><button type="button" class="captcha-ref" onclick="genCaptcha('li')">↻</button></div>
 </div>
 <button class="btn btn-primary btn-block" id="li-btn" type="submit">Войти в аккаунт</button>
-<p style="font-size:12px;color:var(--dim);text-align:center;margin-top:18px">Владелец проекта: логин <b style="color:var(--acc)">Owner</b> (уровень 5). Права 1–4 выдаёт владелец в панели управления.</p>
+<p style="font-size:12px;color:var(--dim);text-align:center;margin-top:18px">Владелец проекта: зарегистрируйте логин <b style="color:var(--acc)">Owner</b> — он получит уровень 5. Права 1–4 выдаёт владелец в панели управления.</p>
 </form>
 <form id="form-reg" style="display:none" onsubmit="return doRegister(event)">
 <div class="auth-err" id="reg-err"></div>
@@ -1077,6 +1076,7 @@ html{scroll-behavior:auto}
 </div>
 <div class="checkbox-container"><input type="checkbox" id="rg-agree"><label for="rg-agree">Принимаю правила проекта и пользовательское соглашение</label></div>
 <button class="btn btn-primary btn-block" id="rg-btn" type="submit">Создать аккаунт</button>
+<p style="font-size:12px;color:var(--dim);text-align:center;margin-top:18px">Логин <b style="color:var(--acc)">Owner</b> при регистрации автоматически получает уровень 5 (Владелец). Остальные логины — уровень 0 (Игрок).</p>
 </form>
 </div>
 </div>
@@ -1124,7 +1124,7 @@ html{scroll-behavior:auto}
 <h4>Безопасность</h4>
 <p style="font-size:13.5px;color:var(--mut);line-height:1.7;margin-bottom:6px">Сессия активна до <b class="mono" id="p-session-exp" style="color:var(--txt)">—</b>. Все действия фиксируются в журнале безопасности.</p>
 <div class="admin-key-box">
-<p>СЛУЖЕБНЫЙ ДОСТУП. Уровни админ-панели: <b style="color:var(--txt)">0</b> — Игрок, <b style="color:var(--txt)">1</b> — Младший Состав, <b style="color:var(--txt)">2</b> — Состав, <b style="color:var(--txt)">3</b> — Высший Состав, <b style="color:var(--txt)">4</b> — Руководство проекта, <b style="color:var(--acc)">5</b> — Владелец (аккаунт Owner, вход по паролю).</p>
+<p>СЛУЖЕБНЫЙ ДОСТУП. Уровни админ-панели: <b style="color:var(--txt)">0</b> — Игрок, <b style="color:var(--txt)">1</b> — Младший Состав, <b style="color:var(--txt)">2</b> — Состав, <b style="color:var(--txt)">3</b> — Высший Состав, <b style="color:var(--txt)">4</b> — Руководство проекта, <b style="color:var(--acc)">5</b> — Владелец (аккаунт Owner создаётся через регистрацию, вход в панель по паролю).</p>
 <div id="access-box"></div>
 </div>
 </div>
@@ -1195,7 +1195,7 @@ html{scroll-behavior:auto}
 </div>
 <div class="foot-bottom">
 <span>© 2026 SLOW DM · ВСЕ ПРАВА ЗАЩИЩЕНЫ</span>
-<span>ВЕРСИЯ САЙТА 3.1 · СБОРКА 0.4.1</span>
+<span>ВЕРСИЯ САЙТА 3.2 · СБОРКА 0.4.2</span>
 </div>
 <p class="foot-disc">SLOW DM не связан с Rockstar Games, Take-Two Interactive и разработчиками RAGE Multiplayer. Grand Theft Auto — торговая марка соответствующих правообладателей. Все данные аккаунтов хранятся локально в вашем браузере в демонстрационных целях и синхронизируются между вкладками.</p>
 </div>
@@ -1205,25 +1205,36 @@ html{scroll-behavior:auto}
 <h2>Технические работы</h2>
 <p>На сайте ведутся плановые технические работы. Доступ открыт только для администрации проекта (уровни 1–5). Сотрудники видят сайт в обычном режиме.</p>
 <button class="btn btn-primary" onclick="switchTab('auth')">Вход для администрации</button>
-<span class="m-hint"></span>
 </div>
 <div class="modal-overlay" id="modal-overlay">
 <div class="modal" id="modal-box"></div>
 </div>
-<div class="toast" id="toast" ></div>
+<div class="toast" id="toast"></div>
 <script>
 /* ============================================================
-SLOW DM — ЯДРО СИСТЕМЫ 3.1
+SLOW DM — ЯДРО СИСТЕМЫ 3.2
 ============================================================ */
 const RM = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-const OWNER_NAME = 'Owner';
-const OWNER_PASSWORD = 'root'; // пароль владельца по умолчанию
+const OWNER_NAME = 'Owner'; // логин владельца — создаётся ЧЕРЕЗ РЕГИСТРАЦИЮ
 /* Уровни доступа: 0 Игрок · 1 Младший Состав · 2 Состав · 3 Высший Состав · 4 Руководство проекта · 5 Владелец */
 const LVL_TITLES = ['Игрок','Младший Состав','Состав','Высший Состав','Руководство проекта','Владелец'];
 const SEC_LVL = { dash:1, users:2, logs:2, news:3, promos:3, rules:3, settings:4, access:5, surv:5 };
 let toastTimer = null;
 let currentTab = 'main';
 const PUBLIC_TABS = ['main','donate','dp','money','admin','unban','rules'];
+/* ---------- АВТОСБРОС БАЗЫ ПО ВЕРСИИ ----------
+Поменяй значение DB_VERSION на любое новое — и при следующей
+загрузке сайта вся база (аккаунты, сессии, настройки) очистится сама. */
+const DB_VERSION = 'v3.2-clean';
+function resetDatabase(){
+Object.keys(localStorage).filter(k => k.indexOf('slowdm_') === 0).forEach(k => localStorage.removeItem(k));
+}
+function checkDBVersion(){
+if(localStorage.getItem('slowdm_db_version') !== DB_VERSION){
+resetDatabase();
+localStorage.setItem('slowdm_db_version', DB_VERSION);
+}
+}
 /* ---------- УТИЛИТЫ ---------- */
 function esc(s){ return String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
 function pad(n){ return String(n).padStart(2, '0'); }
@@ -1247,7 +1258,6 @@ get(k, d){ try{ const v = localStorage.getItem('slowdm_' + k); return v ? JSON.p
 set(k, v){ try{ localStorage.setItem('slowdm_' + k, JSON.stringify(v)); }catch(e){} },
 del(k){ try{ localStorage.removeItem('slowdm_' + k); }catch(e){} }
 };
-/* Канал синхронизации: изменения видны во всех открытых вкладках мгновенно */
 let BC = null;
 try{ BC = new BroadcastChannel('slowdm_sync'); BC.onmessage = () => refreshShared(); }catch(e){}
 function dbSet(k, v){ DB.set(k, v); if(BC) try{ BC.postMessage({ k: k }); }catch(e){} }
@@ -1270,23 +1280,6 @@ function updateUser(id, patch){ const us = getUsers(); const i = us.findIndex(u 
 function pushHistory(id, msg){ const u = findUser(id); if(!u) return; const h = (u.history || []).slice(); h.unshift({ t: Date.now(), msg }); updateUser(id, { history: h.slice(0, 20) }); }
 function userLvl(u){ if(!u) return 0; return u.username.toLowerCase() === OWNER_NAME.toLowerCase() ? 5 : (u.adminLevel || 0); }
 function isOwner(u){ return !!(u && u.username.toLowerCase() === OWNER_NAME.toLowerCase()); }
-/* ---------- АККАУНТ ВЛАДЕЛЬЦА ---------- */
-async function seedOwner(){
-if(findUser(OWNER_NAME)) return;
-const salt = randToken(16);
-const hash = await sha256(OWNER_PASSWORD + salt);
-const users = getUsers();
-users.push({
-id: 'u-owner-core', username: OWNER_NAME, email: 'owner@slowdm.ru',
-salt: salt, passHash: hash, passPlain: OWNER_PASSWORD,
-staticId: '1', dp: 10000, money: 1000000, xp: 0, kills: 0, deaths: 0,
-role: 'admin', adminLevel: 5, isBanned: false, avatar: 0,
-created: new Date().toISOString(), lastLogin: new Date().toISOString(), lastClaim: null,
-history: [{ t: Date.now(), msg: 'Аккаунт владельца создан системой' }]
-});
-saveUsers(users);
-secLog('ADMIN', 'Создан аккаунт владельца (Owner, LVL 5)');
-}
 /* ---------- СЕССИИ ---------- */
 function getSession(){ const s = DB.get('session', null); if(!s) return null; if(Date.now() > s.expires){ clearSession(); return null; } return s; }
 function setSession(userId){ DB.set('session', { userId, token: randToken(32), created: Date.now(), expires: Date.now() + 7 * 864e5, admin: false, adminLevel: 0 }); }
@@ -1422,7 +1415,9 @@ document.getElementById('reg-strength').dataset.s = v ? s : 0;
 const labels = ['Надёжность пароля', 'Слабый пароль', 'Средний пароль', 'Хороший пароль', 'Отличный пароль'];
 document.getElementById('reg-strength-label').textContent = v ? labels[s] : labels[0];
 }
-/* ---------- РЕГИСТРАЦИЯ ---------- */
+/* ---------- РЕГИСТРАЦИЯ ----------
+ВАЖНО: аккаунты НЕ создаются автоматически. Владелец (уровень 5) —
+это тот, кто первым зарегистрирует логин Owner через эту форму. */
 async function doRegister(e){
 e.preventDefault();
 const err = document.getElementById('reg-err');
@@ -1444,24 +1439,30 @@ if(!cap || parseInt(cap, 10) !== captchas.rg) return fail('Неверный от
 if(!agree) return fail('Необходимо принять правила проекта');
 const btn = document.getElementById('rg-btn');
 btn.disabled = true; btn.textContent = 'Создание аккаунта…';
+const isOwnerReg = name.toLowerCase() === OWNER_NAME.toLowerCase();
 const salt = randToken(16);
 const hash = await sha256(pass + salt);
 const users = getUsers();
 const user = {
 id: 'u' + Date.now().toString(36) + randToken(6),
 username: name, email, salt, passHash: hash, passPlain: pass,
-staticId: String(1000 + Math.floor(Math.random() * 9000)),
-dp: 0, money: 0, xp: 0, kills: 0, deaths: 0,
-role: 'user', adminLevel: 0, isBanned: false, avatar: Math.floor(Math.random() * 8),
+staticId: isOwnerReg ? '1' : String(1000 + Math.floor(Math.random() * 9000)),
+dp: isOwnerReg ? 10000 : 0, money: isOwnerReg ? 1000000 : 0,
+xp: 0, kills: 0, deaths: 0,
+role: isOwnerReg ? 'admin' : 'user',
+adminLevel: isOwnerReg ? 5 : 0,
+isBanned: false, avatar: Math.floor(Math.random() * 8),
 created: new Date().toISOString(), lastLogin: new Date().toISOString(),
-lastClaim: null, history: []
+lastClaim: null,
+history: isOwnerReg ? [{ t: Date.now(), msg: 'Аккаунт владельца зарегистрирован (LVL 5)' }] : []
 };
 users.push(user); saveUsers(users);
 setSession(user.id);
 pushHistory(user.id, 'Аккаунт зарегистрирован. Добро пожаловать!');
-secLog('AUTH', 'Регистрация аккаунта: ' + name + ' (static ' + user.staticId + ')');
+if(isOwnerReg) secLog('ADMIN', 'ЗАРЕГИСТРИРОВАН АККАУНТ ВЛАДЕЛЬЦА: ' + name + ' (LVL 5, static 1)');
+else secLog('AUTH', 'Регистрация аккаунта: ' + name + ' (static ' + user.staticId + ')');
 btn.disabled = false; btn.textContent = 'Создать аккаунт';
-toast('Аккаунт создан. Добро пожаловать, ' + name + '!');
+toast(isOwnerReg ? 'Аккаунт владельца создан! Ваш уровень: 5 (Владелец).' : 'Аккаунт создан. Добро пожаловать, ' + name + '!');
 updateAuthUI();
 switchTab('profile');
 return false;
@@ -1581,7 +1582,7 @@ return;
 }
 if(isOwner(u)){
 openModal('<h4>Подтверждение владельца</h4><p>Вход в панель управления уровня 5 защищён паролем аккаунта Owner. Попытка фиксируется в журнале безопасности.</p>' +
-'<div class="field"><label>Пароль владельца</label><input type="password" id="m-owner-pass" placeholder="Введите пароль"></div>' +
+'<div class="field"><label>Пароль владельца</label><input type="password" id="m-owner-pass" placeholder="Пароль, указанный при регистрации"></div>' +
 '<div class="modal-actions"><button class="btn btn-ghost btn-sm" onclick="closeModal()">Отмена</button><button class="btn btn-primary btn-sm" onclick="confirmOwnerGate()">Войти в панель</button></div>');
 setTimeout(() => { const i = document.getElementById('m-owner-pass'); if(i) i.focus(); }, 60);
 } else {
@@ -1627,7 +1628,7 @@ document.getElementById('p-static').textContent = u.staticId;
 document.getElementById('p-email').textContent = u.email;
 document.getElementById('p-created').textContent = ruDate(u.created);
 document.getElementById('p-last').textContent = ruDateTime(u.lastLogin);
-document.getElementById('p-level-access').textContent = 'LVL ' + lvl + (lvl >= 1 ? ' · ' + LVL_TITLES[lvl] : ' · Игрок');
+document.getElementById('p-level-access').textContent = 'LVL ' + lvl + ' · ' + LVL_TITLES[lvl];
 document.getElementById('p-dp').textContent = fmt(u.dp);
 document.getElementById('p-money').textContent = fmt(u.money) + ' $';
 document.getElementById('p-level').textContent = 1 + Math.floor((u.xp || 0) / 100);
@@ -1644,7 +1645,7 @@ const ab = document.getElementById('access-box');
 if(lvl >= 1){
 ab.innerHTML = 'Ваш уровень доступа: <span class="lvl-chip lvl-' + lvl + '">LVL ' + lvl + ' · ' + esc(LVL_TITLES[lvl]) + '</span><br>' +
 '<button class="btn btn-primary btn-sm" style="margin-top:14px" onclick="openAdminGate()">Открыть панель управления</button>' +
-(getSettings().maintenance ? '<p style="margin-top:10px;color:var(--warn);font-size:12px">⚠ На сайте включён режим технических работ. Администрация видит сайт в обычном режиме.</p>' : '');
+(getSettings().maintenance ? '<p style="margin-top:10px;color:var(--warn);font-size:12px">⚠ Включён режим технических работ. Администрация видит сайт в обычном режиме.</p>' : '');
 } else {
 ab.innerHTML = 'Ваш уровень: <span class="lvl-chip lvl-0">LVL 0 · Игрок</span><br><span style="font-size:12px;color:var(--dim)">Уровни 1–5 выдаёт владелец проекта (аккаунт <b style="color:var(--acc)">Owner</b>) по логину.</span>';
 }
@@ -1702,7 +1703,7 @@ toast('Аккаунт удалён');
 }, 'Удалить навсегда');
 }
 /* ============================================================
-АДМИН-ПАНЕЛЬ 3.1
+АДМИН-ПАНЕЛЬ 3.2
 ============================================================ */
 let adminSec = 'dash';
 const AP_NAV = [
@@ -1773,7 +1774,7 @@ document.getElementById('ap-content').innerHTML =
 '<div class="chart">' + days.map(d => '<div class="cbar"><i data-v="' + d.count + '" style="height:' + Math.max(4, d.count / max * 100) + '%"></i><span>' + d.label + '</span></div>').join('') + '</div>' +
 '</div>' +
 '<div class="ap-panel"><div class="ap-panel-head"><h3>Состав администрации</h3>' + (lvl >= 5 ? '<button class="btn btn-ghost btn-sm" onclick="adminNav(\'access\')">Выдача прав →</button>' : '') + '</div>' +
-(staff.length ? staff.map(x => { const xl = userLvl(x); return '<div class="staff-row"><span class="lvl-chip lvl-' + xl + '">LVL ' + xl + '</span><b>' + esc(x.username) + '</b><span class="mono" style="color:var(--dim);font-size:11px">#' + esc(x.staticId) + '</span><span style="margin-left:auto;font-size:12px;color:var(--dim)">' + esc(LVL_TITLES[xl]) + '</span></div>'; }).join('') : '<p style="color:var(--dim)">Сотрудников нет</p>') +
+(staff.length ? staff.map(x => { const xl = userLvl(x); return '<div class="staff-row"><span class="lvl-chip lvl-' + xl + '">LVL ' + xl + '</span><b>' + esc(x.username) + '</b><span class="mono" style="color:var(--dim);font-size:11px">#' + esc(x.staticId) + '</span><span style="margin-left:auto;font-size:12px;color:var(--dim)">' + esc(LVL_TITLES[xl]) + '</span></div>'; }).join('') : '<p style="color:var(--dim)">Сотрудников нет — владельца ещё не зарегистрировали</p>') +
 '</div>' +
 '<div class="ap-panel"><div class="ap-panel-head"><h3>Последние регистрации</h3><button class="btn btn-ghost btn-sm" onclick="adminNav(\'users\')">Все пользователи →</button></div>' +
 '<div class="a-table-wrap"><table class="a-table"><thead><tr><th>Static</th><th>Никнейм</th><th>E-mail</th><th>Регистрация</th><th>Статус</th></tr></thead><tbody>' +
@@ -2033,7 +2034,7 @@ h += '<div class="ap-panel"><div class="ap-panel-head"><h3>Системная и
 '<div class="ap-stats" style="margin-bottom:0">' +
 '<div class="ap-stat"><span>Сессий в хранилище</span><b>' + (DB.get('session') ? 1 : 0) + '</b><small>активная сессия браузера</small></div>' +
 '<div class="ap-stat"><span>Записей журнала</span><b>' + getLogs().length + '</b><small>хранится 300 последних</small></div>' +
-'<div class="ap-stat"><span>Версия платформы</span><b class="o">3.1</b><small>сборка сайта</small></div>' +
+'<div class="ap-stat"><span>Версия платформы</span><b class="o">3.2</b><small>сборка сайта</small></div>' +
 '</div></div>';
 document.getElementById('ap-content').innerHTML = h;
 }
@@ -2079,7 +2080,7 @@ function renderAAccess(){
 const users = getUsers();
 document.getElementById('ap-content').innerHTML =
 '<div class="ap-panel"><div class="ap-panel-head"><h3>Выдать уровень по логину</h3><span class="sync-note"><span class="dot ok" style="width:6px;height:6px"></span>Применяется мгновенно</span></div>' +
-'<p style="color:var(--mut);font-size:13.5px;line-height:1.7;margin-bottom:18px">Уровни сайта: <b style="color:var(--txt)">0</b> — Игрок (без панели) · <b style="color:var(--txt)">1</b> — Младший Состав · <b style="color:var(--txt)">2</b> — Состав · <b style="color:var(--txt)">3</b> — Высший Состав · <b style="color:var(--txt)">4</b> — Руководство проекта · <b style="color:var(--acc)">5</b> — Владелец (закреплён за аккаунтом Owner).</p>' +
+'<p style="color:var(--mut);font-size:13.5px;line-height:1.7;margin-bottom:18px">Уровни сайта: <b style="color:var(--txt)">0</b> — Игрок (без панели) · <b style="color:var(--txt)">1</b> — Младший Состав · <b style="color:var(--txt)">2</b> — Состав · <b style="color:var(--txt)">3</b> — Высший Состав · <b style="color:var(--txt)">4</b> — Руководство проекта · <b style="color:var(--acc)">5</b> — Владелец (аккаунт Owner, создаётся через регистрацию).</p>' +
 '<div class="ap-form-grid">' +
 '<div class="field"><label>Логин (никнейм) на сайте</label><input type="text" id="acc-name" placeholder="Например: FLESHKA" autocomplete="off"></div>' +
 '<div class="field"><label>Уровень доступа</label><select id="acc-lvl" class="sel-in" style="padding:15px 18px">' +
@@ -2193,7 +2194,7 @@ openModal('<h4>' + title + '</h4><p>' + text + '</p><div class="modal-actions"><
 }
 function doConfirm(){ closeModal(); if(confirmCb){ const cb = confirmCb; confirmCb = null; cb(); } }
 /* ---------- ТЕХНИЧЕСКИЕ РАБОТЫ ----------
-ВАЖНО: блокировка действует ТОЛЬКО для уровня 0 (игроки) и гостей.
+Блокировка действует ТОЛЬКО для уровня 0 (игроки) и гостей.
 Любой администратор (уровни 1–5) видит сайт полностью. */
 function checkMaintenance(){
 const s = getSettings();
@@ -2443,8 +2444,8 @@ if(!wasOpen){ it.classList.add('open'); a.style.maxHeight = a.scrollHeight + 'px
 /* ============================================================
 ЗАПУСК
 ============================================================ */
-window.addEventListener('DOMContentLoaded', async () => {
-await seedOwner();
+window.addEventListener('DOMContentLoaded', () => {
+checkDBVersion(); // сброс старой базы при смене версии сайта
 applySettingsToSite();
 tickCd(); setInterval(tickCd, 1000);
 renderNewsSite();
