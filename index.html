@@ -11,9 +11,6 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&family=Golos+Text:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&family=IBM+Plex+Serif:wght@500;600&display=swap" rel="stylesheet">
 <style>
-/* ============================================================
-SLOW DM — DESIGN SYSTEM
-============================================================ */
 :root{
 --bg:#0B0E13; --bg2:#10141B; --panel:#131824; --panel2:#161C29; --panel3:#1A2130;
 --line:#212A3A; --line2:#2E3A50; --line3:#3C4A66;
@@ -342,10 +339,16 @@ mask-image:radial-gradient(ellipse 70% 60% at 50% 40%,#000 20%,transparent 75%)}
 .auth-feats b{color:var(--ok);font-family:var(--mono);flex:none}
 .auth-sec-note{font-family:var(--mono);font-size:10.5px;color:var(--dim);letter-spacing:.6px;line-height:1.8;border-top:1px solid var(--line);padding-top:20px}
 .auth-sec-note b{color:var(--acc)}
-.auth-right{padding:48px 48px 44px}
-.auth-tabs{display:grid;grid-template-columns:1fr 1fr;background:var(--bg2);border:1px solid var(--line2);border-radius:10px;padding:5px;gap:5px;margin-bottom:32px}
+.auth-right{padding:44px 48px 40px}
+.auth-tabs{display:grid;grid-template-columns:1fr 1fr;background:var(--bg2);border:1px solid var(--line2);border-radius:10px;padding:5px;gap:5px;margin-bottom:24px}
 .auth-tabs button{background:transparent;border:none;border-radius:7px;padding:12px;font-family:var(--body);font-weight:700;font-size:14px;color:var(--dim);transition:all .25s}
 .auth-tabs button.active{background:var(--acc);color:#0B0E13}
+.nick-check{background:var(--bg2);border:1px dashed var(--line3);border-radius:10px;padding:14px 16px;margin-bottom:24px}
+.nick-check .nc-title{font-size:10.5px;font-weight:700;letter-spacing:1.6px;text-transform:uppercase;color:var(--dim);margin-bottom:10px}
+.nick-check .nc-row{display:flex;gap:8px}
+.nick-check input{flex:1;background:var(--bg);border:1px solid var(--line2);border-radius:8px;padding:11px 14px;color:var(--txt);font-family:var(--mono);font-size:13px;outline:none}
+.nick-check input:focus{border-color:var(--acc)}
+.nick-check .nc-result{margin-top:10px;font-size:12.5px;line-height:1.6;display:none}
 .pass-wrap{position:relative}
 .pass-wrap input{padding-right:52px}
 .eye{position:absolute;right:8px;top:50%;transform:translateY(-50%);background:none;border:none;color:var(--dim);font-size:15px;padding:8px;transition:color .2s;font-family:var(--mono)}
@@ -547,7 +550,6 @@ footer{border-top:1px solid var(--line);background:var(--bg2);padding:64px 0 30p
 .donate-table{border-right:none;border-bottom:1px solid var(--line)}
 .rules-item-row{grid-template-columns:56px 1fr}
 .rules-punish-tag{text-align:left;grid-column:span 2;margin-top:4px}
-.re-row{grid-template-columns:1fr 1fr}
 .discord-banner{padding:30px}
 .foot-grid{grid-template-columns:1fr}
 .p-stats{grid-template-columns:1fr 1fr}
@@ -767,7 +769,7 @@ html{scroll-behavior:auto}
 <div class="section-head reveal">
 <div class="kicker">Раздел 06 — Новости</div>
 <h3>Официальные анонсы</h3>
-<p class="muted">Публикуются администрацией и хранятся на сервере сайта — едины для всех посетителей.</p>
+<p class="muted">Публикуются администрацией и хранятся в базе сайта — едины для всех посетителей.</p>
 </div>
 <div class="news-grid" id="news-grid"></div>
 </div>
@@ -780,7 +782,7 @@ html{scroll-behavior:auto}
 </div>
 <div class="faq reveal">
 <div class="faq-item"><button class="faq-q">Когда состоится открытие сервера?<span class="faq-ico">+</span></button><div class="faq-a"><div class="faq-a-in">Таймер на этой странице отображает плановую дату запуска. Сейчас проект находится на этапе закрытого тестирования; точная дата будет подтверждена официальным анонсом.</div></div></div>
-<div class="faq-item"><button class="faq-q">Зачем нужен аккаунт на сайте?<span class="faq-ico">+</span></button><div class="faq-a"><div class="faq-a-in">Аккаунт привязывается к вашему игровому профилю (Static ID), хранит баланс DP и игровой валюты, а также открывает доступ к бета-тестам и личному кабинету. Аккаунты хранятся на сервере сайта.</div></div></div>
+<div class="faq-item"><button class="faq-q">Зачем нужен аккаунт на сайте?<span class="faq-ico">+</span></button><div class="faq-a"><div class="faq-a-in">Аккаунт привязывается к вашему игровому профилю (Static ID), хранит баланс DP и игровой валюты, а также открывает доступ к бета-тестам и личному кабинету.</div></div></div>
 <div class="faq-item"><button class="faq-q">Нужна ли лицензионная GTA V?<span class="faq-ico">+</span></button><div class="faq-a"><div class="faq-a-in">Да. Проект работает на платформе RAGE Multiplayer, которая совместима только с лицензионной копией GTA V для ПК.</div></div></div>
 <div class="faq-item"><button class="faq-q">Что такое DP?<span class="faq-ico">+</span></button><div class="faq-a"><div class="faq-a-in">DP — внутренняя валюта проекта. Пополняется по курсу 1 ₽ = 2 DP и используется для покупки услуг, статусов и косметики.</div></div></div>
 <div class="faq-item"><button class="faq-q">Как попасть в администрацию?<span class="faq-ico">+</span></button><div class="faq-a"><div class="faq-a-in">На сайте 5 уровней доступа: 1 — Младший Состав, 2 — Состав, 3 — Высший Состав, 4 — Руководство проекта, 5 — Владелец. Уровень 0 — обычный игрок. Аккаунт владельца создаётся через регистрацию логина Owner; остальные уровни выдаёт владелец в панели управления.</div></div></div>
@@ -983,14 +985,14 @@ html{scroll-behavior:auto}
 </div>
 <div id="tab-rules" class="tab-content">
 <div class="donate-page">
-<div class="donate-head"><h2>Правила <em>проекта</em></h2><p>Официальный регламент сервера SLOW DM. Редакция загружается с сервера и едина для всех посетителей.</p></div>
+<div class="donate-head"><h2>Правила <em>проекта</em></h2><p>Официальный регламент сервера SLOW DM. Редакция загружается из базы сайта и едина для всех посетителей.</p></div>
 <div class="rules-note">Регистрируясь на SLOW DM, вы автоматически соглашаетесь с правилами и обязуетесь их соблюдать. Незнание правил не освобождает от ответственности.</div>
 <div class="rules-page-container">
 <div class="rules-sidebar-menu">
 <div class="rules-menu-title">Содержание</div>
 <div class="rules-menu-list" id="rules-menu-list"></div>
 </div>
-<div class="rules-content-body">
+<div class="rules-content-body" style="display:flex;flex-direction:column;gap:70px">
 <div>
 <div class="rules-search">
 <input type="text" id="rules-search" placeholder="Поиск по правилам… (например: читы, спам, бан)" autocomplete="off">
@@ -998,7 +1000,7 @@ html{scroll-behavior:auto}
 </div>
 <div id="rules-empty">По вашему запросу ничего не найдено</div>
 </div>
-<div id="rules-sections" style="display:flex;flex-direction:column;gap:70px"></div>
+<div id="rules-sections"></div>
 </div>
 </div>
 </div>
@@ -1018,9 +1020,17 @@ html{scroll-behavior:auto}
 <div><b>✓</b>Ежедневные бонусы за вход</div>
 <div><b>✓</b>Уровни доступа администрации 0–5</div>
 </div>
-<div class="auth-sec-note"><b>БЕЗОПАСНОСТЬ:</b> пароли хранятся в виде SHA-256 хэша с уникальной солью на сервере сайта. Сессия защищена токеном, дублируется в cookie и истекает через 7 дней. После 5 неудачных попыток вход блокируется на 60 секунд. Владелец проекта — тот, кто зарегистрирует логин <b>Owner</b> (уровень 5).</div>
+<div class="auth-sec-note"><b>МИНИ-БД:</b> сайт сам выбирает хранилище: PHP-сервер (api.php) → облачная БД → серверный файл → локальная БД браузера. Проверить, зарегистрирован ли ник, можно прямо на этой странице. Владелец проекта — тот, кто зарегистрирует логин <b>Owner</b> (уровень 5).</div>
 </div>
 <div class="auth-right">
+<div class="nick-check">
+<div class="nc-title">Проверка аккаунта в базе</div>
+<div class="nc-row">
+<input type="text" id="nc-nick" placeholder="Введите никнейм…" autocomplete="off" maxlength="16">
+<button class="btn btn-ghost btn-sm" onclick="checkNick()">Проверить</button>
+</div>
+<div class="nc-result" id="nc-result"></div>
+</div>
 <div class="auth-tabs">
 <button id="at-login" class="active" onclick="setAuthMode('login')">Вход</button>
 <button id="at-reg" onclick="setAuthMode('reg')">Регистрация</button>
@@ -1036,7 +1046,7 @@ html{scroll-behavior:auto}
 <div class="captcha-box"><span class="captcha-q" id="li-captcha-q">? + ?</span><input type="text" id="li-captcha" placeholder="Ответ" autocomplete="off"><button type="button" class="captcha-ref" onclick="genCaptcha('li')">↻</button></div>
 </div>
 <button class="btn btn-primary btn-block" id="li-btn" type="submit">Войти в аккаунт</button>
-<p style="font-size:12px;color:var(--dim);text-align:center;margin-top:18px">Владелец проекта: зарегистрируйте логин <b style="color:var(--acc)">Owner</b> — он получит уровень 5. Права 1–4 выдаёт владелец в панели управления.</p>
+<p style="font-size:12px;color:var(--dim);text-align:center;margin-top:14px">Владелец проекта: зарегистрируйте логин <b style="color:var(--acc)">Owner</b> — он получит уровень 5. Права 1–4 выдаёт владелец в панели управления.</p>
 </form>
 <form id="form-reg" style="display:none" onsubmit="return doRegister(event)">
 <div class="auth-err" id="reg-err"></div>
@@ -1055,7 +1065,7 @@ html{scroll-behavior:auto}
 </div>
 <div class="checkbox-container"><input type="checkbox" id="rg-agree"><label for="rg-agree">Принимаю правила проекта и пользовательское соглашение</label></div>
 <button class="btn btn-primary btn-block" id="rg-btn" type="submit">Создать аккаунт</button>
-<p style="font-size:12px;color:var(--dim);text-align:center;margin-top:18px">Логин <b style="color:var(--acc)">Owner</b> при регистрации автоматически получает уровень 5 (Владелец). Остальные логины — уровень 0 (Игрок).</p>
+<p style="font-size:12px;color:var(--dim);text-align:center;margin-top:14px">Логин <b style="color:var(--acc)">Owner</b> при регистрации получает уровень 5 (Владелец). Остальные — уровень 0 (Игрок).</p>
 </form>
 </div>
 </div>
@@ -1102,13 +1112,13 @@ html{scroll-behavior:auto}
 <h4>Безопасность</h4>
 <p style="font-size:13.5px;color:var(--mut);line-height:1.7;margin-bottom:6px">Сессия активна до <b class="mono" id="p-session-exp" style="color:var(--txt)">—</b> (дублируется в cookie). Все действия фиксируются в журнале безопасности.</p>
 <div class="admin-key-box">
-<p>СЛУЖЕБНЫЙ ДОСТУП. Уровни админ-панели: <b style="color:var(--txt)">0</b> — Игрок, <b style="color:var(--txt)">1</b> — Младший Состав, <b style="color:var(--txt)">2</b> — Состав, <b style="color:var(--txt)">3</b> — Высший Состав, <b style="color:var(--txt)">4</b> — Руководство проекта, <b style="color:var(--acc)">5</b> — Владелец (аккаунт Owner создаётся через регистрацию, вход в панель по паролю).</p>
+<p>СЛУЖЕБНЫЙ ДОСТУП. Уровни: <b style="color:var(--txt)">0</b> Игрок · <b style="color:var(--txt)">1</b> Младший Состав · <b style="color:var(--txt)">2</b> Состав · <b style="color:var(--txt)">3</b> Высший Состав · <b style="color:var(--txt)">4</b> Руководство проекта · <b style="color:var(--acc)">5</b> Владелец (Owner, вход в панель по паролю).</p>
 <div id="access-box"></div>
 </div>
 </div>
 <div class="p-card danger">
 <h4>Управление аккаунтом</h4>
-<p style="font-size:13.5px;color:var(--mut);line-height:1.7;margin-bottom:20px">Выход разрывает текущую сессию и очищает cookie. Удаление аккаунта необратимо: баланс, статистика и Static ID будут потеряны.</p>
+<p style="font-size:13.5px;color:var(--mut);line-height:1.7;margin-bottom:20px">Выход разрывает сессию и очищает cookie. Удаление аккаунта необратимо.</p>
 <div style="display:flex;gap:12px;flex-wrap:wrap">
 <button class="btn btn-ghost btn-sm" onclick="logout()">Выйти из аккаунта</button>
 <button class="btn btn-danger btn-sm" onclick="askDeleteAccount()">Удалить аккаунт</button>
@@ -1173,9 +1183,9 @@ html{scroll-behavior:auto}
 </div>
 <div class="foot-bottom">
 <span>© 2026 SLOW DM · ВСЕ ПРАВА ЗАЩИЩЕНЫ</span>
-<span>ВЕРСИЯ САЙТА 3.4 · СБОРКА 0.4.4 · PHP-SERVER</span>
+<span>ВЕРСИЯ САЙТА 3.5 · MINI-DB</span>
 </div>
-<p class="foot-disc">SLOW DM не связан с Rockstar Games, Take-Two Interactive и разработчиками RAGE Multiplayer. Grand Theft Auto — торговая марка соответствующих правообладателей. База аккаунтов, новостей, правил и уровней администрации хранится на сервере сайта (api.php) и едина для всех посетителей.</p>
+<p class="foot-disc">SLOW DM не связан с Rockstar Games, Take-Two Interactive и разработчиками RAGE Multiplayer. Grand Theft Auto — торговая марка соответствующих правообладателей. База сайта работает в режиме мини-БД: PHP-сервер, облачное хранилище, серверный файл или локальное хранилище браузера — автоматически.</p>
 </div>
 </footer>
 <div class="maint-overlay" id="maint-overlay">
@@ -1190,30 +1200,26 @@ html{scroll-behavior:auto}
 <div class="toast" id="toast"></div>
 <script>
 /* ============================================================
-SLOW DM — ЯДРО СИСТЕМЫ 3.4 (СЕРВЕРНАЯ БАЗА ЧЕРЕЗ api.php)
+SLOW DM — ЯДРО 3.5 (МИНИ-БД: PHP → ОБЛАКО → ФАЙЛ → ЛОКАЛЬНО)
 ============================================================ */
 const RM = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const OWNER_NAME = 'Owner';
-/* Уровни: 0 Игрок · 1 Младший Состав · 2 Состав · 3 Высший Состав · 4 Руководство проекта · 5 Владелец */
 const LVL_TITLES = ['Игрок','Младший Состав','Состав','Высший Состав','Руководство проекта','Владелец'];
-const SEC_LVL = { dash:1, users:2, logs:2, news:3, promos:3, rules:3, settings:4, access:5, surv:5 };
-/* ---------- НАСТРОЙКИ СЕРВЕРА ----------
-API_URL — путь к api.php (лежит рядом с index.html).
-ADMIN_TOKEN — ДОЛЖЕН совпадать с константой ADMIN_TOKEN внутри api.php. ОБЯЗАТЕЛЬНО смените оба! */
+const SEC_LVL = { dash:1, db:2, users:2, logs:2, news:3, promos:3, rules:3, settings:4, access:5, surv:5 };
 const API_URL = 'api.php';
 const ADMIN_TOKEN = 'slowdm-admin-2026';
-const SERVER_FILE = 'slowdm-server.json'; // запасной ручной режим (если хостинг без PHP)
-const SERVER_POLL_MS = 30000;
-let SERVER_MODE = false;   // true = работает php-сервер
-let SERVER = null;         // данные ручного файла (fallback)
-let SERVER_LOADED = false;
+const SERVER_FILE = 'slowdm-server.json';
+const CLOUD_API = 'https://jsonblob.com/api/jsonBlob';
+const CLOUD_BLOB = ''; // можно вписать ID облачной БД вручную (иначе хранится в localStorage)
+const POLL_MS = 30000;
+let REMOTE = null; // 'php' | 'cloud' | null
+let SERVER = null; let SERVER_LOADED = false; // файловый режим
 let toastTimer = null;
 let currentTab = 'main';
 const PUBLIC_TABS = ['main','donate','dp','money','admin','unban','rules'];
-const DB_VERSION = 'v3.4-php';
+const DB_VERSION = 'v3.5-minidb';
 function resetDatabase(){ Object.keys(localStorage).filter(k => k.indexOf('slowdm_') === 0).forEach(k => localStorage.removeItem(k)); }
 function checkDBVersion(){ if(localStorage.getItem('slowdm_db_version') !== DB_VERSION){ resetDatabase(); localStorage.setItem('slowdm_db_version', DB_VERSION); } }
-/* ---------- УТИЛИТЫ ---------- */
 function esc(s){ return String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
 function pad(n){ return String(n).padStart(2, '0'); }
 function fmt(n){ return Math.floor(n).toLocaleString('ru-RU'); }
@@ -1230,11 +1236,9 @@ toastTimer = setTimeout(() => t.classList.remove('show'), 3200);
 }
 function placeholder(e, name){ e && e.preventDefault(); toast(name + ' будет доступно перед открытием проекта.'); }
 function shake(el){ if(!el) return; el.classList.add('shake','bad'); setTimeout(() => el.classList.remove('shake'), 500); }
-/* ---------- COOKIE ---------- */
 function setCookie(name, val, days){ const d = new Date(Date.now() + days * 864e5).toUTCString(); document.cookie = name + '=' + encodeURIComponent(val) + '; expires=' + d + '; path=/; SameSite=Lax'; }
 function getCookie(name){ const m = document.cookie.match(new RegExp('(?:^|; )' + name + '=([^;]*)')); return m ? decodeURIComponent(m[1]) : null; }
 function delCookie(name){ document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/'; }
-/* ---------- ХРАНИЛИЩЕ ---------- */
 const DB = {
 get(k, d){ try{ const v = localStorage.getItem('slowdm_' + k); return v ? JSON.parse(v) : d; }catch(e){ return d; } },
 set(k, v){ try{ localStorage.setItem('slowdm_' + k, JSON.stringify(v)); }catch(e){} },
@@ -1255,56 +1259,71 @@ if(active.id === 'tab-profile' && currentUser()) renderProfile();
 }
 }
 /* ============================================================
-СЕРВЕРНЫЙ СЛОЙ
-1) PHP-режим: api.php хранит базу на хостинге (аккаунты, новости,
-   правила, промо, настройки, журнал) — всё общее для всех.
-2) Файловый режим: slowdm-server.json (ручная публикация).
-3) Локальный режим: если сервера нет вовсе.
+МИНИ-БД: СЛОИ ХРАНЕНИЯ
 ============================================================ */
+function cloudId(){ return CLOUD_BLOB || DB.get('cloud_id', ''); }
+function remotePayload(){
+const users = getUsers().map(u => { const c = Object.assign({}, u); delete c.passPlain; return c; });
+return { updated: new Date().toISOString(), users: users, news: getNews(), promos: getPromos(), rules: getRules(), settings: getSettings(), staff: effectiveStaff() };
+}
 let pushTimer = null; const pushQueue = new Set();
 function serverPush(key){
-if(!SERVER_MODE) return;
+if(!REMOTE) return;
 pushQueue.add(key);
 clearTimeout(pushTimer);
 pushTimer = setTimeout(flushPush, 700);
 }
-function pushNow(key){
-if(!SERVER_MODE) return Promise.resolve();
-return fetch(API_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ token: ADMIN_TOKEN, key: key, value: DB.get(key, null) }) }).catch(() => {});
+function pushNow(){
+if(REMOTE === 'php'){
+const keys = pushQueue.size ? [...pushQueue] : ['users'];
+pushQueue.clear();
+return Promise.all(keys.map(k => fetch(API_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ token: ADMIN_TOKEN, key: k, value: DB.get(k, null) }) }).catch(() => {})));
 }
-function flushPush(){
-if(!SERVER_MODE || !pushQueue.size) return;
-const keys = [...pushQueue]; pushQueue.clear();
-Promise.all(keys.map(k => pushNow(k))).then(() => setTimeout(() => { if(SERVER_MODE) fetchSnapshot(false); }, 600));
+if(REMOTE === 'cloud'){
+pushQueue.clear();
+return fetch(CLOUD_API + '/' + cloudId(), { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(remotePayload()) }).catch(() => {});
 }
-function fetchSnapshot(first){
-const lvl = userLvl(currentUser());
-const url = API_URL + '?get=all' + (lvl >= 5 ? '&token=' + encodeURIComponent(ADMIN_TOKEN) : '');
-return fetch(url, { cache: 'no-store' }).then(r => { if(!r.ok) throw new Error('http'); return r.json(); }).then(data => {
-SERVER_MODE = true;
-const prev = DB.get('_srv_updated', null);
+return Promise.resolve();
+}
+function flushPush(){ if(!REMOTE || !pushQueue.size) return; pushNow().then(() => setTimeout(remoteSync, 600)); }
+function applyRemoteData(data, first){
 if(data.users) DB.set('users', data.users);
 if(data.news != null) DB.set('news', data.news); else DB.del('news');
 if(data.promos != null) DB.set('promos', data.promos); else DB.del('promos');
 if(data.rules != null) DB.set('rules', data.rules); else DB.del('rules');
 if(data.settings != null) DB.set('settings', data.settings); else DB.del('settings');
-if(data.seclog) DB.set('seclog', data.seclog);
-DB.set('_srv_updated', data.updated);
-if(first){ applyServerData(); }
-else if(prev !== data.updated){ applyServerData(); toast('Данные обновлены с сервера'); }
+const prev = DB.get('_srv_updated', null);
+DB.set('_srv_updated', data.updated || null);
+if(first || prev !== (data.updated || null)){ applyServerData(); if(!first) toast('База обновлена с сервера/облака'); }
 updateServerBar();
-}).catch(() => { if(first) SERVER_MODE = false; updateServerBar(); });
 }
-/* --- ручной файловый режим (fallback) --- */
-function fetchServer(first){
-if(SERVER_MODE) return Promise.resolve();
-return fetch(SERVER_FILE + '?v=' + Date.now(), { cache: 'no-store' }).then(r => { if(!r.ok) throw new Error('404'); return r.json(); }).then(data => {
+function fetchRemote(first){
+if(REMOTE === 'php'){
+const lvl = userLvl(currentUser());
+return fetch(API_URL + '?get=all' + (lvl >= 5 ? '&token=' + encodeURIComponent(ADMIN_TOKEN) : ''), { cache: 'no-store' }).then(r => { if(!r.ok) throw 0; return r.json(); }).then(d => applyRemoteData(d, first)).catch(() => { updateServerBar(); });
+}
+if(REMOTE === 'cloud'){
+return fetch(CLOUD_API + '/' + cloudId(), { cache: 'no-store', headers: { Accept: 'application/json' } }).then(r => { if(!r.ok) throw 0; return r.json(); }).then(d => applyRemoteData(d, first)).catch(() => { updateServerBar(); });
+}
+return Promise.resolve();
+}
+function fetchServerFile(first){
+return fetch(SERVER_FILE + '?v=' + Date.now(), { cache: 'no-store' }).then(r => { if(!r.ok) throw 0; return r.json(); }).then(data => {
 const prev = SERVER ? JSON.stringify(SERVER) : null;
 SERVER = data; SERVER_LOADED = true;
-if(prev !== JSON.stringify(data)){ if(!first) toast('Данные обновлены с серверного файла'); applyServerData(); }
+if(prev !== JSON.stringify(data)){ if(!first) toast('Данные обновлены из серверного файла'); applyServerData(); }
 updateServerBar();
 }).catch(() => { SERVER_LOADED = false; updateServerBar(); });
 }
+function initBackend(){
+return fetch(API_URL + '?ping=1', { cache: 'no-store' }).then(r => { if(!r.ok) throw 0; return r.json(); })
+.then(() => { REMOTE = 'php'; return fetchRemote(true); })
+.catch(() => {
+if(cloudId()){ REMOTE = 'cloud'; return fetchRemote(true).then(() => { if(!SERVER_LOADED && !REMOTE) return fetchServerFile(true); }); }
+return fetchServerFile(true);
+});
+}
+function remoteSync(){ if(REMOTE) fetchRemote(false); else fetchServerFile(false); }
 function applyServerData(){
 renderNewsSite(); renderRulesPage(); applySettingsToSite(); checkMaintenance(); updateAuthUI();
 const active = document.querySelector('.tab-content.active');
@@ -1313,18 +1332,7 @@ if(active.id === 'tab-adminpanel' && isAdminSession()) adminNav(adminSec);
 if(active.id === 'tab-profile' && currentUser()) renderProfile();
 }
 }
-function initBackend(){
-return fetch(API_URL + '?ping=1', { cache: 'no-store' }).then(r => { if(!r.ok) throw new Error('no php'); return r.json(); })
-.then(() => fetchSnapshot(true))
-.catch(() => fetchServer(true));
-}
-function serverSync(){ if(SERVER_MODE) fetchSnapshot(false); else fetchServer(false); }
-function resetServerDb(){
-askConfirm('Очистка серверной базы', 'ВСЕ данные на сервере (аккаунты, новости, правила, настройки) будут удалены безвозвратно. Продолжить?', () => {
-fetch(API_URL + '?reset=1&token=' + encodeURIComponent(ADMIN_TOKEN), { cache: 'no-store' }).then(() => { toast('Серверная база очищена'); return fetchSnapshot(false); });
-}, 'Очистить сервер');
-}
-/* ---------- ДАННЫЕ: локальная правка > сервер > стандарт ---------- */
+/* ---------- ДАННЫЕ: локальная правка > удалённый слой > стандарт ---------- */
 function getRules(){ const l = DB.get('rules', null); if(l) return l; if(SERVER && SERVER.rules) return SERVER.rules; return DEFAULT_RULES(); }
 function saveRules(r){ dbSet('rules', r); serverPush('rules'); }
 function getNews(){ const l = DB.get('news', null); if(l) return l; if(SERVER && SERVER.news) return SERVER.news; return DEFAULT_NEWS(); }
@@ -1335,55 +1343,74 @@ function getSettings(){ const l = DB.get('settings', null); if(l) return l; if(S
 function saveSettings(s){ dbSet('settings', s); serverPush('settings'); }
 function secLog(type, msg){ const l = DB.get('seclog', []); l.unshift({ t: Date.now(), type, msg }); dbSet('seclog', l.slice(0, 300)); serverPush('seclog'); }
 function getLogs(){ return DB.get('seclog', []); }
-/* ---------- СОСТАВ / УРОВНИ ---------- */
 function localGrants(){ const g = {}; getUsers().forEach(u => { const l = u.adminLevel || 0; if(l >= 1) g[u.username.toLowerCase()] = l; }); return g; }
 function effectiveStaff(){ return Object.assign({}, (SERVER && SERVER.staff) || {}, DB.get('staff_local', {}), localGrants()); }
+/* ---------- ОБЛАЧНАЯ БД: МАСТЕР ---------- */
+function cloudCreate(){
+toast('Создаю облачную базу…');
+return fetch(CLOUD_API, { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify(remotePayload()) })
+.then(r => {
+if(!r.ok) throw 0;
+const loc = r.headers.get('Location') || '';
+let id = loc.split('/').pop();
+if(!id || id.length < 8){ id = (r.headers.get('x-jsonblob') || ''); }
+if(!id) throw 0;
+DB.set('cloud_id', id);
+REMOTE = 'cloud';
+secLog('ADMIN', 'Создана облачная мини-БД: ' + id);
+updateServerBar();
+toast('Облачная БД создана! ID: ' + id + '. Синхронизация включена.');
+return id;
+})
+.catch(() => { toast('Не удалось создать облачную БД (сеть/CORS). Остаюсь на локальной базе.', 'err'); });
+}
+function cloudConnect(){
+const id = prompt('Вставьте ID облачной базы (jsonblob):', '');
+if(!id) return;
+DB.set('cloud_id', id.trim());
+REMOTE = 'cloud';
+fetchRemote(true).then(() => toast('Подключено к облачной БД'));
+}
+function cloudDisconnect(){ DB.del('cloud_id'); REMOTE = null; initBackend(); toast('Облачная БД отключена'); }
+/* ---------- ПУБЛИКАЦИЯ ФАЙЛА (ручной режим) ---------- */
 function isDirty(){
-if(SERVER_MODE) return false;
+if(REMOTE) return false;
 const hasLocal = !!DB.get('rules', null) || !!DB.get('news', null) || !!DB.get('promos', null) || !!DB.get('settings', null) || Object.keys(localGrants()).length > 0 || Object.keys(DB.get('staff_local', {})).length > 0;
 if(!SERVER_LOADED) return hasLocal;
 const eff = { settings: getSettings(), news: getNews(), promos: getPromos(), rules: getRules(), staff: effectiveStaff() };
-const srv = SERVER || {};
-return JSON.stringify(eff) !== JSON.stringify({ settings: srv.settings, news: srv.news, promos: srv.promos, rules: srv.rules, staff: srv.staff });
+return JSON.stringify(eff) !== JSON.stringify({ settings: SERVER.settings, news: SERVER.news, promos: SERVER.promos, rules: SERVER.rules, staff: SERVER.staff });
 }
-function effectivePayload(){ return { updated: new Date().toISOString(), settings: getSettings(), news: getNews(), promos: getPromos(), rules: getRules(), staff: effectiveStaff() }; }
 function downloadServerFile(){
-const blob = new Blob([JSON.stringify(effectivePayload(), null, 2)], { type: 'application/json' });
+const blob = new Blob([JSON.stringify(Object.assign({ updated: new Date().toISOString() }, { settings: getSettings(), news: getNews(), promos: getPromos(), rules: getRules(), staff: effectiveStaff() }), null, 2)], { type: 'application/json' });
 const a = document.createElement('a');
 a.href = URL.createObjectURL(blob); a.download = SERVER_FILE;
 document.body.appendChild(a); a.click(); a.remove();
 setTimeout(() => URL.revokeObjectURL(a.href), 2000);
-secLog('ADMIN', 'Собран серверный файл ' + SERVER_FILE + ' для публикации');
-toast('Файл ' + SERVER_FILE + ' скачан. Загрузите его на хостинг рядом с index.html.');
-}
-function copyServerJson(){
-const txt = JSON.stringify(effectivePayload(), null, 2);
-if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(txt).then(() => toast('JSON скопирован в буфер обмена')); }
-else { openModal('<h4>JSON серверного файла</h4><p>Скопируйте и сохраните как ' + SERVER_FILE + ' на хостинге.</p><div class="field"><textarea class="re-in" rows="10" style="resize:vertical;font-family:var(--mono);font-size:11px">' + esc(txt) + '</textarea></div><div class="modal-actions"><button class="btn btn-primary btn-sm" onclick="closeModal()">Готово</button></div>'); }
-}
-function pullServer(){
-askConfirm('Загрузить с сервера', 'Локальные правки будут удалены, сайт перейдёт на данные сервера.', () => {
-DB.del('rules'); DB.del('news'); DB.del('promos'); DB.del('settings'); DB.del('staff_local');
-serverSync(); setTimeout(() => { applyServerData(); toast('Локальные правки сброшены'); }, 700);
-}, 'Взять с сервера');
+toast('Файл ' + SERVER_FILE + ' скачан. Загрузите его рядом с index.html.');
 }
 function updateServerBar(){
 const bar = document.getElementById('ap-server-bar'); if(!bar) return;
 let html = '';
-if(SERVER_MODE){
-html = '<span class="dot ok" style="width:8px;height:8px"></span><span>Режим: <b>PHP-СЕРВЕР (api.php)</b> — аккаунты, анонсы, правила и уровни хранятся на хостинге и синхронизируются у всех автоматически</span><span class="badge ok">СЕРВЕР АКТИВЕН</span>' +
-'<span class="sb-actions"><button class="btn btn-ghost btn-sm" onclick="fetchSnapshot(false)">Обновить сейчас</button>' + (userLvl(currentUser()) >= 5 ? '<button class="btn btn-danger btn-sm" onclick="resetServerDb()">Очистить серверную базу</button>' : '') + '</span>';
+if(REMOTE === 'php'){
+html = '<span class="dot ok" style="width:8px;height:8px"></span><span>База: <b>PHP-СЕРВЕР (api.php)</b> — аккаунты и контент общие для всех, автообновление каждые 30 сек</span><span class="badge ok">СЕРВЕР</span>' +
+'<span class="sb-actions"><button class="btn btn-ghost btn-sm" onclick="fetchRemote(false)">Обновить</button>' + (userLvl(currentUser()) >= 5 ? '<button class="btn btn-danger btn-sm" onclick="resetServerDb()">Очистить сервер</button>' : '') + '</span>';
+} else if(REMOTE === 'cloud'){
+html = '<span class="dot ok" style="width:8px;height:8px"></span><span>База: <b>ОБЛАЧНАЯ МИНИ-БД</b> · ID ' + esc(cloudId()) + ' — аккаунты и контент синхронизируются между устройствами</span><span class="badge ok">ОБЛАКО</span>' +
+'<span class="sb-actions"><button class="btn btn-ghost btn-sm" onclick="fetchRemote(false)">Обновить</button><button class="btn btn-ghost btn-sm" onclick="pushNow().then(()=>fetchRemote(false))">Отправить сейчас</button><button class="btn btn-danger btn-sm" onclick="cloudDisconnect()">Отключить</button></span>';
 } else if(SERVER_LOADED){
 const dirty = isDirty();
-html = '<span class="dot ok" style="width:8px;height:8px"></span><span>Режим: <b>ФАЙЛ ' + SERVER_FILE + '</b> (хостинг без PHP). Правки публикуются скачанным файлом.</span>' +
-(dirty ? '<span class="badge warn">ЕСТЬ НЕОПУБЛИКОВАННЫЕ ПРАВКИ</span>' : '<span class="badge ok">СИНХРОНИЗИРОВАНО</span>') +
-'<span class="sb-actions"><button class="btn btn-ghost btn-sm" onclick="fetchServer(false)">Проверить</button>' +
-(dirty ? '<button class="btn btn-primary btn-sm" onclick="downloadServerFile()">Скачать ' + SERVER_FILE + '</button><button class="btn btn-ghost btn-sm" onclick="copyServerJson()">Скопировать JSON</button>' : '') + '</span>';
+html = '<span class="dot ok" style="width:8px;height:8px"></span><span>База: <b>ФАЙЛ ' + SERVER_FILE + '</b> (ручной режим)</span>' + (dirty ? '<span class="badge warn">ЕСТЬ НЕОПУБЛИКОВАННЫЕ ПРАВКИ</span>' : '<span class="badge ok">СИНХРОНИЗИРОВАНО</span>') +
+'<span class="sb-actions"><button class="btn btn-ghost btn-sm" onclick="fetchServerFile(false)">Проверить</button>' + (dirty ? '<button class="btn btn-primary btn-sm" onclick="downloadServerFile()">Скачать файл</button>' : '') + '</span>';
 } else {
-html = '<span class="dot err" style="width:8px;height:8px"></span><span>Режим: <b>ЛОКАЛЬНЫЙ</b> — сервер не найден. Загрузите api.php (PHP) или опубликуйте ' + SERVER_FILE + ', чтобы данные стали общими.</span><span class="badge err">НЕТ СЕРВЕРА</span>' +
-'<span class="sb-actions"><button class="btn btn-ghost btn-sm" onclick="initBackend().then(applyServerData)">Повторить поиск</button><button class="btn btn-primary btn-sm" onclick="downloadServerFile()">Скачать ' + SERVER_FILE + '</button></span>';
+html = '<span class="dot err" style="width:8px;height:8px"></span><span>База: <b>ЛОКАЛЬНАЯ (мини-БД браузера)</b> — сервер/облако не подключены. Аккаунты видны в разделе «Мини-БД» и «Пользователи».</span><span class="badge dim">ЛОКАЛЬНО</span>' +
+'<span class="sb-actions"><button class="btn btn-primary btn-sm" onclick="cloudCreate()">☁ Создать облачную БД</button><button class="btn btn-ghost btn-sm" onclick="cloudConnect()">Подключить по ID</button></span>';
 }
 bar.innerHTML = html;
+}
+function resetServerDb(){
+askConfirm('Очистка серверной базы', 'Все данные на PHP-сервере будут удалены. Продолжить?', () => {
+fetch(API_URL + '?reset=1&token=' + encodeURIComponent(ADMIN_TOKEN), { cache: 'no-store' }).then(() => { toast('Серверная база очищена'); return fetchRemote(false); });
+}, 'Очистить');
 }
 /* ---------- ПОЛЬЗОВАТЕЛИ ---------- */
 function getUsers(){ return DB.get('users', []); }
@@ -1400,7 +1427,21 @@ if(typeof v === 'number') return Math.max(0, Math.min(5, v));
 return u.adminLevel || 0;
 }
 function isOwner(u){ return !!(u && u.username.toLowerCase() === OWNER_NAME.toLowerCase()); }
-/* ---------- СЕССИИ (+ COOKIE) ---------- */
+/* ---------- ПРОВЕРКА НИКА (публично) ---------- */
+function checkNick(){
+const q = document.getElementById('nc-nick').value.trim();
+const box = document.getElementById('nc-result');
+box.style.display = 'block';
+if(!q){ box.innerHTML = '<span style="color:var(--dim)">Введите никнейм для проверки.</span>'; return; }
+const u = findUser(q);
+if(u){
+const lvl = userLvl(u);
+box.innerHTML = '<span style="color:var(--ok)">✓ АККАУНТ ЗАРЕГИСТРИРОВАН</span> · <b>' + esc(u.username) + '</b> · Static #' + esc(u.staticId) + ' · регистрация ' + ruDate(u.created) + ' · <span class="lvl-chip lvl-' + lvl + '">LVL ' + lvl + '</span>' + (u.isBanned ? ' · <span class="badge err">БАН</span>' : '');
+} else {
+box.innerHTML = '<span style="color:var(--err)">✗ АККАУНТ НЕ НАЙДЕН</span> · ник «' + esc(q) + '</b>» не зарегистрирован в базе' + (REMOTE ? ' (проверка по серверной/облачной базе)' : ' (локальная мини-БД этого браузера)') + '. <a style="color:var(--acc)" onclick="setAuthMode(\'reg\')">Зарегистрировать →</a>';
+}
+}
+/* ---------- СЕССИИ ---------- */
 function getSession(){ const s = DB.get('session', null); if(!s) return null; if(Date.now() > s.expires){ clearSession(); return null; } return s; }
 function setSession(userId){ DB.set('session', { userId, token: randToken(32), created: Date.now(), expires: Date.now() + 7 * 864e5, admin: false, adminLevel: 0 }); setCookie('slowdm_uid', userId, 7); }
 function updateSession(patch){ const s = getSession(); if(s) DB.set('session', Object.assign({}, s, patch)); }
@@ -1491,7 +1532,7 @@ _R('5.5','Ошибочное пополнение доната.','Возврат
 ]}
 ];
 }
-/* ---------- ЗАЩИТА ВХОДА ---------- */
+/* ---------- ЗАЩИТА ВХОДА / КАПЧА ---------- */
 function getLock(){ return DB.get('lock', { fails: 0, until: 0 }); }
 function setLock(l){ DB.set('lock', l); }
 function isLocked(){ const l = getLock(); return l.until > Date.now(); }
@@ -1518,7 +1559,7 @@ document.getElementById('reg-strength').dataset.s = v ? s : 0;
 const labels = ['Надёжность пароля', 'Слабый пароль', 'Средний пароль', 'Хороший пароль', 'Отличный пароль'];
 document.getElementById('reg-strength-label').textContent = v ? labels[s] : labels[0];
 }
-/* ---------- РЕГИСТРАЦИЯ (аккаунт создаётся НА СЕРВЕРЕ) ---------- */
+/* ---------- РЕГИСТРАЦИЯ ---------- */
 async function doRegister(e){
 e.preventDefault();
 const err = document.getElementById('reg-err');
@@ -1558,13 +1599,12 @@ lastClaim: null,
 history: isOwnerReg ? [{ t: Date.now(), msg: 'Аккаунт владельца зарегистрирован (LVL 5)' }] : []
 };
 users.push(user); saveUsers(users);
-if(SERVER_MODE) await pushNow('users'); // сразу на сервер
+if(REMOTE) await pushNow();
 setSession(user.id);
 pushHistory(user.id, 'Аккаунт зарегистрирован. Добро пожаловать!');
-if(isOwnerReg) secLog('ADMIN', 'ЗАРЕГИСТРИРОВАН АККАУНТ ВЛАДЕЛЬЦА: ' + name + ' (LVL 5, static 1)');
-else secLog('AUTH', 'Регистрация аккаунта: ' + name + ' (static ' + user.staticId + ')');
+secLog('AUTH', 'Регистрация аккаунта: ' + name + ' (static ' + user.staticId + ')');
 btn.disabled = false; btn.textContent = 'Создать аккаунт';
-toast(isOwnerReg ? 'Аккаунт владельца создан! Уровень: 5 (Владелец).' : 'Аккаунт создан на сервере. Добро пожаловать, ' + name + '!');
+toast(isOwnerReg ? 'Аккаунт владельца создан! Уровень: 5 (Владелец).' : 'Аккаунт создан и записан в базу. Добро пожаловать, ' + name + '!');
 updateAuthUI();
 switchTab('profile');
 return false;
@@ -1676,8 +1716,8 @@ function openAdminGate(){
 const u = currentUser(); if(!u) return;
 const lvl = userLvl(u);
 if(lvl < 1){
-secLog('DENY', 'Попытка доступа к панели управления без прав: ' + u.username);
-toast('Доступ запрещён. У вас уровень 0 (игрок). Права выдаёт владелец — аккаунт Owner.', 'err');
+secLog('DENY', 'Попытка доступа к панели без прав: ' + u.username);
+toast('Доступ запрещён. Уровень 0 (игрок). Права выдаёт владелец — аккаунт Owner.', 'err');
 return;
 }
 if(isOwner(u)){
@@ -1687,11 +1727,11 @@ openModal('<h4>Подтверждение владельца</h4><p>Вход в 
 setTimeout(() => { const i = document.getElementById('m-owner-pass'); if(i) i.focus(); }, 60);
 } else {
 updateSession({ admin: true, adminLevel: lvl });
-secLog('ADMIN', 'Вход в панель управления (уровень ' + lvl + ', ' + LVL_TITLES[lvl] + '): ' + u.username);
+secLog('ADMIN', 'Вход в панель (уровень ' + lvl + ', ' + LVL_TITLES[lvl] + '): ' + u.username);
 pushHistory(u.id, 'Открыта панель администратора (LVL ' + lvl + ')');
 updateAuthUI();
 switchTab('adminpanel');
-toast('Добро пожаловать в панель управления, ' + LVL_TITLES[lvl]);
+toast('Добро пожаловать в панель, ' + LVL_TITLES[lvl]);
 }
 }
 async function confirmOwnerGate(){
@@ -1700,11 +1740,11 @@ const inp = document.getElementById('m-owner-pass');
 const v = inp ? inp.value : '';
 if((await sha256(v + u.salt)) === u.passHash){
 updateSession({ admin: true, adminLevel: 5 });
-secLog('ADMIN', 'Владелец вошёл в панель управления (LVL 5)');
+secLog('ADMIN', 'Владелец вошёл в панель (LVL 5)');
 pushHistory(u.id, 'Открыта панель администратора (ВЛАДЕЛЕЦ)');
 closeModal(); updateAuthUI(); switchTab('adminpanel');
-if(SERVER_MODE) fetchSnapshot(false); // подтянуть пароли для слежки
-toast('Доступ уровня 5 подтверждён. Добро пожаловать, владелец.');
+if(REMOTE) fetchRemote(false);
+toast('Доступ уровня 5 подтверждён.');
 } else {
 secLog('DENY', 'Неверный пароль владельца при входе в панель');
 if(inp) shake(inp);
@@ -1737,11 +1777,10 @@ cb.disabled = claimed;
 cb.textContent = claimed ? 'Бонус уже получен сегодня ✓' : 'Забрать ежедневный бонус +25 DP';
 const ab = document.getElementById('access-box');
 if(lvl >= 1){
-ab.innerHTML = 'Ваш уровень: <span class="lvl-chip lvl-' + lvl + '">LVL ' + lvl + ' · ' + esc(LVL_TITLES[lvl]) + '</span> ' +
-(SERVER_MODE ? '<span class="badge ok">СЕРВЕР</span>' : '<span class="badge warn">ЛОКАЛЬНО/ФАЙЛ</span>') + '<br>' +
+ab.innerHTML = 'Ваш уровень: <span class="lvl-chip lvl-' + lvl + '">LVL ' + lvl + ' · ' + esc(LVL_TITLES[lvl]) + '</span> ' + (REMOTE ? '<span class="badge ok">ПОДТВЕРЖДЁН БАЗОЙ</span>' : '<span class="badge dim">ЛОКАЛЬНАЯ БД</span>') + '<br>' +
 '<button class="btn btn-primary btn-sm" style="margin-top:14px" onclick="openAdminGate()">Открыть панель управления</button>';
 } else {
-ab.innerHTML = 'Ваш уровень: <span class="lvl-chip lvl-0">LVL 0 · Игрок</span><br><span style="font-size:12px;color:var(--dim)">Уровни 1–5 выдаёт владелец проекта (аккаунт <b style="color:var(--acc)">Owner</b>) по логину.</span>';
+ab.innerHTML = 'Ваш уровень: <span class="lvl-chip lvl-0">LVL 0 · Игрок</span><br><span style="font-size:12px;color:var(--dim)">Уровни 1–5 выдаёт владелец (аккаунт <b style="color:var(--acc)">Owner</b>) по логину.</span>';
 }
 const sw = document.getElementById('swatches');
 sw.innerHTML = AV_COLORS.map((c, i) => '<div class="swatch ' + (i === (u.avatar || 0) ? 'sel' : '') + '" style="background:' + c + '" onclick="setAvatar(' + i + ')"></div>').join('');
@@ -1757,14 +1796,14 @@ updateUser(u.id, { dp: u.dp + 25, xp: (u.xp || 0) + 10, lastClaim: todayStr() })
 pushHistory(u.id, 'Ежедневный бонус: +25 DP, +10 XP');
 secLog('OK', 'Ежедневный бонус выдан: ' + u.username);
 renderProfile();
-toast('Начислено +25 DP. Возвращайтесь завтра!');
+toast('Начислено +25 DP.');
 }
 async function changePassword(){
 const u = currentUser(); if(!u) return;
 const old = document.getElementById('cp-old').value;
 const nw = document.getElementById('cp-new').value;
 const nw2 = document.getElementById('cp-new2').value;
-if((await sha256(old + u.salt)) !== u.passHash){ toast('Текущий пароль указан неверно', 'err'); shake(document.getElementById('cp-old')); secLog('DENY', 'Неверный текущий пароль при смене: ' + u.username); return; }
+if((await sha256(old + u.salt)) !== u.passHash){ toast('Текущий пароль неверен', 'err'); shake(document.getElementById('cp-old')); return; }
 if(nw.length < 6){ toast('Новый пароль короче 6 символов', 'err'); shake(document.getElementById('cp-new')); return; }
 if(nw !== nw2){ toast('Пароли не совпадают', 'err'); shake(document.getElementById('cp-new2')); return; }
 const salt = randToken(16);
@@ -1773,12 +1812,12 @@ updateUser(u.id, { salt, passHash: hash, passPlain: nw });
 pushHistory(u.id, 'Пароль аккаунта изменён');
 secLog('OK', 'Смена пароля: ' + u.username);
 document.getElementById('cp-old').value = ''; document.getElementById('cp-new').value = ''; document.getElementById('cp-new2').value = '';
-toast('Пароль обновлён на сервере');
+toast('Пароль обновлён в базе');
 }
 function askDeleteAccount(){
 const u = currentUser(); if(!u) return;
 if(isOwner(u)){ toast('Аккаунт владельца нельзя удалить', 'err'); return; }
-askConfirm('Удаление аккаунта', 'Аккаунт будет удалён С СЕРВЕРА навсегда. Продолжить?', () => {
+askConfirm('Удаление аккаунта', 'Аккаунт будет удалён из базы навсегда. Продолжить?', () => {
 const cur = currentUser(); if(!cur) return;
 secLog('ADMIN', 'Самоудаление аккаунта: ' + cur.username);
 saveUsers(getUsers().filter(x => x.id !== cur.id));
@@ -1791,6 +1830,7 @@ clearSession(); updateAuthUI(); switchTab('main'); toast('Аккаунт уда�
 let adminSec = 'dash';
 const AP_NAV = [
 { sec: 'dash', ico: '▦', name: 'Дашборд', lvl: 1 },
+{ sec: 'db', ico: '🗄', name: 'Мини-БД', lvl: 2 },
 { sec: 'users', ico: '◉', name: 'Пользователи', lvl: 2 },
 { sec: 'logs', ico: '☰', name: 'Журнал безопасности', lvl: 2 },
 { sec: 'news', ico: '✎', name: 'Новости', lvl: 3 },
@@ -1800,7 +1840,7 @@ const AP_NAV = [
 { sec: 'access', ico: '★', name: 'Выдача прав', lvl: 5 },
 { sec: 'surv', ico: '◈', name: 'Полная слежка', lvl: 5 }
 ];
-const AP_TITLES = { dash: 'Дашборд', users: 'Пользователи', logs: 'Журнал безопасности', news: 'Управление новостями', promos: 'Промокоды', rules: 'Правила проекта', settings: 'Настройки сервера', access: 'Выдача прав доступа', surv: 'Полная слежка' };
+const AP_TITLES = { dash: 'Дашборд', db: 'Мини-база данных', users: 'Пользователи', logs: 'Журнал безопасности', news: 'Управление новостями', promos: 'Промокоды', rules: 'Правила проекта', settings: 'Настройки сервера', access: 'Выдача прав доступа', surv: 'Полная слежка' };
 function buildAdminNav(){
 const lvl = panelLevel();
 document.getElementById('ap-nav-list').innerHTML = AP_NAV.map(n => {
@@ -1810,7 +1850,7 @@ return '<a data-sec="' + n.sec + '" class="' + (locked ? 'locked' : '') + '" onc
 }
 function denyNav(need){
 toast('Недостаточно прав. Требуется уровень ' + need + ' (' + LVL_TITLES[need] + ').', 'err');
-secLog('DENY', 'Попытка доступа к разделу панели (нужен LVL ' + need + '): ' + (currentUser() ? currentUser().username : '—'));
+secLog('DENY', 'Попытка доступа к разделу панели (нужен LVL ' + need + ')');
 }
 function adminNav(sec){
 const lvl = panelLevel();
@@ -1818,7 +1858,7 @@ if(lvl < SEC_LVL[sec]){ denyNav(SEC_LVL[sec]); return; }
 adminSec = sec;
 document.querySelectorAll('#ap-nav-list a').forEach(a => a.classList.toggle('active', a.dataset.sec === sec));
 document.getElementById('ap-title').textContent = AP_TITLES[sec];
-({ dash: renderADash, users: () => renderAUsers(''), logs: renderALogs, news: renderANews, promos: renderAPromos, rules: renderARules, settings: renderASettings, access: renderAAccess, surv: renderASurv })[sec]();
+({ dash: renderADash, db: renderADb, users: () => renderAUsers(''), logs: renderALogs, news: renderANews, promos: renderAPromos, rules: renderARules, settings: renderASettings, access: renderAAccess, surv: renderASurv })[sec]();
 updateServerBar();
 }
 function renderAdmin(){
@@ -1842,31 +1882,97 @@ days.push({ label: pad(d.getDate()) + '.' + pad(d.getMonth() + 1), count: users.
 }
 const max = Math.max(1, ...days.map(d => d.count));
 const last = users.slice().sort((a, b) => (b.created || '').localeCompare(a.created || '')).slice(0, 5);
-const lvl = panelLevel();
 const maint = getSettings().maintenance;
 document.getElementById('ap-content').innerHTML =
 (maint ? '<div class="warn-banner" style="background:rgba(255,197,61,.08);border-color:rgba(255,197,61,.35);color:var(--warn)">⚠ Включён режим технических работ. Игроки заблокированы, администрация (1–5) видит сайт полностью.</div>' : '') +
 '<div class="ap-stats">' +
-'<div class="ap-stat"><span>Всего аккаунтов</span><b class="o">' + users.length + '</b><small>' + (SERVER_MODE ? 'на сервере сайта' : 'в базе') + '</small></div>' +
+'<div class="ap-stat"><span>Всего аккаунтов</span><b class="o">' + users.length + '</b><small>в базе сайта</small></div>' +
 '<div class="ap-stat"><span>Администрация</span><b>' + staff.length + '</b><small>уровни 1–5</small></div>' +
 '<div class="ap-stat"><span>Заблокировано</span><b class="r">' + banned + '</b><small>активных банов</small></div>' +
 '<div class="ap-stat"><span>Событий защиты</span><b class="g">' + logs.length + '</b><small>записей в журнале</small></div>' +
 '</div>' +
-'<div class="ap-panel"><div class="ap-panel-head"><h3>Регистрации за 7 дней</h3><span class="sync-note"><span class="dot ok" style="width:6px;height:6px"></span>' + (SERVER_MODE ? 'данные сервера' : 'данные базы') + '</span></div>' +
+'<div class="ap-panel"><div class="ap-panel-head"><h3>Регистрации за 7 дней</h3><span class="sync-note"><span class="dot ok" style="width:6px;height:6px"></span>база: ' + (REMOTE === 'php' ? 'PHP-сервер' : REMOTE === 'cloud' ? 'облако' : SERVER_LOADED ? 'файл' : 'локально') + '</span></div>' +
 '<div class="chart">' + days.map(d => '<div class="cbar"><i data-v="' + d.count + '" style="height:' + Math.max(4, d.count / max * 100) + '%"></i><span>' + d.label + '</span></div>').join('') + '</div></div>' +
-'<div class="ap-panel"><div class="ap-panel-head"><h3>Состав администрации</h3>' + (lvl >= 5 ? '<button class="btn btn-ghost btn-sm" onclick="adminNav(\'access\')">Выдача прав →</button>' : '') + '</div>' +
-(staff.length ? staff.map(x => { const xl = userLvl(x); return '<div class="staff-row"><span class="lvl-chip lvl-' + xl + '">LVL ' + xl + '</span><b>' + esc(x.username) + '</b><span class="mono" style="color:var(--dim);font-size:11px">#' + esc(x.staticId) + '</span><span style="margin-left:auto;font-size:12px;color:var(--dim)">' + esc(LVL_TITLES[xl]) + '</span></div>'; }).join('') : '<p style="color:var(--dim)">Сотрудников нет</p>') + '</div>' +
 '<div class="ap-panel"><div class="ap-panel-head"><h3>Последние регистрации</h3><button class="btn btn-ghost btn-sm" onclick="adminNav(\'users\')">Все пользователи →</button></div>' +
 '<div class="a-table-wrap"><table class="a-table"><thead><tr><th>Static</th><th>Никнейм</th><th>E-mail</th><th>Регистрация</th><th>Статус</th></tr></thead><tbody>' +
 (last.length ? last.map(u => '<tr><td class="mono">#' + esc(u.staticId) + '</td><td><b>' + esc(u.username) + '</b></td><td class="mono">' + esc(u.email) + '</td><td class="mono">' + ruDate(u.created) + '</td><td>' + (u.isBanned ? '<span class="badge err">БАН</span>' : '<span class="badge ok">АКТИВЕН</span>') + '</td></tr>').join('') : '<tr><td colspan="5" style="color:var(--dim)">Аккаунтов пока нет</td></tr>') +
 '</tbody></table></div></div>';
 }
+/* ---------- РАЗДЕЛ МИНИ-БД ---------- */
+function renderADb(){
+const users = getUsers();
+const mode = REMOTE === 'php' ? 'PHP-СЕРВЕР (api.php)' : REMOTE === 'cloud' ? 'ОБЛАЧНАЯ БД (jsonblob ' + esc(cloudId()) + ')' : SERVER_LOADED ? 'ФАЙЛ ' + SERVER_FILE : 'ЛОКАЛЬНАЯ МИНИ-БД БРАУЗЕРА';
+document.getElementById('ap-content').innerHTML =
+'<div class="ap-stats">' +
+'<div class="ap-stat"><span>Аккаунтов в базе</span><b class="o">' + users.length + '</b><small>зарегистрировано</small></div>' +
+'<div class="ap-stat"><span>Режим базы</span><b style="font-size:18px">' + (REMOTE ? (REMOTE === 'php' ? 'PHP' : 'ОБЛАКО') : (SERVER_LOADED ? 'ФАЙЛ' : 'ЛОКАЛЬНО')) + '</b><small>' + esc(mode) + '</small></div>' +
+'<div class="ap-stat"><span>Админов (1–5)</span><b class="g">' + users.filter(u => userLvl(u) >= 1).length + '</b><small>выдано уровней</small></div>' +
+'<div class="ap-stat"><span>Последняя синхр.</span><b style="font-size:16px">' + (DB.get('_srv_updated', null) ? ruDateTime(new Date(DB.get('_srv_updated')).getTime()) : '—') + '</b><small>обновление базы</small></div>' +
+'</div>' +
+'<div class="ap-panel"><div class="ap-panel-head"><h3>Управление мини-БД</h3></div>' +
+'<p style="color:var(--mut);font-size:13.5px;line-height:1.8;margin-bottom:16px">Без хостинга сайт работает на <b style="color:var(--txt)">локальной мини-БД</b> (хранится в браузере + cookie): регистрации, входы, уровни и журнал видны в разделах «Мини-БД», «Пользователи» и «Полная слежка», а проверка ника доступна всем на странице входа.<br>Чтобы база стала общей между устройствами без своего хостинга — создайте <b style="color:var(--acc)">облачную БД</b> одной кнопкой: сайт сам создаст бесплатное хранилище и будет синхронизировать аккаунты, анонсы, правила и уровни каждые 30 секунд. Когда появится хостинг с PHP — загрузите api.php, и сайт автоматически перейдёт на него.</p>' +
+'<div style="display:flex;gap:10px;flex-wrap:wrap">' +
+(REMOTE ? '<button class="btn btn-ghost btn-sm" onclick="fetchRemote(false)">Скачать с сервера</button><button class="btn btn-primary btn-sm" onclick="pushNow().then(()=>fetchRemote(false))">Отправить на сервер</button>' : '<button class="btn btn-primary btn-sm" onclick="cloudCreate()">☁ Создать облачную БД</button><button class="btn btn-ghost btn-sm" onclick="cloudConnect()">Подключить по ID</button>') +
+'<button class="btn btn-ghost btn-sm" onclick="exportDbFile()">Экспорт базы (файл)</button>' +
+'<button class="btn btn-ghost btn-sm" onclick="importDbPrompt()">Импорт базы (файл)</button>' +
+(userLvl(currentUser()) >= 5 ? '<button class="btn btn-danger btn-sm" onclick="wipeAccounts()">Стереть все аккаунты</button>' : '') +
+'</div></div>' +
+'<div class="ap-panel"><div class="ap-panel-head"><h3>Все аккаунты базы · ' + users.length + '</h3><span class="sync-note"><span class="dot ' + (REMOTE ? 'ok' : 'err') + '" style="width:6px;height:6px"></span>' + (REMOTE ? 'синхронизируется' : 'локально') + '</span></div>' +
+'<div class="a-table-wrap"><table class="a-table"><thead><tr><th>Static</th><th>Никнейм</th><th>E-mail</th><th>Уровень</th><th>Регистрация</th><th>Последний вход</th><th>Статус</th></tr></thead><tbody>' +
+(users.length ? users.map(u => {
+const ul = userLvl(u);
+return '<tr><td class="mono">#' + esc(u.staticId) + '</td><td><b>' + esc(u.username) + '</b>' + (isOwner(u) ? ' <span class="lvl-chip lvl-5">ВЛАДЕЛЕЦ</span>' : '') + '</td><td class="mono">' + esc(u.email) + '</td><td><span class="lvl-chip lvl-' + ul + '">LVL ' + ul + '</span></td><td class="mono">' + ruDateTime(new Date(u.created).getTime()) + '</td><td class="mono">' + ruDateTime(u.lastLogin) + '</td><td>' + (u.isBanned ? '<span class="badge err">БАН</span>' : '<span class="badge ok">АКТИВЕН</span>') + '</td></tr>';
+}).join('') : '<tr><td colspan="7" style="color:var(--dim)">База пуста — аккаунтов ещё нет</td></tr>') +
+'</tbody></table></div></div>';
+}
+function exportDbFile(){
+const data = { exported: new Date().toISOString(), users: getUsers(), news: getNews(), promos: getPromos(), rules: getRules(), settings: getSettings(), seclog: getLogs() };
+const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+const a = document.createElement('a');
+a.href = URL.createObjectURL(blob); a.download = 'slowdm-db-backup.json';
+document.body.appendChild(a); a.click(); a.remove();
+setTimeout(() => URL.revokeObjectURL(a.href), 2000);
+toast('Резервная копия базы скачана');
+}
+function importDbPrompt(){
+const inp = document.createElement('input');
+inp.type = 'file'; inp.accept = '.json,application/json';
+inp.onchange = () => {
+const f = inp.files[0]; if(!f) return;
+const r = new FileReader();
+r.onload = () => {
+try{
+const d = JSON.parse(r.result);
+if(d.users) saveUsers(d.users);
+if(d.news) saveNews(d.news);
+if(d.promos) savePromos(d.promos);
+if(d.rules) saveRules(d.rules);
+if(d.settings) saveSettings(d.settings);
+secLog('ADMIN', 'Импорт базы из файла');
+refreshShared(); adminNav('db');
+toast('База импортирована');
+}catch(e){ toast('Ошибка импорта: неверный файл', 'err'); }
+};
+r.readAsText(f);
+};
+inp.click();
+}
+function wipeAccounts(){
+askConfirm('Стереть все аккаунты', 'ВСЕ аккаунты базы (кроме текущей сессии владельца) будут удалены. Продолжить?', () => {
+const me = currentUser();
+saveUsers(me ? [me] : []);
+secLog('ADMIN', 'Полная очистка таблицы аккаунтов');
+refreshShared(); adminNav('db');
+toast('Таблица аккаунтов очищена');
+}, 'Стереть');
+}
+/* ---------- ПОЛЬЗОВАТЕЛИ ---------- */
 function peekPwd(id, btn){
 const el = document.getElementById('pwd-' + id);
 const u = findUser(id);
 if(!el || !u) return;
 if(el.dataset.shown === '1'){ el.textContent = '••••••••'; el.dataset.shown = '0'; btn.textContent = '👁'; }
-else { el.textContent = u.passPlain || '(хранится на сервере)'; el.dataset.shown = '1'; btn.textContent = '🙈'; }
+else { el.textContent = u.passPlain || '(не хранится)'; el.dataset.shown = '1'; btn.textContent = '🙈'; }
 }
 function renderAUsers(q){
 q = (q || '').toLowerCase();
@@ -1875,7 +1981,7 @@ const users = getUsers().filter(u => !q || u.username.toLowerCase().includes(q) 
 document.getElementById('ap-content').innerHTML =
 '<div class="ap-panel"><div class="ap-panel-head"><h3>База аккаунтов · ' + users.length + '</h3>' +
 '<input class="ap-search" placeholder="Поиск: ник, e-mail, static…" value="' + esc(q) + '" oninput="renderAUsers(this.value)"></div>' +
-'<div class="a-table-wrap"><table class="a-table"><thead><tr><th>Static</th><th>Никнейм</th>' + (myLvl >= 5 ? '<th>Пароль</th>' : '') + '<th>Баланс</th><th>Уровень</th><th>Регистрация</th><th>Последний вход</th><th>Статус</th>' + (myLvl >= 3 ? '<th>Действия</th>' : '') + '</tr></thead><tbody>' +
+'<div class="a-table-wrap"><table class="a-table"><thead><tr><th>Static</th><th>Никнейм</th>' + (myLvl >= 5 ? '<th>Пароль</th>' : '') + '<th>Баланс</th><th>Уровень</th><th>Регистрация</th><th>Статус</th>' + (myLvl >= 3 ? '<th>Действия</th>' : '') + '</tr></thead><tbody>' +
 (users.length ? users.map(u => {
 const self = me && u.id === me.id;
 const ul = userLvl(u);
@@ -1892,11 +1998,10 @@ return '<tr>' +
 '<td class="mono">' + fmt(u.dp) + ' DP<br><span style="color:var(--ok)">' + fmt(u.money) + ' $</span></td>' +
 '<td><span class="lvl-chip lvl-' + ul + '">LVL ' + ul + '</span><div style="font-size:10px;color:var(--dim);margin-top:3px">' + esc(LVL_TITLES[ul]) + '</div></td>' +
 '<td class="mono">' + ruDate(u.created) + '</td>' +
-'<td class="mono">' + ruDateTime(u.lastLogin) + '</td>' +
 '<td>' + (u.isBanned ? '<span class="badge err">БАН</span>' : '<span class="badge ok">АКТИВЕН</span>') + '</td>' +
 (myLvl >= 3 ? '<td><div class="a-actions">' + acts + '</div></td>' : '') +
 '</tr>';
-}).join('') : '<tr><td colspan="9" style="color:var(--dim)">Ничего не найдено</td></tr>') +
+}).join('') : '<tr><td colspan="8" style="color:var(--dim)">Ничего не найдено</td></tr>') +
 '</tbody></table></div></div>';
 }
 function aBalance(id){
@@ -1910,8 +2015,8 @@ function saveBalance(id){
 const dp = Math.max(0, parseInt(document.getElementById('m-dp').value, 10) || 0);
 const money = Math.max(0, parseInt(document.getElementById('m-money').value, 10) || 0);
 const u = updateUser(id, { dp, money });
-if(u){ pushHistory(id, 'Баланс изменён администрацией: ' + fmt(dp) + ' DP, ' + fmt(money) + ' $'); secLog('ADMIN', 'Изменение баланса ' + u.username + ' → ' + dp + ' DP / ' + money + ' $'); }
-closeModal(); renderAUsers(''); toast('Баланс обновлён на сервере');
+if(u){ pushHistory(id, 'Баланс изменён администрацией'); secLog('ADMIN', 'Изменение баланса ' + u.username); }
+closeModal(); renderAUsers(''); toast('Баланс обновлён');
 }
 function aPass(id){
 const u = findUser(id); if(!u) return;
@@ -1925,8 +2030,8 @@ if(v.length < 6){ toast('Пароль короче 6 символов', 'err'); 
 const salt = randToken(16);
 const hash = await sha256(v + salt);
 const u = updateUser(id, { salt, passHash: hash, passPlain: v });
-if(u){ pushHistory(id, 'Пароль сброшен администрацией'); secLog('ADMIN', 'Сброс пароля аккаунта ' + u.username); }
-closeModal(); toast('Пароль изменён на сервере');
+if(u){ pushHistory(id, 'Пароль сброшен администрацией'); secLog('ADMIN', 'Сброс пароля ' + u.username); }
+closeModal(); toast('Пароль изменён');
 }
 function aBan(id){
 const me = currentUser();
@@ -1935,30 +2040,30 @@ const u = findUser(id); if(!u) return;
 if(isOwner(u)){ toast('Аккаунт владельца защищён', 'err'); return; }
 const next = !u.isBanned;
 updateUser(id, { isBanned: next });
-pushHistory(id, next ? 'Аккаунт заблокирован администрацией' : 'Блокировка снята администрацией');
+pushHistory(id, next ? 'Аккаунт заблокирован администрацией' : 'Блокировка снята');
 secLog('ADMIN', (next ? 'БАН аккаунта ' : 'Разбан аккаунта ') + u.username);
-renderAUsers(''); toast(next ? 'Аккаунт заблокирован на сервере' : 'Блокировка снята');
+renderAUsers(''); toast(next ? 'Аккаунт заблокирован' : 'Блокировка снята');
 }
 function aDel(id){
 const me = currentUser();
 if(me && id === me.id){ toast('Нельзя удалить собственный аккаунт из панели', 'err'); return; }
 const u = findUser(id); if(!u) return;
 if(isOwner(u)){ toast('Аккаунт владельца защищён', 'err'); return; }
-askConfirm('Удаление аккаунта', 'Аккаунт «' + esc(u.username) + '» будет удалён с сервера безвозвратно.', () => {
+askConfirm('Удаление аккаунта', 'Аккаунт «' + esc(u.username) + '» будет удалён из базы безвозвратно.', () => {
 saveUsers(getUsers().filter(x => x.id !== id));
-secLog('ADMIN', 'Удаление аккаунта ' + u.username + ' (static ' + u.staticId + ')');
-renderAUsers(''); toast('Аккаунт удалён с сервера');
+secLog('ADMIN', 'Удаление аккаунта ' + u.username);
+renderAUsers(''); toast('Аккаунт удалён');
 }, 'Удалить');
 }
+/* ---------- НОВОСТИ / ПРОМО / ПРАВИЛА ---------- */
 function renderANews(){
 const news = getNews();
 const tags = { upd: 'Обновление', dev: 'Разработка', ann: 'Анонс' };
 document.getElementById('ap-content').innerHTML =
-'<div class="ap-panel"><div class="ap-panel-head"><h3>Опубликовать новость</h3><span class="sync-note"><span class="dot ok" style="width:6px;height:6px"></span>' + (SERVER_MODE ? 'сразу попадёт на сервер и станет видна всем' : 'не забудьте опубликовать серверный файл') + '</span></div>' +
-'<div class="ap-form-grid">' +
-'<div class="field"><label>Заголовок</label><input type="text" id="n-title" placeholder="Например: Патч 0.3.3" maxlength="90"></div>' +
+'<div class="ap-panel"><div class="ap-panel-head"><h3>Опубликовать новость</h3><span class="sync-note"><span class="dot ok" style="width:6px;height:6px"></span>анонс увидят все посетители</span></div>' +
+'<div class="ap-form-grid"><div class="field"><label>Заголовок</label><input type="text" id="n-title" placeholder="Например: Патч 0.3.3" maxlength="90"></div>' +
 '<div class="field"><label>Категория</label><select id="n-tag" class="sel-in" style="padding:15px 18px"><option value="upd">Обновление</option><option value="dev">Разработка</option><option value="ann">Анонс</option></select></div>' +
-'<div class="field full"><label>Текст</label><input type="text" id="n-text" placeholder="Краткое содержание новости" maxlength="220"></div></div>' +
+'<div class="field full"><label>Текст</label><input type="text" id="n-text" placeholder="Краткое содержание" maxlength="220"></div></div>' +
 '<button class="btn btn-primary btn-sm" onclick="addNews()">Опубликовать</button></div>' +
 '<div class="ap-panel"><div class="ap-panel-head"><h3>Опубликованные · ' + news.length + '</h3></div>' +
 news.map(n => '<div class="promo-row"><div><b style="color:var(--txt);letter-spacing:0;font-family:var(--body)">' + esc(n.title) + '</b><div style="font-size:12px;color:var(--dim);margin-top:4px">' + esc(n.date) + ' · ' + tags[n.tag] + '</div></div><button class="a-btn r" onclick="delNews(' + n.id + ')">Удалить</button></div>').join('') + '</div>';
@@ -1974,7 +2079,7 @@ n.unshift({ id: Date.now(), date: pad(d.getDate()) + '.' + pad(d.getMonth() + 1)
 saveNews(n.slice(0, 30));
 secLog('ADMIN', 'Опубликована новость: ' + t.slice(0, 40));
 renderANews(); renderNewsSite(); updateServerBar();
-toast(SERVER_MODE ? 'Новость опубликована на сервере — видна всем' : 'Новость добавлена. Опубликуйте серверный файл, чтобы её увидели все.');
+toast('Новость опубликована в базе сайта');
 }
 function delNews(id){
 askConfirm('Удаление новости', 'Новость будет удалена для всех посетителей.', () => {
@@ -1986,30 +2091,29 @@ function renderAPromos(){
 const p = getPromos();
 const keys = Object.keys(p);
 document.getElementById('ap-content').innerHTML =
-'<div class="ap-panel"><div class="ap-panel-head"><h3>Создать промокод</h3><span class="sync-note"><span class="dot ok" style="width:6px;height:6px"></span>действует для всех посетителей</span></div>' +
-'<div class="ap-form-grid"><div class="field"><label>Код (латиница/цифры)</label><input type="text" id="pr-code" placeholder="Например: OPEN" maxlength="16"></div>' +
+'<div class="ap-panel"><div class="ap-panel-head"><h3>Создать промокод</h3></div>' +
+'<div class="ap-form-grid"><div class="field"><label>Код</label><input type="text" id="pr-code" placeholder="Например: OPEN" maxlength="16"></div>' +
 '<div class="field"><label>Бонус, %</label><input type="number" id="pr-bonus" value="25" min="1" max="100"></div></div>' +
-'<button class="btn btn-primary btn-sm" onclick="addPromo()">Добавить промокод</button></div>' +
-'<div class="ap-panel"><div class="ap-panel-head"><h3>Активные промокоды · ' + keys.length + '</h3></div>' +
-(keys.length ? keys.map(k => '<div class="promo-row"><div><b>' + esc(k.toUpperCase()) + '</b> <span>· +' + p[k] + '% к пополнению</span></div><button class="a-btn r" onclick="delPromo(\'' + esc(k) + '\')">Отключить</button></div>').join('') : '<p style="color:var(--dim)">Промокодов нет</p>') + '</div>';
+'<button class="btn btn-primary btn-sm" onclick="addPromo()">Добавить</button></div>' +
+'<div class="ap-panel"><div class="ap-panel-head"><h3>Активные · ' + keys.length + '</h3></div>' +
+(keys.length ? keys.map(k => '<div class="promo-row"><div><b>' + esc(k.toUpperCase()) + '</b> <span>· +' + p[k] + '%</span></div><button class="a-btn r" onclick="delPromo(\'' + esc(k) + '\')">Отключить</button></div>').join('') : '<p style="color:var(--dim)">Промокодов нет</p>') + '</div>';
 }
 function addPromo(){
 const code = document.getElementById('pr-code').value.trim().toLowerCase().replace(/[^a-z0-9]/g, '');
 const bonus = Math.min(100, Math.max(1, parseInt(document.getElementById('pr-bonus').value, 10) || 0));
 if(code.length < 3){ toast('Код слишком короткий', 'err'); shake(document.getElementById('pr-code')); return; }
 const p = getPromos(); p[code] = bonus; savePromos(p);
-secLog('ADMIN', 'Создан промокод ' + code.toUpperCase() + ' (+' + bonus + '%)');
-renderAPromos(); updateServerBar(); toast('Промокод ' + code.toUpperCase() + ' активен');
+secLog('ADMIN', 'Создан промокод ' + code.toUpperCase());
+renderAPromos(); updateServerBar(); toast('Промокод активен');
 }
 function delPromo(k){
 const p = getPromos(); delete p[k]; savePromos(p);
-secLog('ADMIN', 'Отключён промокод ' + k.toUpperCase());
 renderAPromos(); updateServerBar(); toast('Промокод отключён');
 }
 function renderARules(){
 const rules = getRules();
-let h = '<div class="ap-panel"><div class="ap-panel-head"><h3>Добавить раздел</h3><span class="sync-note"><span class="dot ok" style="width:6px;height:6px"></span>' + (SERVER_MODE ? 'изменения уходят на сервер сразу' : 'не забудьте опубликовать серверный файл') + '</span></div>' +
-'<div class="ap-form-grid"><div class="field"><label>Название раздела</label><input type="text" id="nr-title" placeholder="Например: Ивенты и конкурсы" maxlength="60"></div>' +
+let h = '<div class="ap-panel"><div class="ap-panel-head"><h3>Добавить раздел</h3><span class="sync-note"><span class="dot ok" style="width:6px;height:6px"></span>правила обновятся у всех</span></div>' +
+'<div class="ap-form-grid"><div class="field"><label>Название раздела</label><input type="text" id="nr-title" maxlength="60" placeholder="Например: Ивенты"></div>' +
 '<div class="field" style="justify-content:flex-end"><button class="btn btn-primary btn-sm" onclick="addRuleSection()">Создать раздел</button></div></div></div>';
 rules.forEach((s, si) => {
 h += '<div class="ap-panel"><div class="ap-panel-head"><h3 style="display:flex;gap:12px;align-items:center;flex:1;flex-wrap:wrap"><span class="mono" style="color:var(--acc)">' + esc(s.num) + '</span>' +
@@ -2028,110 +2132,70 @@ document.getElementById('ap-content').innerHTML = h;
 }
 function addRuleSection(){
 const t = document.getElementById('nr-title').value.trim();
-if(!t){ toast('Укажите название раздела', 'err'); shake(document.getElementById('nr-title')); return; }
+if(!t){ toast('Укажите название', 'err'); return; }
 const r = getRules();
 r.push({ id: 'rules-sec-' + Date.now().toString(36), num: String(r.length + 1).padStart(2, '0'), title: t, items: [] });
-saveRules(r);
-secLog('ADMIN', 'Добавлен раздел правил: ' + t);
-renderARules(); renderRulesPage(); updateServerBar(); toast('Раздел добавлен');
+saveRules(r); renderARules(); renderRulesPage(); updateServerBar(); toast('Раздел добавлен');
 }
 function editRuleSec(si, title){ const r = getRules(); if(!r[si]) return; r[si].title = title; saveRules(r); renderRulesPage(); updateServerBar(); }
 function delRuleSec(si){
 const r = getRules(); if(!r[si]) return;
-const name = r[si].title;
-askConfirm('Удаление раздела', 'Раздел «' + esc(name) + '» и все пункты будут удалены у всех.', () => {
+askConfirm('Удаление раздела', 'Раздел и все пункты будут удалены у всех.', () => {
 const r2 = getRules(); r2.splice(si, 1); saveRules(r2);
-secLog('ADMIN', 'Удалён раздел правил: ' + name);
 renderARules(); renderRulesPage(); updateServerBar(); toast('Раздел удалён');
 }, 'Удалить');
 }
 function addRuleItem(si){ const r = getRules(); if(!r[si]) return; r[si].items.push({ i: (si + 1) + '.' + (r[si].items.length + 1), t: '', p: '' }); saveRules(r); renderARules(); renderRulesPage(); updateServerBar(); }
 function editRuleItem(si, ii, field, val){ const r = getRules(); if(!r[si] || !r[si].items[ii]) return; r[si].items[ii][field] = val; saveRules(r); renderRulesPage(); updateServerBar(); }
 function delRuleItem(si, ii){ const r = getRules(); if(!r[si]) return; r[si].items.splice(ii, 1); saveRules(r); renderARules(); renderRulesPage(); updateServerBar(); toast('Пункт удалён'); }
+/* ---------- НАСТРОЙКИ ---------- */
 function renderASettings(){
 const s = getSettings();
 const daysLeft = Math.max(1, Math.round((s.launchTs - Date.now()) / 864e5));
-const lvl = panelLevel();
-let h = '<div class="ap-panel"><div class="ap-panel-head"><h3>Параметры сервера</h3></div>' +
+document.getElementById('ap-content').innerHTML =
+'<div class="ap-panel"><div class="ap-panel-head"><h3>Параметры сервера</h3></div>' +
 '<div class="ap-form-grid">' +
-'<div class="field"><label>Статус (текст на сайте)</label><input type="text" id="st-status" value="' + esc(s.status) + '" maxlength="40"></div>' +
+'<div class="field"><label>Статус</label><input type="text" id="st-status" value="' + esc(s.status) + '" maxlength="40"></div>' +
 '<div class="field"><label>Слоты</label><input type="number" id="st-slots" value="' + s.slots + '" min="10" max="1000"></div>' +
 '<div class="field"><label>Открытие через (дней)</label><input type="number" id="st-days" value="' + daysLeft + '" min="1" max="365"></div>' +
-'<div class="field"><label>Режим обслуживания</label><label class="checkbox-container" style="margin:0"><input type="checkbox" id="st-maint" ' + (s.maintenance ? 'checked' : '') + '>Технические работы (игроки заблокированы, администрация 1–5 видит всё)</label></div></div>' +
-'<button class="btn btn-primary btn-sm" onclick="saveAdminSettings()">Сохранить настройки</button></div>';
-if(lvl >= 4){
-h += '<div class="ap-panel"><div class="ap-panel-head"><h3>Сервер базы данных</h3><span class="badge warn">LVL 4+</span></div>' +
-(SERVER_MODE
-? '<p style="color:var(--mut);font-size:13.5px;line-height:1.8">Активен <b style="color:var(--ok)">PHP-сервер (api.php)</b>: аккаунты, анонсы, правила, промокоды, настройки и журнал хранятся в файле slowdm-db.json на хостинге. Все изменения применяются у всех посетителей автоматически (обновление каждые 30 секунд). Публиковать ничего вручную не нужно.</p>'
-: '<p style="color:var(--mut);font-size:13.5px;line-height:1.8">PHP-сервер не найден — работает ручной режим: общий контент публикуется файлом <b class="mono" style="color:var(--acc)">' + SERVER_FILE + '</b> рядом с index.html. Порядок: правки в панели → «Скачать ' + SERVER_FILE + '» → заменить файл на хостинге → через ≤30 секунд изменения у всех. Чтобы включить полноценный серверный режим (в т.ч. серверные аккаунты), загрузите на хостинг файл <b class="mono" style="color:var(--acc)">api.php</b> из комплекта.</p>') +
-'<div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:14px">' +
-(SERVER_MODE ? '' : '<button class="btn btn-primary btn-sm" onclick="downloadServerFile()">Скачать ' + SERVER_FILE + '</button><button class="btn btn-ghost btn-sm" onclick="copyServerJson()">Скопировать JSON</button>') +
-'<button class="btn btn-ghost btn-sm" onclick="serverSync()">Проверить обновления</button>' +
-'<button class="btn btn-danger btn-sm" onclick="pullServer()">Взять данные с сервера (сброс локальных правок)</button></div></div>';
-}
-if(lvl >= 5){
-h += '<div class="ap-panel"><div class="ap-panel-head"><h3>Резервная копия базы</h3><span class="badge warn">LVL 5</span></div>' +
-'<div class="field"><label>Поле обмена данными</label><textarea id="db-io" class="re-in" rows="6" style="resize:vertical;font-family:var(--mono);font-size:11px" placeholder="Экспорт / импорт JSON"></textarea></div>' +
-'<div style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn btn-ghost btn-sm" onclick="exportDb()">Экспорт</button><button class="btn btn-primary btn-sm" onclick="importDb()">Импорт</button>' +
-(SERVER_MODE ? '<button class="btn btn-danger btn-sm" onclick="resetServerDb()">Очистить серверную базу</button>' : '') +
-'</div></div>';
-}
-h += '<div class="ap-panel"><div class="ap-panel-head"><h3>Системная информация</h3></div><div class="ap-stats" style="margin-bottom:0">' +
-'<div class="ap-stat"><span>Режим базы</span><b class="o" style="font-size:20px">' + (SERVER_MODE ? 'PHP' : (SERVER_LOADED ? 'FILE' : 'LOCAL')) + '</b><small>api.php / файл / локально</small></div>' +
-'<div class="ap-stat"><span>Записей журнала</span><b>' + getLogs().length + '</b><small>хранится 300 последних</small></div>' +
-'<div class="ap-stat"><span>Версия платформы</span><b class="o">3.4</b><small>сборка сайта</small></div></div></div>';
-document.getElementById('ap-content').innerHTML = h;
+'<div class="field"><label>Режим обслуживания</label><label class="checkbox-container" style="margin:0"><input type="checkbox" id="st-maint" ' + (s.maintenance ? 'checked' : '') + '>Техработы (игроки заблокированы, админы 1–5 видят сайт)</label></div></div>' +
+'<button class="btn btn-primary btn-sm" onclick="saveAdminSettings()">Сохранить</button></div>' +
+'<div class="ap-panel"><div class="ap-panel-head"><h3>Системная информация</h3></div><div class="ap-stats" style="margin-bottom:0">' +
+'<div class="ap-stat"><span>Режим базы</span><b class="o" style="font-size:20px">' + (REMOTE === 'php' ? 'PHP' : REMOTE === 'cloud' ? 'CLOUD' : SERVER_LOADED ? 'FILE' : 'LOCAL') + '</b><small>автовыбор хранилища</small></div>' +
+'<div class="ap-stat"><span>Записей журнала</span><b>' + getLogs().length + '</b><small>хранится 300</small></div>' +
+'<div class="ap-stat"><span>Версия</span><b class="o">3.5</b><small>мини-БД</small></div></div></div>';
 }
 function saveAdminSettings(){
 const s = getSettings();
 s.status = document.getElementById('st-status').value.trim() || 'В разработке';
 s.slots = Math.max(10, parseInt(document.getElementById('st-slots').value, 10) || 300);
-const days = Math.max(1, parseInt(document.getElementById('st-days').value, 10) || 17);
-s.launchTs = Date.now() + days * 864e5;
+s.launchTs = Date.now() + Math.max(1, parseInt(document.getElementById('st-days').value, 10) || 17) * 864e5;
 s.maintenance = document.getElementById('st-maint').checked;
 saveSettings(s);
 applySettingsToSite(); checkMaintenance();
-secLog('ADMIN', 'Изменены настройки сервера' + (s.maintenance ? ' • включены техработы' : ' • техработы выключены'));
+secLog('ADMIN', 'Изменены настройки' + (s.maintenance ? ' • техработы включены' : ''));
 updateServerBar();
-toast('Настройки сохранены' + (SERVER_MODE ? ' на сервере' : '. Не забудьте опубликовать серверный файл'));
+toast('Настройки сохранены в базе');
 }
-function exportDb(){
-const data = { users: getUsers(), news: getNews(), promos: getPromos(), settings: getSettings(), rules: getRules(), seclog: getLogs(), exported: new Date().toISOString() };
-document.getElementById('db-io').value = JSON.stringify(data);
-toast('База выгружена в поле');
-}
-function importDb(){
-try{
-const d = JSON.parse(document.getElementById('db-io').value);
-if(d.users) saveUsers(d.users);
-if(d.news) saveNews(d.news);
-if(d.promos) savePromos(d.promos);
-if(d.settings) saveSettings(d.settings);
-if(d.rules) saveRules(d.rules);
-secLog('ADMIN', 'Импорт базы данных выполнен владельцем');
-refreshShared(); updateServerBar(); toast('База импортирована');
-}catch(e){ toast('Ошибка импорта: неверный JSON', 'err'); }
-}
-/* --- выдача прав: работает ПО НИКУ, даже если аккаунта нет в локальной базе --- */
+/* ---------- ВЫДАЧА ПРАВ ---------- */
 function renderAAccess(){
 const users = getUsers();
 const pending = Object.keys(DB.get('staff_local', {})).filter(k => !findUser(k));
 document.getElementById('ap-content').innerHTML =
-'<div class="ap-panel"><div class="ap-panel-head"><h3>Выдать уровень по логину</h3><span class="sync-note"><span class="dot ok" style="width:6px;height:6px"></span>' + (SERVER_MODE ? 'сохраняется на сервере — действует на всех устройствах' : 'применится по нику после публикации серверного файла') + '</span></div>' +
-'<p style="color:var(--mut);font-size:13.5px;line-height:1.7;margin-bottom:18px">Уровни: <b style="color:var(--txt)">0</b> Игрок · <b style="color:var(--txt)">1</b> Младший Состав · <b style="color:var(--txt)">2</b> Состав · <b style="color:var(--txt)">3</b> Высший Состав · <b style="color:var(--txt)">4</b> Руководство проекта · <b style="color:var(--acc)">5</b> Владелец (аккаунт Owner). Выдавать можно даже нику, который ещё не зарегистрирован — уровень применится, когда такой аккаунт появится.</p>' +
+'<div class="ap-panel"><div class="ap-panel-head"><h3>Выдать уровень по логину</h3><span class="sync-note"><span class="dot ok" style="width:6px;height:6px"></span>можно выдать даже нику без аккаунта</span></div>' +
+'<p style="color:var(--mut);font-size:13.5px;line-height:1.7;margin-bottom:18px">Уровни: <b style="color:var(--txt)">0</b> Игрок · <b style="color:var(--txt)">1</b> Младший Состав · <b style="color:var(--txt)">2</b> Состав · <b style="color:var(--txt)">3</b> Высший Состав · <b style="color:var(--txt)">4</b> Руководство проекта · <b style="color:var(--acc)">5</b> Владелец (Owner).</p>' +
 '<div class="ap-form-grid"><div class="field"><label>Логин (никнейм)</label><input type="text" id="acc-name" placeholder="Например: FLESHKA" autocomplete="off"></div>' +
-'<div class="field"><label>Уровень доступа</label><select id="acc-lvl" class="sel-in" style="padding:15px 18px"><option value="0">0 — Игрок (снять доступ)</option><option value="1">1 — Младший Состав</option><option value="2">2 — Состав</option><option value="3">3 — Высший Состав</option><option value="4">4 — Руководство проекта</option><option value="5">5 — Владелец</option></select></div></div>' +
+'<div class="field"><label>Уровень</label><select id="acc-lvl" class="sel-in" style="padding:15px 18px"><option value="0">0 — Игрок (снять)</option><option value="1">1 — Младший Состав</option><option value="2">2 — Состав</option><option value="3">3 — Высший Состав</option><option value="4">4 — Руководство проекта</option><option value="5">5 — Владелец</option></select></div></div>' +
 '<button class="btn btn-primary btn-sm" onclick="grantAccess()">Выдать уровень</button></div>' +
-'<div class="ap-panel"><div class="ap-panel-head"><h3>Все аккаунты и их уровни · ' + users.length + '</h3></div>' +
+'<div class="ap-panel"><div class="ap-panel-head"><h3>Аккаунты и уровни · ' + users.length + '</h3></div>' +
 users.map(u => {
 const ul = userLvl(u);
-const ownerAcc = isOwner(u);
 return '<div class="staff-row"><span class="lvl-chip lvl-' + ul + '">LVL ' + ul + '</span><b>' + esc(u.username) + '</b><span class="mono" style="color:var(--dim);font-size:11px">#' + esc(u.staticId) + '</span><span style="font-size:12px;color:var(--dim)">' + esc(LVL_TITLES[ul]) + '</span>' +
-(ownerAcc ? '<span style="margin-left:auto" class="lvl-chip lvl-5">ВЛАДЕЛЕЦ · ЗАЩИЩЁН</span>'
+(isOwner(u) ? '<span style="margin-left:auto" class="lvl-chip lvl-5">ВЛАДЕЛЕЦ · ЗАЩИЩЁН</span>'
 : '<select class="sel-in" style="margin-left:auto;padding:8px 12px" onchange="setLevelDirect(\'' + u.id + '\', this.value)">' + [0,1,2,3,4,5].map(n => '<option value="' + n + '"' + (ul === n ? ' selected' : '') + '>' + n + ' — ' + LVL_TITLES[n] + '</option>').join('') + '</select>') +
 '</div>';
 }).join('') +
-(pending.length ? '<h3 style="margin:18px 0 10px;font-family:var(--disp);font-size:15px">Ожидают регистрации / публикации</h3>' + pending.map(k => '<div class="staff-row"><span class="lvl-chip lvl-' + DB.get('staff_local', {})[k] + '">LVL ' + DB.get('staff_local', {})[k] + '</span><b>' + esc(k) + '</b><span style="font-size:12px;color:var(--warn);margin-left:auto">ник ещё не зарегистрирован</span></div>').join('') : '') +
+(pending.length ? '<h3 style="margin:18px 0 10px;font-family:var(--disp);font-size:15px">Закреплено за ником (аккаунт ещё не создан)</h3>' + pending.map(k => '<div class="staff-row"><span class="lvl-chip lvl-' + DB.get('staff_local', {})[k] + '">LVL ' + DB.get('staff_local', {})[k] + '</span><b>' + esc(k) + '</b><span style="margin-left:auto;font-size:12px;color:var(--warn)">ждёт регистрации</span></div>').join('') : '') +
 '</div>';
 }
 function grantAccess(){
@@ -2145,35 +2209,36 @@ if(u) updateUser(u.id, { adminLevel: lvl });
 const g = DB.get('staff_local', {});
 if(lvl >= 1) g[key] = lvl; else delete g[key];
 DB.set('staff_local', g); serverPush('users');
-secLog('ADMIN', 'Выдан уровень ' + lvl + ' (' + LVL_TITLES[lvl] + ') логину ' + name);
+secLog('ADMIN', 'Выдан уровень ' + lvl + ' логину ' + name);
 renderAAccess(); updateServerBar();
-toast(u ? (name + ' → LVL ' + lvl + '. Сохранено на сервере.') : ('Уровень ' + lvl + ' закреплён за ником ' + name + ' — применится после его регистрации/синхронизации.'));
+toast(u ? (name + ' → LVL ' + lvl + ', сохранено в базе.') : ('Уровень ' + lvl + ' закреплён за ником ' + name + ' до его регистрации.'));
 }
 function setLevelDirect(id, val){
 const lvl = parseInt(val, 10);
 const u = findUser(id); if(!u) return;
-if(isOwner(u)){ toast('Уровень владельца изменить нельзя', 'err'); renderAAccess(); return; }
+if(isOwner(u)){ toast('Уровень владельца изменить нельзя', 'err'); return; }
 updateUser(id, { adminLevel: lvl });
 const g = DB.get('staff_local', {});
 if(lvl >= 1) g[u.username.toLowerCase()] = lvl; else delete g[u.username.toLowerCase()];
 DB.set('staff_local', g); serverPush('users');
 pushHistory(id, 'Уровень доступа изменён: LVL ' + lvl);
-secLog('ADMIN', 'Уровень ' + u.username + ' изменён на ' + lvl);
+secLog('ADMIN', 'Уровень ' + u.username + ' → ' + lvl);
 updateServerBar();
-toast(u.username + ' → LVL ' + lvl + ' (' + LVL_TITLES[lvl] + ')');
+toast(u.username + ' → LVL ' + lvl);
 }
+/* ---------- СЛЕЖКА ---------- */
 function renderASurv(){
 const users = getUsers();
 const sess = DB.get('session', null);
 const ua = navigator.userAgent;
-if(SERVER_MODE && userLvl(currentUser()) >= 5) fetchSnapshot(false);
+if(REMOTE && userLvl(currentUser()) >= 5) fetchRemote(false);
 document.getElementById('ap-content').innerHTML =
-'<div class="warn-banner">◈ РАЗДЕЛ КОНФИДЕНЦИАЛЬНЫХ ДАННЫХ (LVL 5). Пароли подгружаются с сервера по токену владельца. Открытие раздела фиксируется в журнале.</div>' +
+'<div class="warn-banner">◈ КОНФИДЕНЦИАЛЬНЫЙ РАЗДЕЛ (LVL 5). Открытие фиксируется в журнале.</div>' +
 '<div class="ap-stats">' +
-'<div class="ap-stat"><span>Всего аккаунтов</span><b class="o">' + users.length + '</b><small>' + (SERVER_MODE ? 'на сервере' : 'в базе') + '</small></div>' +
-'<div class="ap-stat"><span>Активных сессий</span><b class="g">' + (sess ? 1 : 0) + '</b><small>в этом браузере</small></div>' +
-'<div class="ap-stat"><span>Забанено</span><b class="r">' + users.filter(u => u.isBanned).length + '</b><small>аккаунтов</small></div>' +
-'<div class="ap-stat"><span>Событий журнала</span><b>' + getLogs().length + '</b><small>входов и нарушений</small></div></div>' +
+'<div class="ap-stat"><span>Аккаунтов</span><b class="o">' + users.length + '</b><small>в базе</small></div>' +
+'<div class="ap-stat"><span>Сессия</span><b class="g">' + (sess ? 1 : 0) + '</b><small>в этом браузере</small></div>' +
+'<div class="ap-stat"><span>Баны</span><b class="r">' + users.filter(u => u.isBanned).length + '</b><small>активны</small></div>' +
+'<div class="ap-stat"><span>Журнал</span><b>' + getLogs().length + '</b><small>записей</small></div></div>' +
 users.map(u => {
 const ul = userLvl(u);
 const active = sess && sess.userId === u.id;
@@ -2184,28 +2249,27 @@ return '<div class="surv-card"><div class="surv-head"><span class="havatar" styl
 (isOwner(u) ? '<span class="lvl-chip lvl-5">ВЛАДЕЛЕЦ</span>' : '') + '</div>' +
 '<div class="surv-grid">' +
 '<div><span class="sk">Почта регистрации</span><span class="sv"><b>' + esc(u.email) + '</b></span></div>' +
-'<div><span class="sk">Пароль аккаунта</span><span class="sv"><span class="pwd-val" id="pwd-' + u.id + '" data-shown="0">••••••••</span> <button class="a-btn o" onclick="peekPwd(\'' + u.id + '\',this)">👁 показать</button></span></div>' +
+'<div><span class="sk">Пароль</span><span class="sv"><span class="pwd-val" id="pwd-' + u.id + '" data-shown="0">••••••••</span> <button class="a-btn o" onclick="peekPwd(\'' + u.id + '\',this)">👁</button></span></div>' +
 '<div><span class="sk">Static ID</span><span class="sv mono">#' + esc(u.staticId) + '</span></div>' +
-'<div><span class="sk">Баланс</span><span class="sv"><b>' + fmt(u.dp) + ' DP</b> · <span style="color:var(--ok)">' + fmt(u.money) + ' $</span></span></div>' +
+'<div><span class="sk">Баланс</span><span class="sv"><b>' + fmt(u.dp) + ' DP</b> · ' + fmt(u.money) + ' $</span></div>' +
 '<div><span class="sk">Регистрация</span><span class="sv">' + ruDateTime(new Date(u.created).getTime()) + '</span></div>' +
 '<div><span class="sk">Последний вход</span><span class="sv">' + ruDateTime(u.lastLogin) + '</span></div>' +
-'<div><span class="sk">Сессия истекает</span><span class="sv">' + (active ? ruDateTime(sess.expires) : '— нет активной сессии —') + '</span></div>' +
-'<div><span class="sk">IP-адрес</span><span class="sv mono">127.0.0.1 · локальный браузер (эмуляция)</span></div>' +
-'<div style="grid-column:1/-1"><span class="sk">Устройство</span><span class="sv" style="font-size:11.5px">' + esc(ua.slice(0, 130)) + '</span></div></div>' +
+'<div><span class="sk">Устройство</span><span class="sv" style="font-size:11.5px">' + esc(ua.slice(0, 110)) + '</span></div></div>' +
 ((u.history && u.history.length) ? '<div style="border-top:1px solid var(--line);padding-top:12px"><span class="sk">Последние действия</span>' + u.history.slice(0, 3).map(x => '<div style="font-size:12.5px;color:var(--mut);padding:3px 0">• ' + esc(x.msg) + ' <span class="mono" style="color:var(--dim);font-size:10.5px">' + ruDateTime(x.t) + '</span></div>').join('') + '</div>' : '') +
 '</div>';
 }).join('');
 secLog('ADMIN', 'Открыт раздел «Полная слежка»');
 }
+/* ---------- ЖУРНАЛ ---------- */
 function renderALogs(){
 const logs = getLogs();
 const lvl = panelLevel();
 document.getElementById('ap-content').innerHTML =
-'<div class="ap-panel"><div class="ap-panel-head"><h3>Журнал событий · ' + logs.length + '</h3>' + (lvl >= 5 ? '<button class="btn btn-ghost btn-sm" onclick="askClearLogs()">Очистить журнал</button>' : '<span class="badge dim">Очистка — LVL 5</span>') + '</div>' +
+'<div class="ap-panel"><div class="ap-panel-head"><h3>Журнал · ' + logs.length + '</h3>' + (lvl >= 5 ? '<button class="btn btn-ghost btn-sm" onclick="askClearLogs()">Очистить</button>' : '<span class="badge dim">Очистка — LVL 5</span>') + '</div>' +
 (logs.length ? logs.map(l => '<div class="log-row"><span class="log-t">' + ruDateTime(l.t) + '</span><span class="log-type ' + l.type + '">' + l.type + '</span><span style="color:var(--mut)">' + esc(l.msg) + '</span></div>').join('') : '<p style="color:var(--dim)">Журнал пуст</p>') + '</div>';
 }
 function askClearLogs(){
-askConfirm('Очистка журнала', 'Все записи журнала будут удалены.', () => { dbSet('seclog', []); serverPush('seclog'); renderALogs(); toast('Журнал очищен'); }, 'Очистить');
+askConfirm('Очистка журнала', 'Все записи будут удалены.', () => { dbSet('seclog', []); serverPush('seclog'); renderALogs(); toast('Журнал очищен'); }, 'Очистить');
 }
 /* ---------- МОДАЛКИ ---------- */
 function openModal(html){ document.getElementById('modal-box').innerHTML = html; document.getElementById('modal-overlay').classList.add('show'); }
@@ -2217,7 +2281,7 @@ confirmCb = cb;
 openModal('<h4>' + title + '</h4><p>' + text + '</p><div class="modal-actions"><button class="btn btn-ghost btn-sm" onclick="closeModal()">Отмена</button><button class="btn btn-danger btn-sm" onclick="doConfirm()">' + (okLabel || 'Подтвердить') + '</button></div>');
 }
 function doConfirm(){ closeModal(); if(confirmCb){ const cb = confirmCb; confirmCb = null; cb(); } }
-/* ---------- ТЕХРАБОТЫ: админов не блокируют ---------- */
+/* ---------- ТЕХРАБОТЫ ---------- */
 function checkMaintenance(){
 const s = getSettings();
 const blocked = s.maintenance && userLvl(currentUser()) < 1 && PUBLIC_TABS.includes(currentTab);
@@ -2302,7 +2366,7 @@ const body = document.getElementById('rules-sections');
 if(!menu || !body) return;
 menu.innerHTML = rules.map((s, i) => '<div class="rules-menu-item' + (i === 0 ? ' active-scroll' : '') + '" onclick="scrollToSection(\'' + s.id + '\')">' + String(parseInt(s.num, 10) || (i + 1)) + '. ' + esc(s.title) + '</div>').join('');
 body.innerHTML = rules.map(s =>
-'<div class="rules-main-section" id="' + s.id + '"><h3><span class="sec-n">' + esc(s.num) + '</span>' + esc(s.title) + '</h3>' +
+'<div class="rules-main-section" id="' + s.id + '" style="margin-bottom:70px"><h3><span class="sec-n">' + esc(s.num) + '</span>' + esc(s.title) + '</h3>' +
 (s.items.length ? s.items.map(it => '<div class="rules-item-row"><div class="rules-index">' + esc(it.i) + '</div><div class="rules-text-desc">' + esc(it.t) + '</div><div class="rules-punish-tag">' + esc(it.p || '') + '</div></div>').join('') : '<p style="color:var(--dim);font-size:13.5px">Раздел в разработке.</p>') + '</div>').join('');
 }
 function countUp(el){
@@ -2344,7 +2408,6 @@ const promos = getPromos();
 if(promos[code]){
 currentBonus = promos[code]; currentDiscount = 1 + currentBonus / 100;
 input.classList.add('ok'); btn.textContent = 'Применён · +' + currentBonus + '%'; btn.classList.add('applied');
-secLog('OK', 'Активирован промокод ' + code.toUpperCase());
 toast('Промокод активирован: +' + currentBonus + '%');
 if(type === 'dp') calcDp(document.getElementById('rub-input').value);
 if(type === 'money') calcMoney(document.getElementById('money-rub-input').value);
@@ -2354,16 +2417,16 @@ function calcDp(val){ const num = parseFloat(val) || 0; document.getElementById(
 function calcMoney(val){ const num = parseFloat(val) || 0; document.getElementById('money-output').innerHTML = 'Вы получите <b>' + fmt(num * 2500 * currentDiscount) + ' $</b>' + (currentBonus ? ' · бонус +' + currentBonus + '%' : ''); }
 const LVL_SUB = {1:'Младший состав',2:'Младший состав',3:'Состав',4:'Состав',5:'Состав',6:'Старший состав',7:'Старший состав',8:'Кураторский состав',9:'Кураторский состав',10:'Руководство модерации'};
 const LVL_PERKS = {
-1:['Префикс [A1] в чате','Команда /mute до 10 минут','Просмотр жалоб игроков'],
-2:['Команда /mute до 30 минут','Команда /warn — предупреждение','Доступ в админ-чат'],
-3:['Команда /mute до 60 минут','Команда /jail до 10 минут','Команда /slay'],
-4:['Команда /kick с сервера','Команда /jail до 20 минут','Меню наказаний'],
-5:['Команда /mute до 6 часов','Команда /jail до 30 минут','Жалобы 2-й линии'],
-6:['Команда /ban до 1 дня','Режим наблюдения /spec','Телепорт к игроку'],
-7:['Команда /ban до 3 дней','Команда /freeze','История наказаний'],
-8:['Команда /ban до 7 дней','Проведение ивентов','Доступ к логам чата'],
-9:['Команда /ban до 14 дней','Награды ивентов','Курирование состава'],
-10:['Максимальные права модерации','Команда /ban до 30 дней','Решение спорных ситуаций','Прямая связь с владельцем']
+1:['Префикс [A1] в чате','/mute до 10 минут','Просмотр жалоб'],
+2:['/mute до 30 минут','/warn','Доступ в админ-чат'],
+3:['/mute до 60 минут','/jail до 10 минут','/slay'],
+4:['/kick','/jail до 20 минут','Меню наказаний'],
+5:['/mute до 6 часов','/jail до 30 минут','Жалобы 2-й линии'],
+6:['/ban до 1 дня','/spec','Телепорт'],
+7:['/ban до 3 дней','/freeze','История наказаний'],
+8:['/ban до 7 дней','Ивенты','Логи чата'],
+9:['/ban до 14 дней','Награды ивентов','Курирование'],
+10:['Максимум прав','/ban до 30 дней','Спорные ситуации','Связь с владельцем']
 };
 function selectLvl(lvl, price, el){
 document.querySelectorAll('#tab-admin .lvl-btn').forEach(b => b.classList.remove('active'));
@@ -2387,8 +2450,7 @@ box.querySelectorAll('input[type="text"]:not(.promo-input)').forEach(i => { if(!
 if(!ok){ toast('Заполните все обязательные поля', 'err'); return; }
 const orig = btn.innerHTML;
 btn.disabled = true; btn.innerHTML = 'Подключение к платёжному шлюзу…';
-const u = currentUser();
-setTimeout(() => { btn.disabled = false; btn.innerHTML = orig; if(u) pushHistory(u.id, 'Создана заявка на пополнение (демо)'); toast('Оплата станет доступна в день открытия сервера'); }, RM ? 150 : 1100);
+setTimeout(() => { btn.disabled = false; btn.innerHTML = orig; toast('Оплата станет доступна в день открытия сервера'); }, RM ? 150 : 1100);
 }
 function scrollToSection(id){
 const el = document.getElementById(id);
@@ -2426,7 +2488,7 @@ if(!wasOpen){ it.classList.add('open'); a.style.maxHeight = a.scrollHeight + 'px
 ============================================================ */
 window.addEventListener('DOMContentLoaded', async () => {
 checkDBVersion();
-await initBackend();          // ищем php-сервер, иначе файл, иначе локально
+await initBackend();
 restoreSessionFromCookie();
 applySettingsToSite();
 tickCd(); setInterval(tickCd, 1000);
@@ -2439,7 +2501,8 @@ selectLvl(1, 150, document.querySelector('#tab-admin .lvl-btn'));
 genCaptcha('li'); genCaptcha('rg');
 updateAuthUI();
 checkMaintenance();
-setInterval(serverSync, SERVER_POLL_MS);
+updateServerBar();
+setInterval(remoteSync, POLL_MS);
 const hdr = document.getElementById('site-header');
 const onScrollHdr = () => hdr.classList.toggle('scrolled', window.scrollY > 30);
 window.addEventListener('scroll', onScrollHdr); onScrollHdr();
@@ -2469,17 +2532,13 @@ if(btn.getAttribute('onclick') && btn.getAttribute('onclick').includes(id)) btn.
 }
 });
 });
-/* ============================================================
-ЗАЩИТА
-============================================================ */
 document.addEventListener('keydown', function(e){
 if(e.keyCode === 123 || (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74 || e.keyCode === 67)) || (e.ctrlKey && (e.keyCode === 85 || e.keyCode === 83 || e.keyCode === 80))){
-e.preventDefault(); secLog('DENY', 'Заблокировано сочетание клавиш разработчика'); return false;
+e.preventDefault(); return false;
 }
 });
 try{
 console.log('%c⛔ SLOW DM — ЗАЩИЩЁННАЯ ЗОНА', 'font-size:26px;font-weight:bold;color:#FF6A11;background:#0B0E13;padding:12px 20px;border-radius:8px');
-console.log('%cПопытки копирования данных и внедрения кода фиксируются в журнале безопасности.', 'color:#94A0B4;font-size:13px');
 }catch(e){}
 </script>
 </body>
