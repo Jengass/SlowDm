@@ -1,0 +1,2502 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="SLOW DM — официальный сайт DeathMatch-проекта в GTA 5 (RAGE MP). Аккаунты, правила, пополнение.">
+<meta property="og:title" content="SLOW DM — GTA 5 DeathMatch">
+<meta property="og:description" content="Официальный сайт проекта SLOW DM. Открытие скоро.">
+<title>SLOW DM — GTA 5 DeathMatch | Официальный сайт</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&family=Golos+Text:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&family=IBM+Plex+Serif:wght@500;600&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+SLOW DM — DESIGN SYSTEM
+============================================================ */
+:root{
+--bg:#0B0E13; --bg2:#10141B; --panel:#131824; --panel2:#161C29; --panel3:#1A2130;
+--line:#212A3A; --line2:#2E3A50; --line3:#3C4A66;
+--txt:#E8ECF2; --mut:#94A0B4; --dim:#5C6880;
+--acc:#FF6A11; --acc-h:#FF7E2E; --acc-soft:rgba(255,106,17,.09);
+--ok:#3DDC84; --ok-soft:rgba(61,220,132,.08);
+--err:#E5484D; --err-soft:rgba(229,72,77,.08);
+--warn:#FFC53D;
+--disp:'Manrope',sans-serif; --body:'Golos Text',sans-serif;
+--mono:'JetBrains Mono',monospace; --serif:'IBM Plex Serif',serif;
+--r:10px; --shadow:0 18px 40px rgba(3,6,12,.5);
+--ring:0 0 0 3px rgba(255,106,17,.14);
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-user-select:none;-moz-user-select:none;user-select:none}
+input,textarea{user-select:text;-webkit-user-select:text}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--txt);font-family:var(--body);font-size:16px;line-height:1.6;overflow-x:hidden}
+a{text-decoration:none;color:inherit;cursor:pointer}
+button{font-family:inherit;cursor:pointer}
+::selection{background:var(--acc);color:#0B0E13}
+::-webkit-scrollbar{width:10px;height:8px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:#253048;border:2px solid var(--bg);border-radius:6px}
+::-webkit-scrollbar-thumb:hover{background:var(--acc)}
+.wrap{width:min(1240px,calc(100% - 48px));margin:0 auto;position:relative;z-index:2}
+.mono{font-family:var(--mono)}
+:focus-visible{outline:2px solid var(--acc);outline-offset:2px;border-radius:4px}
+/* ============ ШАПКА ============ */
+header{position:fixed;top:0;left:0;right:0;z-index:90;border-bottom:1px solid transparent;transition:background .35s,border-color .35s}
+header.scrolled{background:rgba(11,14,19,.92);backdrop-filter:blur(10px);border-color:var(--line)}
+nav{height:84px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.logo{font-family:var(--disp);font-weight:800;font-size:20px;letter-spacing:.5px;display:flex;align-items:center;gap:10px;cursor:pointer;flex:none}
+.logo .ld{color:var(--acc)}
+.logo .l-dot{width:7px;height:7px;border-radius:50%;background:var(--acc);flex:none;box-shadow:0 0 10px rgba(255,106,17,.8)}
+.navlinks{display:flex;gap:28px;font-size:14px;font-weight:500;color:var(--mut)}
+.navlinks a{position:relative;padding:6px 0;transition:color .25s}
+.navlinks a::after{content:'';position:absolute;left:0;bottom:0;width:0;height:2px;background:var(--acc);transition:width .3s}
+.navlinks a:hover,.navlinks a.active-link{color:var(--txt)}
+.navlinks a:hover::after,.navlinks a.active-link::after{width:100%}
+.hdr-right{display:flex;gap:10px;align-items:center}
+.navbtn{font-family:var(--body);font-size:12.5px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:var(--acc);border:1px solid rgba(255,106,17,.5);border-radius:8px;padding:11px 18px;transition:all .25s;background:transparent;white-space:nowrap}
+.navbtn:hover,.navbtn.btn-active{background:var(--acc);color:#0B0E13;box-shadow:0 8px 24px rgba(255,106,17,.28)}
+.navbtn.solid{background:var(--acc);color:#0B0E13}
+.navbtn.solid:hover{background:var(--acc-h)}
+.hdr-user{display:flex;align-items:center;gap:10px;background:var(--panel);border:1px solid var(--line2);border-radius:8px;padding:7px 14px 7px 8px;cursor:pointer;transition:border-color .25s,transform .25s}
+.hdr-user:hover{border-color:var(--acc);transform:translateY(-1px)}
+.hname{font-weight:600;font-size:14px;max-width:110px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.havatar{width:30px;height:30px;border-radius:7px;display:grid;place-items:center;font-family:var(--disp);font-weight:800;font-size:13px;color:#0B0E13;flex:none}
+.hlogout{width:40px;height:40px;border:1px solid var(--line2);border-radius:8px;display:grid;place-items:center;color:var(--dim);font-size:16px;transition:all .25s;background:none}
+.hlogout:hover{color:var(--err);border-color:var(--err)}
+.burger{display:none;width:44px;height:44px;background:none;border:1px solid var(--line2);border-radius:8px;position:relative;z-index:120}
+.burger span{position:absolute;left:11px;right:11px;height:2px;background:var(--txt);transition:.3s;border-radius:2px}
+.burger span:nth-child(1){top:16px}.burger span:nth-child(2){bottom:16px}
+body.menu-open .burger span:nth-child(1){top:20px;transform:rotate(45deg);background:var(--acc)}
+body.menu-open .burger span:nth-child(2){bottom:20px;transform:rotate(-45deg);background:var(--acc)}
+.mnav{position:fixed;inset:0;background:var(--bg);z-index:110;display:flex;flex-direction:column;justify-content:center;padding:0 32px;transform:translateY(-102%);transition:transform .5s cubic-bezier(.7,0,.2,1)}
+body.menu-open .mnav{transform:none}
+body.menu-open{overflow:hidden}
+.mnav a{font-family:var(--disp);font-weight:700;font-size:clamp(22px,5.5vw,32px);color:var(--txt);padding:14px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;transition:color .2s,padding-left .3s}
+.mnav a:hover{color:var(--acc);padding-left:8px}
+.mnav a small{font-family:var(--mono);font-size:11px;color:var(--dim);font-weight:400}
+.mnav a.mnav-acc{color:var(--acc)}
+/* ============ ВКЛАДКИ ============ */
+.tab-content{display:none}
+.tab-content.active{display:block;animation:fadeIn .45s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+/* ============ КНОПКИ ============ */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-family:var(--body);font-weight:700;font-size:15px;padding:15px 30px;border-radius:8px;border:none;transition:all .25s;cursor:pointer;line-height:1.2}
+.btn-primary{background:var(--acc);color:#0B0E13}
+.btn-primary:hover{background:var(--acc-h);transform:translateY(-2px);box-shadow:0 12px 28px rgba(255,106,17,.32)}
+.btn-ghost{background:transparent;color:var(--txt);border:1px solid var(--line2)}
+.btn-ghost:hover{border-color:var(--acc);color:var(--acc);transform:translateY(-2px)}
+.btn-danger{background:var(--err-soft);color:var(--err);border:1px solid rgba(229,72,77,.4)}
+.btn-danger:hover{background:var(--err);color:#fff;transform:translateY(-2px)}
+.btn-sm{padding:10px 18px;font-size:13px}
+.btn-block{width:100%}
+.btn:disabled{opacity:.5;pointer-events:none}
+/* ============ HERO ============ */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;padding:160px 0 100px;background:var(--bg);overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;z-index:0;
+background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+background-size:56px 56px;opacity:.16;
+-webkit-mask-image:radial-gradient(ellipse 90% 70% at 60% 30%,#000 30%,transparent 75%);
+mask-image:radial-gradient(ellipse 90% 70% at 60% 30%,#000 30%,transparent 75%)}
+.orb{position:absolute;border-radius:50%;pointer-events:none;z-index:0;filter:blur(10px)}
+.orb.o1{top:-280px;right:-180px;width:680px;height:680px;background:radial-gradient(circle,rgba(255,106,17,.14),transparent 65%);animation:float1 14s ease-in-out infinite alternate}
+.orb.o2{bottom:-260px;left:-160px;width:560px;height:560px;background:radial-gradient(circle,rgba(46,90,180,.12),transparent 65%);animation:float2 18s ease-in-out infinite alternate}
+@keyframes float1{to{transform:translate(-40px,50px)}}
+@keyframes float2{to{transform:translate(50px,-40px)}}
+.hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:60px;align-items:center}
+.chip-badge{display:inline-flex;align-items:center;gap:10px;font-size:12.5px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:var(--acc);border:1px solid rgba(255,106,17,.4);background:var(--acc-soft);border-radius:999px;padding:9px 18px;margin-bottom:30px}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--acc);flex:none;box-shadow:0 0 0 0 rgba(255,106,17,.5);animation:pulse 2.2s infinite}
+.dot.ok{background:var(--ok);box-shadow:0 0 0 0 rgba(61,220,132,.5)}
+.dot.err{background:var(--err);box-shadow:0 0 0 0 rgba(229,72,77,.5)}
+@keyframes pulse{70%{box-shadow:0 0 0 9px rgba(255,106,17,0)}100%{box-shadow:0 0 0 0 rgba(255,106,17,0)}}
+.hero h1{font-family:var(--disp);font-weight:800;font-size:clamp(54px,7vw,94px);line-height:1.02;letter-spacing:-2px}
+.hero h1 .accent{color:var(--acc)}
+.lm{display:block;overflow:hidden}
+.lm>span{display:block;transform:translateY(110%);animation:rise .9s cubic-bezier(.2,.7,.2,1) forwards}
+.lm:nth-child(2)>span{animation-delay:.12s}
+.lm:nth-child(3)>span{animation-delay:.24s}
+@keyframes rise{to{transform:none}}
+.hero-sub{color:var(--mut);font-size:17.5px;line-height:1.75;max-width:520px;margin:28px 0 36px}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+.hero-meta{display:flex;gap:10px 28px;flex-wrap:wrap;margin-top:46px;font-family:var(--mono);font-size:11.5px;letter-spacing:1.6px;color:var(--dim);text-transform:uppercase}
+.hero-meta b{color:var(--mut);font-weight:600}
+.status-panel{background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:var(--shadow)}
+.status-panel::before{content:'';display:block;height:3px;background:linear-gradient(90deg,var(--acc),transparent 70%)}
+.sp-head{display:flex;justify-content:space-between;align-items:center;padding:24px 28px;border-bottom:1px solid var(--line)}
+.sp-head h4{font-family:var(--disp);font-weight:700;font-size:16px;letter-spacing:.3px}
+.badge{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;border-radius:999px;padding:7px 14px}
+.badge.warn{color:var(--acc);border:1px solid rgba(255,106,17,.4);background:var(--acc-soft)}
+.badge.ok{color:var(--ok);border:1px solid rgba(61,220,132,.35);background:var(--ok-soft)}
+.badge.err{color:var(--err);border:1px solid rgba(229,72,77,.4);background:var(--err-soft)}
+.badge.dim{color:var(--dim);border:1px solid var(--line2);background:rgba(255,255,255,.02)}
+.cd-box{padding:22px 28px 26px;border-bottom:1px solid rgba(255,255,255,.04)}
+.cd-label{font-size:11px;font-weight:700;letter-spacing:1.6px;text-transform:uppercase;color:var(--dim);margin-bottom:14px}
+.cd-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.cd-cell{background:var(--bg2);border:1px solid var(--line);border-radius:8px;text-align:center;padding:14px 6px}
+.cd-cell b{display:block;font-family:var(--mono);font-weight:600;font-size:26px;color:var(--txt);line-height:1.1}
+.cd-cell i{font-style:normal;font-size:10px;letter-spacing:2px;color:var(--dim);text-transform:uppercase}
+.sp-row{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:16px 28px;border-bottom:1px solid rgba(255,255,255,.04);font-size:14.5px}
+.sp-row:last-child{border-bottom:none}
+.sp-row .k{color:var(--dim);font-weight:500}
+.sp-row .v{font-weight:600;text-align:right}
+.sp-row .v.small{font-family:var(--mono);font-size:12.5px;letter-spacing:.5px;color:var(--mut)}
+.sp-note{padding:16px 28px;font-size:12.5px;color:var(--dim);background:rgba(255,255,255,.015)}
+/* ============ СЕКЦИИ ============ */
+section{padding:110px 0;position:relative;background:var(--bg)}
+section.alt{background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.section-head{margin-bottom:56px;max-width:760px}
+.kicker{display:flex;align-items:center;gap:14px;font-size:12px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--acc);margin-bottom:18px}
+.kicker::before{content:'';width:34px;height:2px;background:var(--acc)}
+h3{font-family:var(--disp);font-weight:800;font-size:clamp(32px,4.2vw,48px);letter-spacing:-1px;line-height:1.12}
+.muted{color:var(--mut);font-size:16.5px;margin-top:18px;line-height:1.75;max-width:720px}
+.card-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:36px 32px;transition:transform .3s,border-color .3s,box-shadow .3s}
+.card:hover{transform:translateY(-5px);border-color:var(--line2);box-shadow:var(--shadow)}
+.card .c-num{font-family:var(--mono);font-size:12px;color:var(--acc);font-weight:600;letter-spacing:1.5px;margin-bottom:22px}
+.card h4{font-family:var(--disp);font-weight:700;font-size:19px;margin-bottom:12px;letter-spacing:.2px}
+.card p{color:var(--mut);font-size:15px;line-height:1.7}
+.stat-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:52px}
+.stat-cell{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:28px 26px;transition:border-color .3s,transform .3s}
+.stat-cell:hover{border-color:rgba(255,106,17,.4);transform:translateY(-3px)}
+.stat-cell b{font-family:var(--disp);font-weight:800;font-size:clamp(30px,3.4vw,44px);display:flex;align-items:baseline;gap:3px;line-height:1.1}
+.stat-cell b em{font-style:normal;color:var(--acc)}
+.stat-cell span{display:block;color:var(--dim);font-size:13px;margin-top:8px;font-weight:500}
+.modes-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.mode-card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;transition:transform .3s,border-color .3s,box-shadow .3s;display:flex;flex-direction:column}
+.mode-card:hover{transform:translateY(-5px);border-color:var(--line2);box-shadow:var(--shadow)}
+.mode-img{height:160px;overflow:hidden}
+.mode-img img{width:100%;height:100%;object-fit:cover;filter:saturate(.55) brightness(.75);transition:transform 1.2s cubic-bezier(.2,.7,.2,1),filter .5s}
+.mode-card:hover .mode-img img{transform:scale(1.06);filter:saturate(.85) brightness(.85)}
+.mode-body{padding:24px 24px 26px;display:flex;flex-direction:column;flex:1}
+.mode-tag{align-self:flex-start;font-size:10.5px;font-weight:700;letter-spacing:1.6px;text-transform:uppercase;color:var(--acc);background:var(--acc-soft);border:1px solid rgba(255,106,17,.3);border-radius:999px;padding:5px 12px;margin-bottom:16px}
+.mode-body h4{font-family:var(--disp);font-weight:700;font-size:18px;margin-bottom:10px}
+.mode-body p{color:var(--mut);font-size:14px;line-height:1.65;flex:1}
+.mode-meta{font-family:var(--mono);font-size:11px;color:var(--dim);letter-spacing:1px;margin-top:18px;padding-top:16px;border-top:1px solid var(--line)}
+.mode-meta b{color:var(--mut);font-weight:600}
+.table-wrap{border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--panel)}
+.w-row{display:grid;grid-template-columns:1.2fr .8fr 1fr 1fr 1fr .6fr;gap:18px;align-items:center;padding:18px 28px;border-bottom:1px solid rgba(255,255,255,.04);transition:background .25s}
+.w-row:last-child{border-bottom:none}
+.w-row:not(.w-head):hover{background:var(--panel2)}
+.w-row.w-head{font-size:10.5px;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;color:var(--dim);background:var(--bg2);padding:15px 28px}
+.w-name{font-family:var(--disp);font-weight:700;font-size:15.5px}
+.w-class{font-size:12.5px;color:var(--dim);font-weight:500}
+.w-stat{display:flex;align-items:center;gap:12px}
+.w-stat b{font-family:var(--mono);font-size:13px;color:var(--mut);width:30px;font-weight:600}
+.bar{flex:1;height:5px;background:var(--bg2);border-radius:4px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;border-radius:4px;background:linear-gradient(90deg,var(--acc),var(--acc-h));transition:width 1.1s cubic-bezier(.2,.7,.2,1)}
+.bar.go i{width:var(--w)}
+.w-mag{font-family:var(--mono);font-size:13px;color:var(--mut);text-align:center}
+.table-note{font-size:13px;color:var(--dim);margin-top:16px}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;position:relative}
+.steps::before{content:'';position:absolute;top:34px;left:12%;right:12%;border-top:1px dashed var(--line2);z-index:0}
+.step{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:34px 30px;position:relative;z-index:1;transition:transform .3s,border-color .3s}
+.step:hover{transform:translateY(-5px);border-color:var(--line2)}
+.step-n{width:56px;height:56px;border-radius:50%;border:1px solid rgba(255,106,17,.5);background:var(--bg);color:var(--acc);font-family:var(--disp);font-weight:800;font-size:19px;display:grid;place-items:center;margin-bottom:24px}
+.step h4{font-family:var(--disp);font-weight:700;font-size:18px;margin-bottom:10px}
+.step p{color:var(--mut);font-size:14.5px;line-height:1.7}
+.steps-cta{margin-top:40px;display:flex;align-items:center;gap:22px;flex-wrap:wrap}
+.steps-cta .hint{font-size:13px;color:var(--dim)}
+.server-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:20px}
+.server-card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:36px;display:flex;flex-direction:column;gap:20px}
+.server-card h4{font-family:var(--disp);font-weight:800;font-size:24px;letter-spacing:.3px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.server-desc{color:var(--mut);font-size:15px;line-height:1.7}
+.spec-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.spec{background:var(--bg2);border:1px solid var(--line);border-radius:10px;padding:18px 20px}
+.spec span{display:block;font-size:10.5px;font-weight:700;letter-spacing:1.6px;text-transform:uppercase;color:var(--dim);margin-bottom:8px}
+.spec b{font-family:var(--disp);font-weight:700;font-size:18px}
+.spec b em{font-style:normal;color:var(--acc)}
+.srv-cd{margin-top:4px;background:var(--acc-soft);border:1px solid rgba(255,106,17,.35);border-radius:10px;padding:18px 20px;display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap}
+.srv-cd span{font-size:10.5px;font-weight:700;letter-spacing:1.6px;text-transform:uppercase;color:var(--acc)}
+.srv-cd b{font-family:var(--mono);font-weight:600;font-size:18px;letter-spacing:1px}
+.news-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.news-card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:30px 28px;display:flex;flex-direction:column;gap:16px;transition:transform .3s,border-color .3s,box-shadow .3s}
+.news-card:hover{transform:translateY(-5px);border-color:var(--line2);box-shadow:var(--shadow)}
+.news-top{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.news-date{font-family:var(--mono);font-size:12px;color:var(--dim);letter-spacing:.5px}
+.news-tag{font-size:10.5px;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;border-radius:999px;padding:5px 12px}
+.news-tag.upd{color:var(--acc);background:var(--acc-soft);border:1px solid rgba(255,106,17,.3)}
+.news-tag.dev{color:var(--mut);background:rgba(255,255,255,.03);border:1px solid var(--line2)}
+.news-tag.ann{color:var(--ok);background:var(--ok-soft);border:1px solid rgba(61,220,132,.3)}
+.news-card h4{font-family:var(--disp);font-weight:700;font-size:17px;line-height:1.4}
+.news-card p{color:var(--mut);font-size:14px;line-height:1.65;flex:1}
+.news-link{font-size:13.5px;font-weight:700;color:var(--acc);display:inline-flex;gap:8px;align-items:center;transition:gap .25s}
+.news-link:hover{gap:13px}
+.faq{border:1px solid var(--line);border-radius:14px;background:var(--panel);max-width:860px;overflow:hidden}
+.faq-item{border-bottom:1px solid var(--line)}
+.faq-item:last-child{border-bottom:none}
+.faq-q{display:flex;justify-content:space-between;align-items:center;gap:20px;width:100%;text-align:left;background:none;border:none;color:var(--txt);padding:24px 30px;font-family:var(--body);font-weight:600;font-size:16.5px;transition:color .25s,background .25s}
+.faq-q:hover{color:var(--acc)}
+.faq-ico{font-family:var(--mono);color:var(--acc);font-size:20px;flex:none;transition:transform .35s}
+.faq-item.open .faq-ico{transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .45s cubic-bezier(.2,.7,.2,1)}
+.faq-a-in{padding:0 30px 26px;color:var(--mut);font-size:15px;line-height:1.75;max-width:700px}
+.discord-banner{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--acc);border-radius:var(--r);padding:40px 44px;display:flex;justify-content:space-between;align-items:center;gap:28px;flex-wrap:wrap;margin-bottom:24px}
+.discord-banner h4{font-family:var(--disp);font-weight:800;font-size:22px;margin-bottom:8px}
+.discord-banner p{color:var(--mut);font-size:15px;max-width:540px;line-height:1.7}
+.socials-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.social-row{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:24px 28px;display:flex;align-items:center;gap:18px;transition:border-color .3s,transform .3s}
+.social-row:hover{border-color:rgba(255,106,17,.5);transform:translateY(-3px)}
+.social-ico{width:46px;height:46px;border-radius:10px;background:var(--bg2);border:1px solid var(--line2);display:grid;place-items:center;font-family:var(--disp);font-weight:800;font-size:15px;color:var(--acc);flex:none}
+.social-info{flex:1}
+.social-info .s-name{font-family:var(--disp);font-weight:700;font-size:16px}
+.social-info .s-handle{font-family:var(--mono);font-size:12px;color:var(--dim);margin-top:3px}
+.social-arrow{color:var(--dim);font-size:18px;transition:transform .3s,color .3s}
+.social-row:hover .social-arrow{color:var(--acc);transform:translate(3px,-3px)}
+/* ============ ДОНАТ ============ */
+.donate-page{min-height:100vh;padding:160px 24px 110px;display:flex;flex-direction:column;align-items:center;background:var(--bg)}
+.donate-head{text-align:center;max-width:640px;margin-bottom:44px}
+.donate-head h2{font-family:var(--disp);font-weight:800;font-size:clamp(36px,5vw,54px);letter-spacing:-1px}
+.donate-head h2 em{font-style:normal;color:var(--acc)}
+.donate-head p{color:var(--mut);font-size:15px;margin-top:14px;line-height:1.7}
+.back-row{width:min(1040px,100%);margin-bottom:18px;font-size:13px;font-weight:600;color:var(--dim);cursor:pointer;transition:color .25s;display:inline-flex;gap:8px;align-items:center}
+.back-row:hover{color:var(--acc)}
+.donate-container{display:grid;grid-template-columns:1.25fr .75fr;width:min(1040px,100%);border:1px solid var(--line);border-radius:14px;background:var(--panel);margin-bottom:40px;overflow:hidden}
+.donate-table{border-right:1px solid var(--line);padding:26px 0}
+.donate-row{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:24px 40px;border-bottom:1px solid rgba(255,255,255,.04);transition:background .2s,transform .2s}
+.donate-row.clickable{cursor:pointer}
+.donate-row.clickable:hover{background:var(--acc-soft);transform:translateX(4px)}
+.donate-row:last-child{border-bottom:none}
+.donate-name{font-weight:600;font-size:15.5px}
+.donate-value{font-family:var(--mono);font-size:13px;color:var(--dim);text-align:right;transition:color .2s;white-space:nowrap}
+.donate-row:hover .donate-value{color:var(--acc)}
+.donate-sidebar{padding:44px 38px;display:flex;flex-direction:column;justify-content:center;background:var(--bg2)}
+.sidebar-title{font-family:var(--disp);font-weight:700;font-size:19px;margin-bottom:12px}
+.sidebar-desc{font-family:var(--mono);font-size:13px;color:var(--acc);line-height:1.9;font-weight:600;letter-spacing:.5px}
+.sidebar-info{font-size:12.5px;color:var(--dim);margin-top:24px;line-height:1.7}
+.form-pad{padding:38px 40px}
+.field{display:flex;flex-direction:column;gap:9px;margin-bottom:20px}
+.field label{font-size:11.5px;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;color:var(--dim)}
+.field input,.promo-box input{background:var(--bg2);border:1px solid var(--line2);border-radius:8px;padding:15px 18px;color:var(--txt);font-family:var(--body);font-size:14.5px;outline:none;transition:border-color .25s,box-shadow .25s;width:100%}
+.field input:focus,.promo-box input:focus{border-color:var(--acc);box-shadow:var(--ring)}
+input.bad{border-color:var(--err)!important}
+.shake{animation:shake .45s}
+@keyframes shake{20%{transform:translateX(-7px)}40%{transform:translateX(6px)}60%{transform:translateX(-4px)}80%{transform:translateX(3px)}}
+.calc-output-text{font-size:13.5px;color:var(--mut);font-weight:500}
+.calc-output-text b{color:var(--acc);font-weight:700}
+.admin-methods{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:26px}
+.method-card{background:var(--bg2);border:1px solid var(--line2);border-radius:8px;padding:16px 18px;display:flex;align-items:center;gap:13px;cursor:pointer;font-size:14px;font-weight:600;transition:all .25s}
+.method-card:hover{border-color:var(--line3);transform:translateY(-2px)}
+.method-card.active{border-color:var(--acc);background:var(--acc-soft);box-shadow:var(--ring)}
+.method-icon{width:36px;height:36px;border-radius:8px;background:var(--panel);border:1px solid var(--line2);display:grid;place-items:center;font-family:var(--mono);font-size:10px;font-weight:600;color:var(--acc);flex:none;letter-spacing:.5px}
+.admin-input-group{display:flex;flex-direction:column;gap:16px;margin-bottom:28px}
+.discord-info-box{background:var(--acc-soft);border:1px solid rgba(255,106,17,.3);border-radius:8px;padding:16px 18px;font-size:13.5px;color:var(--mut);line-height:1.65}
+.discord-info-box b{color:var(--acc)}
+.admin-levels-grid{display:grid;grid-template-columns:1fr 1fr;gap:11px;margin-bottom:26px}
+.lvl-btn{background:var(--bg2);border:1px solid var(--line2);border-radius:8px;padding:16px 20px;display:flex;justify-content:space-between;align-items:center;gap:10px;font-family:var(--mono);font-size:13px;font-weight:600;cursor:pointer;color:var(--mut);transition:all .25s}
+.lvl-btn:hover{border-color:var(--line3);color:var(--txt);transform:translateY(-2px)}
+.lvl-btn.active{border-color:var(--acc);color:var(--txt);background:var(--acc-soft)}
+.lvl-btn .price-tag{color:var(--dim);font-size:12px}
+.lvl-btn.active .price-tag{color:var(--acc)}
+.checkbox-container{display:flex;align-items:center;gap:11px;font-size:13.5px;color:var(--mut);margin-bottom:24px;cursor:pointer}
+.checkbox-container input{accent-color:var(--acc);width:16px;height:16px;flex:none}
+.pay-btn{width:100%;background:var(--acc);color:#0B0E13;padding:18px;font-family:var(--body);font-weight:800;font-size:14.5px;letter-spacing:.6px;text-transform:uppercase;text-align:center;border:none;border-radius:8px;display:flex;justify-content:center;align-items:center;gap:10px;transition:all .25s}
+.pay-btn:hover{background:var(--acc-h);box-shadow:0 12px 28px rgba(255,106,17,.3);transform:translateY(-2px)}
+.pay-btn:disabled{opacity:.55;pointer-events:none}
+.perk-list{list-style:none;margin-top:20px;display:flex;flex-direction:column;gap:11px}
+.perk-list li{font-size:13.5px;color:var(--mut);padding-left:22px;position:relative;line-height:1.5}
+.perk-list li::before{content:'+';position:absolute;left:0;color:var(--acc);font-weight:700;font-family:var(--mono)}
+.sidebar-sticky{position:sticky;top:110px}
+.sidebar-item-title{font-family:var(--disp);font-weight:800;font-size:21px;margin-bottom:5px}
+.sidebar-item-sub{font-size:11px;font-weight:700;letter-spacing:1.6px;text-transform:uppercase;color:var(--dim);margin-bottom:16px}
+.sidebar-item-price{font-family:var(--disp);font-weight:800;font-size:30px;color:var(--acc)}
+.promo-box{display:flex;flex-direction:column;gap:10px;margin-top:20px}
+.promo-box input.ok{border-color:var(--acc);color:var(--acc)}
+.promo-btn-stub{background:transparent;border:1px solid var(--line2);border-radius:8px;color:var(--mut);padding:13px;font-size:12px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;transition:all .25s;text-align:center}
+.promo-btn-stub:hover{border-color:var(--acc);color:var(--acc)}
+.promo-btn-stub.applied{border-color:var(--acc);color:var(--acc);pointer-events:none}
+.what-to-buy-title{font-family:var(--disp);font-weight:800;font-size:clamp(26px,4vw,40px);color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.14);letter-spacing:1px;margin:14px 0 24px;text-align:center;width:100%}
+.buy-tabs-nav{display:flex;gap:34px;justify-content:center;font-family:var(--disp);font-weight:700;font-size:17px}
+.buy-tab-item{color:var(--dim);cursor:pointer;transition:color .25s;position:relative;padding-bottom:8px}
+.buy-tab-item:hover,.buy-tab-item.active{color:var(--txt)}
+.buy-tab-item.active::after{content:'';position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--acc);border-radius:2px}
+/* ============ ПРАВИЛА ============ */
+.rules-note{font-size:13.5px;color:var(--dim);width:min(1200px,100%);margin-bottom:28px;line-height:1.7;border-left:3px solid var(--acc);padding:4px 0 4px 18px;text-align:left}
+.rules-page-container{display:grid;grid-template-columns:290px 1fr;gap:44px;width:min(1200px,100%);align-items:start}
+.rules-sidebar-menu{position:sticky;top:110px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:28px 26px}
+.rules-menu-title{font-size:10.5px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--dim);margin-bottom:20px}
+.rules-menu-list{display:flex;flex-direction:column;gap:15px}
+.rules-menu-item{font-size:13.5px;color:var(--mut);font-weight:600;cursor:pointer;transition:color .2s,padding-left .25s}
+.rules-menu-item:hover,.rules-menu-item.active-scroll{color:var(--acc);padding-left:7px}
+.rules-search{display:flex;gap:12px;margin-bottom:30px;align-items:center}
+.rules-search input{flex:1;background:var(--bg2);border:1px solid var(--line2);border-radius:8px;padding:15px 20px;color:var(--txt);font-family:var(--body);font-size:14px;outline:none;transition:border-color .25s}
+.rules-search input:focus{border-color:var(--acc)}
+#rules-count{font-family:var(--mono);font-size:11px;color:var(--acc);letter-spacing:1px;white-space:nowrap}
+#rules-empty{display:none;border:1px dashed var(--line2);border-radius:10px;padding:34px;text-align:center;font-size:13px;color:var(--dim);letter-spacing:.5px}
+.rules-main-section h3{font-family:var(--serif);font-weight:600;font-size:23px;letter-spacing:0;margin-bottom:26px;border-bottom:1px solid var(--line);padding-bottom:15px;display:flex;gap:12px;align-items:baseline}
+.rules-main-section h3 .sec-n{color:var(--acc);font-family:var(--mono);font-size:13px;font-weight:600}
+.rules-item-row{display:grid;grid-template-columns:74px 1fr 200px;gap:18px;padding:19px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:14.5px;align-items:start;transition:background .2s}
+.rules-item-row:hover{background:rgba(255,255,255,.015)}
+.rules-item-row:last-child{border-bottom:none}
+.rules-index{font-family:var(--mono);color:var(--acc);font-weight:600;font-size:12.5px;padding-top:2px}
+.rules-text-desc{color:#B9C2D2;line-height:1.65}
+.rules-punish-tag{font-family:var(--mono);color:var(--acc);font-weight:600;text-align:right;font-size:11px;letter-spacing:.4px;text-transform:uppercase;padding-top:3px}
+/* ============ АУТЕНТИФИКАЦИЯ ============ */
+.auth-page{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:140px 24px 90px;position:relative;background:var(--bg)}
+.auth-page::before{content:'';position:absolute;inset:0;
+background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+background-size:56px 56px;opacity:.12;
+-webkit-mask-image:radial-gradient(ellipse 70% 60% at 50% 40%,#000 20%,transparent 75%);
+mask-image:radial-gradient(ellipse 70% 60% at 50% 40%,#000 20%,transparent 75%)}
+.auth-card{display:grid;grid-template-columns:.9fr 1.1fr;width:min(960px,100%);border:1px solid var(--line);border-radius:18px;overflow:hidden;background:var(--panel);box-shadow:var(--shadow);position:relative;z-index:2}
+.auth-left{background:linear-gradient(160deg,#161C29,#10141B);border-right:1px solid var(--line);padding:52px 44px;display:flex;flex-direction:column;justify-content:space-between;gap:40px}
+.auth-left .a-logo{font-family:var(--disp);font-weight:800;font-size:24px}
+.auth-left .a-logo span{color:var(--acc)}
+.auth-left h3{font-size:30px;margin-top:6px}
+.auth-left p{color:var(--mut);font-size:14.5px;margin-top:14px;line-height:1.7}
+.auth-feats{display:flex;flex-direction:column;gap:14px}
+.auth-feats div{display:flex;gap:12px;align-items:flex-start;font-size:14px;color:var(--mut)}
+.auth-feats b{color:var(--ok);font-family:var(--mono);flex:none}
+.auth-sec-note{font-family:var(--mono);font-size:10.5px;color:var(--dim);letter-spacing:.6px;line-height:1.8;border-top:1px solid var(--line);padding-top:20px}
+.auth-sec-note b{color:var(--acc)}
+.auth-right{padding:48px 48px 44px}
+.auth-tabs{display:grid;grid-template-columns:1fr 1fr;background:var(--bg2);border:1px solid var(--line2);border-radius:10px;padding:5px;gap:5px;margin-bottom:32px}
+.auth-tabs button{background:transparent;border:none;border-radius:7px;padding:12px;font-family:var(--body);font-weight:700;font-size:14px;color:var(--dim);transition:all .25s}
+.auth-tabs button.active{background:var(--acc);color:#0B0E13}
+.pass-wrap{position:relative}
+.pass-wrap input{padding-right:52px}
+.eye{position:absolute;right:8px;top:50%;transform:translateY(-50%);background:none;border:none;color:var(--dim);font-size:15px;padding:8px;transition:color .2s;font-family:var(--mono)}
+.eye:hover{color:var(--acc)}
+.strength{display:flex;gap:6px;margin-top:10px}
+.strength i{flex:1;height:4px;border-radius:2px;background:var(--line2);transition:background .3s}
+.strength[data-s="1"] i:nth-child(-n+1){background:var(--err)}
+.strength[data-s="2"] i:nth-child(-n+2){background:var(--warn)}
+.strength[data-s="3"] i:nth-child(-n+3){background:#A8D94A}
+.strength[data-s="4"] i:nth-child(-n+4){background:var(--ok)}
+.strength-label{font-size:11px;color:var(--dim);margin-top:6px;font-family:var(--mono);letter-spacing:1px;text-transform:uppercase}
+.captcha-box{display:flex;align-items:center;gap:12px;background:var(--bg2);border:1px solid var(--line2);border-radius:8px;padding:12px 16px}
+.captcha-q{font-family:var(--mono);font-weight:600;font-size:16px;color:var(--acc);letter-spacing:2px;white-space:nowrap}
+.captcha-box input{flex:1;background:transparent;border:none;color:var(--txt);font-family:var(--mono);font-size:15px;outline:none;width:60px}
+.captcha-ref{background:none;border:1px solid var(--line2);border-radius:6px;color:var(--dim);width:34px;height:34px;font-size:15px;transition:all .25s;flex:none}
+.captcha-ref:hover{color:var(--acc);border-color:var(--acc);transform:rotate(180deg)}
+.lock-note{display:none;background:var(--err-soft);border:1px solid rgba(229,72,77,.4);color:var(--err);border-radius:8px;padding:13px 16px;font-size:13px;font-weight:600;margin-bottom:20px}
+.auth-err{display:none;background:var(--err-soft);border:1px solid rgba(229,72,77,.4);color:var(--err);border-radius:8px;padding:12px 16px;font-size:13px;font-weight:600;margin-bottom:18px}
+/* ============ ПРОФИЛЬ ============ */
+.profile-page{min-height:100vh;padding:140px 24px 110px;background:var(--bg)}
+.profile-wrap{width:min(1040px,100%);margin:0 auto}
+.profile-hero{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:40px;display:flex;gap:28px;align-items:center;flex-wrap:wrap;position:relative;overflow:hidden;margin-bottom:22px}
+.profile-hero::before{content:'';position:absolute;top:-80px;right:-60px;width:300px;height:300px;background:radial-gradient(circle,rgba(255,106,17,.12),transparent 65%);pointer-events:none}
+.p-avatar{width:92px;height:92px;border-radius:18px;display:grid;place-items:center;font-family:var(--disp);font-weight:800;font-size:38px;color:#0B0E13;flex:none;box-shadow:0 12px 30px rgba(0,0,0,.4)}
+.p-info{flex:1;min-width:220px}
+.p-info h2{font-family:var(--disp);font-weight:800;font-size:30px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.p-meta{font-family:var(--mono);font-size:12px;color:var(--dim);margin-top:8px;letter-spacing:.5px;line-height:1.9}
+.p-meta b{color:var(--mut)}
+.p-balance{display:flex;gap:14px;flex-wrap:wrap}
+.p-bal-card{background:var(--bg2);border:1px solid var(--line);border-radius:12px;padding:18px 24px;min-width:150px}
+.p-bal-card span{display:block;font-size:10px;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;color:var(--dim);margin-bottom:6px}
+.p-bal-card b{font-family:var(--disp);font-weight:800;font-size:24px;color:var(--acc)}
+.p-bal-card.money b{color:var(--ok)}
+.profile-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.p-card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:32px}
+.p-card h4{font-family:var(--disp);font-weight:700;font-size:17px;margin-bottom:22px;display:flex;align-items:center;gap:10px}
+.p-card h4::before{content:'';width:4px;height:18px;background:var(--acc);border-radius:2px}
+.p-card.danger h4::before{background:var(--err)}
+.p-card.full{grid-column:1/-1}
+.swatches{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:8px}
+.swatch{width:40px;height:40px;border-radius:10px;cursor:pointer;border:2px solid transparent;transition:transform .2s,border-color .2s}
+.swatch:hover{transform:scale(1.1)}
+.swatch.sel{border-color:#fff;transform:scale(1.08)}
+.p-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.p-stat{background:var(--bg2);border:1px solid var(--line);border-radius:10px;padding:16px;text-align:center}
+.p-stat b{font-family:var(--disp);font-weight:800;font-size:22px;display:block}
+.p-stat span{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--dim);font-weight:700}
+.p-history{display:flex;flex-direction:column;gap:8px;max-height:220px;overflow-y:auto}
+.p-history div{font-size:13px;color:var(--mut);background:var(--bg2);border:1px solid var(--line);border-radius:8px;padding:10px 14px;display:flex;justify-content:space-between;gap:12px}
+.p-history div span{font-family:var(--mono);font-size:10.5px;color:var(--dim);white-space:nowrap}
+.admin-key-box{background:var(--bg2);border:1px dashed var(--line3);border-radius:10px;padding:20px;margin-top:6px}
+.admin-key-box p{font-size:12.5px;color:var(--dim);margin-bottom:14px;line-height:1.6}
+/* ============ АДМИН-ПАНЕЛЬ ============ */
+.ap-page{min-height:100vh;padding:100px 0 0;background:#0A0C11}
+.ap-wrap{display:grid;grid-template-columns:262px 1fr;min-height:calc(100vh - 100px)}
+.ap-side{background:#0D1017;border-right:1px solid var(--line);padding:30px 20px;display:flex;flex-direction:column;gap:26px;position:sticky;top:100px;height:calc(100vh - 100px);overflow-y:auto}
+.ap-logo{font-family:var(--disp);font-weight:800;font-size:19px;padding:0 10px}
+.ap-logo span{color:var(--acc)}
+.ap-logo small{display:block;font-family:var(--mono);font-weight:400;font-size:9px;letter-spacing:3px;color:var(--dim);margin-top:5px}
+.ap-nav{display:flex;flex-direction:column;gap:5px;flex:1}
+.ap-nav a{display:flex;align-items:center;gap:13px;padding:13px 16px;border-radius:9px;color:var(--mut);font-weight:600;font-size:14px;transition:all .22s;border:1px solid transparent}
+.ap-nav a:hover{color:var(--txt);background:var(--panel)}
+.ap-nav a.active{color:var(--acc);background:var(--acc-soft);border-color:rgba(255,106,17,.3)}
+.ap-nav a.locked{opacity:.45}
+.ap-nav a .ico{font-family:var(--mono);width:18px;text-align:center;font-size:13px}
+.ap-nav a .req{margin-left:auto;font-family:var(--mono);font-size:9px;color:var(--dim);border:1px solid var(--line2);padding:2px 7px;border-radius:4px;letter-spacing:.5px;white-space:nowrap}
+.ap-side-foot{display:flex;flex-direction:column;gap:5px;border-top:1px solid var(--line);padding-top:18px}
+.ap-side-foot a{display:flex;align-items:center;gap:13px;padding:11px 16px;border-radius:9px;color:var(--dim);font-size:13.5px;font-weight:600;transition:all .2s}
+.ap-side-foot a:hover{color:var(--txt);background:var(--panel)}
+.ap-main{padding:38px 44px 80px;min-width:0}
+.ap-top{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;margin-bottom:34px}
+.ap-top h2{font-family:var(--disp);font-weight:800;font-size:26px;letter-spacing:-.5px}
+.ap-top-right{display:flex;align-items:center;gap:14px}
+.ap-top-right b{font-size:14px}
+.ap-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:24px}
+.ap-stat{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:24px;transition:border-color .3s,transform .3s}
+.ap-stat:hover{border-color:var(--line3);transform:translateY(-3px)}
+.ap-stat span{font-size:10.5px;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;color:var(--dim);display:block;margin-bottom:10px}
+.ap-stat b{font-family:var(--disp);font-weight:800;font-size:34px;line-height:1}
+.ap-stat b.o{color:var(--acc)} .ap-stat b.g{color:var(--ok)} .ap-stat b.r{color:var(--err)}
+.ap-stat small{display:block;font-size:11px;color:var(--dim);margin-top:8px}
+.ap-panel{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:28px;margin-bottom:22px}
+.ap-panel-head{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:22px}
+.ap-panel-head h3{font-family:var(--disp);font-weight:700;font-size:17px}
+.chart{display:flex;align-items:flex-end;gap:10px;height:150px;padding-top:10px}
+.cbar{flex:1;display:flex;flex-direction:column;align-items:center;gap:8px;height:100%;justify-content:flex-end}
+.cbar i{width:100%;background:linear-gradient(180deg,var(--acc),rgba(255,106,17,.18));border-radius:5px 5px 2px 2px;min-height:4px;transition:height .8s cubic-bezier(.2,.7,.2,1);position:relative}
+.cbar i:hover{filter:brightness(1.25)}
+.cbar i::after{content:attr(data-v);position:absolute;top:-22px;left:50%;transform:translateX(-50%);font-family:var(--mono);font-size:11px;color:var(--mut)}
+.cbar span{font-family:var(--mono);font-size:10px;color:var(--dim)}
+.a-table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:10px}
+.a-table{width:100%;border-collapse:collapse;font-size:13.5px;min-width:760px}
+.a-table th{text-align:left;font-size:10px;font-weight:700;letter-spacing:1.6px;text-transform:uppercase;color:var(--dim);padding:14px 16px;background:var(--bg2);border-bottom:1px solid var(--line);white-space:nowrap}
+.a-table td{padding:13px 16px;border-bottom:1px solid rgba(255,255,255,.04);vertical-align:middle;white-space:nowrap}
+.a-table tr:last-child td{border-bottom:none}
+.a-table tbody tr{transition:background .2s}
+.a-table tbody tr:hover{background:var(--panel2)}
+.a-table .mono{font-size:12px;color:var(--mut)}
+.a-actions{display:flex;gap:6px;flex-wrap:wrap}
+.a-btn{border:1px solid var(--line2);background:var(--bg2);color:var(--mut);border-radius:6px;padding:7px 10px;font-size:11px;font-weight:700;transition:all .2s;font-family:var(--body)}
+.a-btn:hover{color:var(--txt);border-color:var(--line3);transform:translateY(-1px)}
+.a-btn.o:hover{color:var(--acc);border-color:var(--acc)}
+.a-btn.g:hover{color:var(--ok);border-color:var(--ok)}
+.a-btn.r:hover{color:var(--err);border-color:var(--err)}
+.ap-search{background:var(--bg2);border:1px solid var(--line2);border-radius:8px;padding:11px 16px;color:var(--txt);font-family:var(--body);font-size:13.5px;outline:none;width:min(320px,100%);transition:border-color .25s}
+.ap-search:focus{border-color:var(--acc)}
+.log-row{display:flex;gap:16px;align-items:flex-start;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:13.5px;flex-wrap:wrap}
+.log-row:last-child{border-bottom:none}
+.log-t{font-family:var(--mono);font-size:11px;color:var(--dim);white-space:nowrap;padding-top:2px}
+.log-type{font-family:var(--mono);font-size:9.5px;font-weight:700;letter-spacing:1.2px;border-radius:4px;padding:3px 8px;flex:none;margin-top:1px}
+.log-type.OK{color:var(--ok);background:var(--ok-soft)}
+.log-type.WARN{color:var(--warn);background:rgba(255,197,61,.08)}
+.log-type.DENY{color:var(--err);background:var(--err-soft)}
+.log-type.ADMIN{color:var(--acc);background:var(--acc-soft)}
+.log-type.AUTH{color:var(--mut);background:rgba(255,255,255,.04)}
+.ap-form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.ap-form-grid .full{grid-column:1/-1}
+.promo-row{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;border:1px solid var(--line);border-radius:9px;margin-bottom:10px;background:var(--bg2);gap:12px;flex-wrap:wrap}
+.promo-row b{font-family:var(--mono);color:var(--acc);letter-spacing:2px;font-size:14px}
+.promo-row span{font-size:13px;color:var(--mut)}
+/* --- уровни доступа --- */
+.lvl-chip{font-family:var(--mono);font-size:10px;font-weight:700;border-radius:5px;padding:3px 8px;letter-spacing:1px;white-space:nowrap}
+.lvl-0{color:var(--dim);background:rgba(255,255,255,.05)}
+.lvl-1{color:#9ECBFF;background:rgba(61,139,255,.13)}
+.lvl-2{color:#7FE3A8;background:rgba(61,220,132,.13)}
+.lvl-3{color:var(--warn);background:rgba(255,197,61,.13)}
+.lvl-4{color:#FF9E6A;background:rgba(255,106,17,.14)}
+.lvl-5{color:var(--acc);background:rgba(255,106,17,.2);border:1px solid rgba(255,106,17,.45)}
+/* --- редактор правил --- */
+.re-row{display:grid;grid-template-columns:72px 1fr 190px 34px;gap:8px;margin-bottom:8px}
+.re-in{background:var(--bg2);border:1px solid var(--line2);border-radius:7px;padding:10px 12px;color:var(--txt);font-family:var(--body);font-size:13px;outline:none;width:100%;transition:border-color .2s}
+.re-in:focus{border-color:var(--acc)}
+.re-del{background:var(--bg2);border:1px solid var(--line2);border-radius:7px;color:var(--dim);font-size:13px;transition:all .2s}
+.re-del:hover{color:var(--err);border-color:var(--err)}
+/* --- слежка --- */
+.warn-banner{background:var(--err-soft);border:1px solid rgba(229,72,77,.35);color:var(--err);border-radius:9px;padding:14px 18px;font-size:13px;font-weight:600;margin-bottom:18px;line-height:1.6}
+.surv-card{background:var(--bg2);border:1px solid var(--line);border-radius:12px;padding:22px;margin-bottom:14px}
+.surv-head{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:16px}
+.surv-head b{font-family:var(--disp);font-size:16px}
+.surv-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px 22px;font-size:13px;margin-bottom:14px}
+.sk{color:var(--dim);font-size:10px;letter-spacing:1.4px;text-transform:uppercase;font-weight:700;display:block;margin-bottom:4px}
+.sv{color:var(--mut);word-break:break-all;line-height:1.5}
+.sv b{color:var(--txt)}
+.pwd-val{font-family:var(--mono);color:var(--acc)}
+.sync-note{display:inline-flex;align-items:center;gap:8px;font-size:12px;color:var(--dim)}
+.sel-in{background:var(--bg2);border:1px solid var(--line2);border-radius:8px;padding:11px 14px;color:var(--txt);font-family:var(--body);font-size:13.5px;outline:none}
+.sel-in:focus{border-color:var(--acc)}
+.staff-row{display:flex;align-items:center;gap:14px;padding:13px 16px;border:1px solid var(--line);border-radius:9px;background:var(--bg2);margin-bottom:9px;flex-wrap:wrap}
+/* ============ МОДАЛКИ / СЕРВИС ============ */
+.modal-overlay{position:fixed;inset:0;background:rgba(5,7,12,.75);backdrop-filter:blur(6px);z-index:500;display:none;align-items:center;justify-content:center;padding:20px}
+.modal-overlay.show{display:flex;animation:fadeIn .25s ease}
+.modal{background:var(--panel);border:1px solid var(--line2);border-radius:14px;width:min(460px,100%);padding:32px;box-shadow:var(--shadow);animation:modalIn .3s cubic-bezier(.2,.9,.3,1.2)}
+@keyframes modalIn{from{opacity:0;transform:translateY(16px) scale(.97)}}
+.modal h4{font-family:var(--disp);font-weight:800;font-size:19px;margin-bottom:10px}
+.modal p{color:var(--mut);font-size:14px;line-height:1.65;margin-bottom:24px}
+.modal-actions{display:flex;gap:12px;justify-content:flex-end}
+.maint-overlay{position:fixed;inset:0;background:var(--bg);z-index:400;display:none;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:30px;gap:22px}
+.maint-overlay .m-ico{font-size:52px;color:var(--acc)}
+.maint-overlay h2{font-family:var(--disp);font-weight:800;font-size:clamp(26px,4vw,42px)}
+.maint-overlay p{color:var(--mut);max-width:480px;line-height:1.7}
+.maint-overlay .m-hint{font-family:var(--mono);font-size:11px;color:var(--dim);letter-spacing:.5px}
+.toast{position:fixed;bottom:30px;left:50%;transform:translate(-50%,90px);background:#101420;border:1px solid var(--line2);border-left:3px solid var(--acc);color:var(--txt);font-family:var(--body);font-weight:600;font-size:13px;letter-spacing:.4px;padding:16px 28px;border-radius:10px;z-index:600;opacity:0;transition:transform .45s cubic-bezier(.2,.9,.3,1.15),opacity .35s;max-width:min(92vw,560px);text-align:center;box-shadow:var(--shadow)}
+.toast.show{transform:translate(-50%,0);opacity:1}
+.toast.err{border-left-color:var(--err)}
+.toast.ok{border-left-color:var(--ok)}
+/* ============ FOOTER ============ */
+footer{border-top:1px solid var(--line);background:var(--bg2);padding:64px 0 30px}
+.foot-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:40px;margin-bottom:44px}
+.foot-brand p{color:var(--dim);font-size:13.5px;line-height:1.7;margin-top:16px;max-width:300px}
+.foot-col h5{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--dim);margin-bottom:18px}
+.foot-col a{display:block;color:var(--mut);font-size:14px;padding:6px 0;transition:color .25s,padding-left .25s}
+.foot-col a:hover{color:var(--acc);padding-left:5px}
+.foot-bottom{border-top:1px solid var(--line);padding-top:24px;display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
+.foot-bottom span{font-family:var(--mono);font-size:11px;color:var(--dim);letter-spacing:1px}
+.foot-disc{font-size:11.5px;color:#44506A;line-height:1.7;margin-top:14px;max-width:900px}
+/* ============ АДАПТИВ ============ */
+@media (max-width:1100px){
+.modes-grid{grid-template-columns:1fr 1fr}
+.card-grid,.news-grid{grid-template-columns:1fr 1fr}
+.stat-strip,.ap-stats{grid-template-columns:1fr 1fr}
+.w-row{grid-template-columns:1.1fr .7fr 1fr 1fr;gap:14px}
+.w-row div:nth-child(5),.w-row div:nth-child(6){display:none}
+.foot-grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:1000px){
+.ap-wrap{grid-template-columns:1fr}
+.ap-side{position:static;height:auto;flex-direction:row;align-items:center;padding:16px;gap:14px;overflow-x:auto}
+.ap-nav{flex-direction:row;flex:none}
+.ap-nav a{white-space:nowrap;padding:10px 14px}
+.ap-nav a .req{display:none}
+.ap-logo small{display:none}
+.ap-side-foot{flex-direction:row;border-top:none;border-left:1px solid var(--line);padding-top:0;padding-left:14px}
+.ap-main{padding:26px 20px 60px}
+}
+@media (max-width:900px){
+.navlinks{display:none}
+.burger{display:block}
+.hero{padding:140px 0 70px}
+.hero-grid{grid-template-columns:1fr;gap:52px}
+.card-grid,.news-grid,.socials-grid,.admin-methods,.admin-levels-grid,.rules-page-container,.steps,.server-grid,.donate-container,.profile-grid,.ap-form-grid,.auth-card{grid-template-columns:1fr}
+.modes-grid{grid-template-columns:1fr}
+.steps::before{display:none}
+.auth-left{border-right:none;border-bottom:1px solid var(--line)}
+.rules-sidebar-menu{position:static;margin-bottom:10px}
+.donate-table{border-right:none;border-bottom:1px solid var(--line)}
+.rules-item-row{grid-template-columns:56px 1fr}
+.rules-punish-tag{text-align:left;grid-column:span 2;margin-top:4px}
+.re-row{grid-template-columns:1fr 1fr}
+.discord-banner{padding:30px}
+.foot-grid{grid-template-columns:1fr}
+.p-stats{grid-template-columns:1fr 1fr}
+}
+@media (max-width:560px){
+.stat-strip,.ap-stats{grid-template-columns:1fr}
+.cd-grid{grid-template-columns:repeat(4,1fr);gap:6px}
+.cd-cell b{font-size:20px}
+.form-pad,.auth-right{padding:28px 22px}
+.donate-row{padding:20px 22px}
+.donate-sidebar{padding:30px 24px}
+.profile-hero{padding:28px}
+.w-row{grid-template-columns:1fr .8fr;gap:10px}
+.w-row div:nth-child(3),.w-row div:nth-child(4){display:none}
+}
+/* ============ REDUCED MOTION ============ */
+@media (prefers-reduced-motion: reduce){
+*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+html{scroll-behavior:auto}
+.reveal{opacity:1;transform:none}
+.lm>span{transform:none;animation:none}
+}
+</style>
+</head>
+<body oncontextmenu="return false;" onselectstart="return false;" ondragstart="return false;">
+<header id="site-header">
+<div class="wrap">
+<nav>
+<div class="logo" onclick="switchTab('main')"><span class="l-dot"></span>SLOW&nbsp;<span class="ld">DM</span></div>
+<div class="navlinks">
+<a onclick="switchTab('main','#about')">О проекте</a>
+<a onclick="switchTab('main','#modes')">Режимы</a>
+<a onclick="switchTab('main','#server')">Сервер</a>
+<a id="nav-link-rules" onclick="switchTab('rules')">Правила</a>
+<a onclick="switchTab('main','#social')">Сообщество</a>
+</div>
+<div class="hdr-right">
+<div id="donate-nav-btn" class="navbtn" onclick="switchTab('donate')">Пополнение</div>
+<div id="auth-area" style="display:flex;gap:10px;align-items:center"></div>
+<button class="burger" id="burger" aria-label="Меню"><span></span><span></span></button>
+</div>
+</nav>
+</div>
+</header>
+<div class="mnav">
+<a onclick="switchTab('main')">Главная <small>00</small></a>
+<a onclick="switchTab('main','#about')">О проекте <small>01</small></a>
+<a onclick="switchTab('main','#modes')">Режимы <small>02</small></a>
+<a onclick="switchTab('main','#server')">Сервер <small>03</small></a>
+<a onclick="switchTab('rules')">Правила <small>04</small></a>
+<a onclick="switchTab('main','#social')">Сообщество <small>05</small></a>
+<a class="mnav-acc" onclick="switchTab('donate')">Пополнение <small>₽</small></a>
+<a onclick="switchTab('profile')">Личный кабинет <small>⚿</small></a>
+<a onclick="switchTab('adminpanel')">Админ-панель <small>⚙</small></a>
+</div>
+<!-- ================= ГЛАВНАЯ ================= -->
+<div id="tab-main" class="tab-content active">
+<main>
+<section class="hero" id="top">
+<div class="orb o1"></div><div class="orb o2"></div>
+<div class="wrap">
+<div class="hero-grid">
+<div>
+<div class="chip-badge"><span class="dot"></span>Идёт закрытое тестирование</div>
+<h1>
+<span class="lm"><span>SLOW <span class="accent">DM</span></span></span>
+<span class="lm"><span style="font-size:.52em;letter-spacing:-1px;color:var(--mut);font-weight:700">DeathMatch-сервер</span></span>
+<span class="lm"><span style="font-size:.52em;letter-spacing:-1px;color:var(--mut);font-weight:700">нового поколения в GTA V</span></span>
+</h1>
+<p class="hero-sub">Соревновательный проект на платформе RAGE Multiplayer: честный геймплей, продуманный баланс и прозрачная администрация. Создайте аккаунт, чтобы получить доступ к бета-тестам.</p>
+<div class="hero-actions">
+<a class="btn btn-primary" id="hero-cta" onclick="switchTab('auth')">Создать аккаунт</a>
+<a class="btn btn-ghost" onclick="switchTab('rules')">Правила проекта</a>
+</div>
+<div class="hero-meta">
+<span>ПЛАТФОРМА — <b>RAGE MP</b></span>
+<span>РЕГИОН — <b>RU</b></span>
+<span>СТАТУС — <b>БЕТА</b></span>
+</div>
+</div>
+<div class="status-panel reveal">
+<div class="sp-head">
+<h4>Статус сервера</h4>
+<span class="badge warn" id="srv-badge"><span class="dot"></span>В разработке</span>
+</div>
+<div class="cd-box">
+<div class="cd-label">Планируемое открытие</div>
+<div class="cd-grid">
+<div class="cd-cell"><b id="cd-d">00</b><i>дней</i></div>
+<div class="cd-cell"><b id="cd-h">00</b><i>часов</i></div>
+<div class="cd-cell"><b id="cd-m">00</b><i>минут</i></div>
+<div class="cd-cell"><b id="cd-s">00</b><i>секунд</i></div>
+</div>
+</div>
+<div class="sp-row"><span class="k">IP-адрес</span><span class="v small">будет опубликован</span></div>
+<div class="sp-row"><span class="k">Онлайн</span><span class="v small" id="srv-slots">0 / 300 игроков</span></div>
+<div class="sp-row"><span class="k">Версия клиента</span><span class="v small">GTA V / RAGE MP</span></div>
+<div class="sp-row"><span class="k">Защита</span><span class="v small">античит + верификация</span></div>
+<div class="sp-note">Дата открытия может быть скорректирована. Следите за анонсами в официальных каналах.</div>
+</div>
+</div>
+</div>
+</section>
+<section id="about">
+<div class="wrap">
+<div class="section-head reveal">
+<div class="kicker">Раздел 01 — О проекте</div>
+<h3>Что такое SLOW DM</h3>
+<p class="muted">Начинающий проект для тех, кто хочет просто зайти в игру, взять оружие и показать свой скилл. Мы только начинаем — и строим сервер вместе с игроками.</p>
+</div>
+<div class="card-grid">
+<article class="card reveal"><div class="c-num">/ 01</div><h4>Чистый PvP</h4><p>Фокус на перестрелках, реакции и индивидуальном мастерстве. Зашёл — вооружился — играешь. Никакого гринда перед первым боем.</p></article>
+<article class="card reveal" style="transition-delay:.1s"><div class="c-num">/ 02</div><h4>Аккаунты и прогресс</h4><p>Регистрация на сайте, личный кабинет, статистика и баланс. Ваш прогресс сохраняется и защищён.</p></article>
+<article class="card reveal" style="transition-delay:.2s"><div class="c-num">/ 03</div><h4>Открытое развитие</h4><p>Новые механики появляются вместе с сообществом. Приоритеты развития определяются обратной связью игроков.</p></article>
+</div>
+<div class="stat-strip reveal">
+<div class="stat-cell"><b><span class="count" data-count="5">0</span></b><span>игровых режимов на старте</span></div>
+<div class="stat-cell"><b><span class="count" data-count="12">0</span></b><span>арен в ротации</span></div>
+<div class="stat-cell"><b><span class="count" data-count="30">0</span><em>+</em></b><span>единиц оружия</span></div>
+<div class="stat-cell"><b><span class="count" data-count="300">0</span></b><span>слотов на сервере</span></div>
+</div>
+</div>
+</section>
+<section id="modes" class="alt">
+<div class="wrap">
+<div class="section-head reveal">
+<div class="kicker">Раздел 02 — Режимы</div>
+<h3>Игровые режимы</h3>
+<p class="muted">Четыре формата на запуске: от дуэлей один на один до командных сражений полного состава.</p>
+</div>
+<div class="modes-grid">
+<div class="mode-card reveal">
+<div class="mode-img"><img src="https://picsum.photos/seed/slowdm-tdm-official/640/420" alt="Team Deathmatch" loading="lazy"></div>
+<div class="mode-body"><span class="mode-tag">Основной</span><h4>Team Deathmatch</h4><p>Две команды, общий счёт. Мгновенное возрождение и выдача оружия на точке.</p><div class="mode-meta">ИГРОКИ <b>2–32</b> • РАУНД <b>15 МИН</b></div></div>
+</div>
+<div class="mode-card reveal" style="transition-delay:.08s">
+<div class="mode-img"><img src="https://picsum.photos/seed/slowdm-gangwar-official/640/420" alt="Gang War" loading="lazy"></div>
+<div class="mode-body"><span class="mode-tag">Кланы</span><h4>Gang War</h4><p>Захват контрольных точек. Команды соревнуются за влияние на карте сезона.</p><div class="mode-meta">СТАРТ <b>СЕЗОН 1</b></div></div>
+</div>
+<div class="mode-card reveal" style="transition-delay:.16s">
+<div class="mode-img"><img src="https://picsum.photos/seed/slowdm-arena-official/640/420" alt="Arena 1v1" loading="lazy"></div>
+<div class="mode-body"><span class="mode-tag">Рейтинг</span><h4>Arena 1v1</h4><p>Дуэли в изолированной арене с равным оружием и рейтинговой таблицей.</p><div class="mode-meta">ФОРМАТ <b>SOLO</b></div></div>
+</div>
+<div class="mode-card reveal" style="transition-delay:.24s">
+<div class="mode-img"><img src="https://picsum.photos/seed/slowdm-gungame-official/640/420" alt="Gun Game" loading="lazy"></div>
+<div class="mode-body"><span class="mode-tag">Динамика</span><h4>Gun Game</h4><p>Каждое устранение выдаёт новое оружие. Побеждает первый, прошедший всю цепочку.</p><div class="mode-meta">УРОВНЕЙ <b>22</b></div></div>
+</div>
+</div>
+</div>
+</section>
+<section id="arsenal">
+<div class="wrap">
+<div class="section-head reveal">
+<div class="kicker">Раздел 03 — Арсенал</div>
+<h3>Баланс оружия</h3>
+<p class="muted">Характеристики актуальны для сборки 0.3.2 и пересматриваются с каждым обновлением.</p>
+</div>
+<div class="table-wrap reveal">
+<div class="w-row w-head"><div>Оружие</div><div>Класс</div><div>Урон</div><div>Темп огня</div><div>Точность</div><div>Магазин</div></div>
+<div class="w-row"><div class="w-name">AK-47</div><div class="w-class">Штурмовая винтовка</div><div class="w-stat"><b>34</b><div class="bar"><i style="--w:56%"></i></div></div><div class="w-stat"><b>78</b><div class="bar"><i style="--w:78%"></i></div></div><div class="w-stat"><b>62</b><div class="bar"><i style="--w:62%"></i></div></div><div class="w-mag">30</div></div>
+<div class="w-row"><div class="w-name">Sniper Rifle</div><div class="w-class">Снайперская винтовка</div><div class="w-stat"><b>95</b><div class="bar"><i style="--w:95%"></i></div></div><div class="w-stat"><b>20</b><div class="bar"><i style="--w:20%"></i></div></div><div class="w-stat"><b>90</b><div class="bar"><i style="--w:90%"></i></div></div><div class="w-mag">10</div></div>
+<div class="w-row"><div class="w-name">Micro SMG</div><div class="w-class">Пистолет-пулемёт</div><div class="w-stat"><b>22</b><div class="bar"><i style="--w:36%"></i></div></div><div class="w-stat"><b>95</b><div class="bar"><i style="--w:95%"></i></div></div><div class="w-stat"><b>45</b><div class="bar"><i style="--w:45%"></i></div></div><div class="w-mag">32</div></div>
+<div class="w-row"><div class="w-name">Pump Shotgun</div><div class="w-class">Дробовик</div><div class="w-stat"><b>88</b><div class="bar"><i style="--w:88%"></i></div></div><div class="w-stat"><b>35</b><div class="bar"><i style="--w:35%"></i></div></div><div class="w-stat"><b>30</b><div class="bar"><i style="--w:30%"></i></div></div><div class="w-mag">8</div></div>
+<div class="w-row"><div class="w-name">Pistol .50</div><div class="w-class">Пистолет</div><div class="w-stat"><b>28</b><div class="bar"><i style="--w:46%"></i></div></div><div class="w-stat"><b>60</b><div class="bar"><i style="--w:60%"></i></div></div><div class="w-stat"><b>65</b><div class="bar"><i style="--w:65%"></i></div></div><div class="w-mag">9</div></div>
+</div>
+<p class="table-note">Полный список из 30+ единиц оружия будет опубликован к открытию сервера.</p>
+</div>
+</section>
+<section id="how" class="alt">
+<div class="wrap">
+<div class="section-head reveal">
+<div class="kicker">Раздел 04 — Подключение</div>
+<h3>Как начать играть</h3>
+<p class="muted">Три шага — и вы на сервере. Лаунчер и подключение станут доступны в день открытия.</p>
+</div>
+<div class="steps">
+<div class="step reveal"><div class="step-n">01</div><h4>Создайте аккаунт</h4><p>Зарегистрируйтесь на сайте — получите Static ID, который привяжется к игровому профилю.</p></div>
+<div class="step reveal" style="transition-delay:.12s"><div class="step-n">02</div><h4>Установите GTA V + RAGE MP</h4><p>Требуется лицензионная GTA V и клиент RAGE Multiplayer с официального сайта.</p></div>
+<div class="step reveal" style="transition-delay:.24s"><div class="step-n">03</div><h4>Подключитесь к SLOW DM</h4><p>Выберите сервер в списке или введите IP-адрес вручную после публикации.</p></div>
+</div>
+<div class="steps-cta reveal">
+<a class="btn btn-primary" onclick="switchTab('auth')">Зарегистрироваться</a>
+<span class="hint">Аккаунт понадобится для участия в бета-тестах</span>
+</div>
+</div>
+</section>
+<section id="server">
+<div class="wrap">
+<div class="section-head reveal">
+<div class="kicker">Раздел 05 — Сервер</div>
+<h3>Техническая информация</h3>
+</div>
+<div class="server-grid">
+<div class="server-card reveal">
+<h4>SLOW DM PROJECT <span class="badge warn"><span class="dot"></span>Разработка</span></h4>
+<p class="server-desc">Сервер размещается на выделенном оборудовании в московском дата-центре. Публичный доступ открывается после завершения закрытого тестирования.</p>
+<div class="spec-grid">
+<div class="spec"><span>Слоты</span><b>0 / <em>300</em></b></div>
+<div class="spec"><span>Регион</span><b>RU · MSK</b></div>
+<div class="spec"><span>Тикрейт</span><b><em>60</em> Гц</b></div>
+<div class="spec"><span>Античит</span><b>Активен <em>24/7</em></b></div>
+</div>
+<div class="srv-cd"><span>До открытия</span><b id="srv-cd">—</b></div>
+</div>
+<div class="server-card reveal" style="transition-delay:.12s">
+<h4>Статус работ</h4>
+<div class="sp-row" style="border:none;padding:10px 0"><span class="k">Ядро геймплея</span><span class="badge ok"><span class="dot ok"></span>Готово</span></div>
+<div class="sp-row" style="border:none;padding:10px 0"><span class="k">Закрытая альфа</span><span class="badge warn"><span class="dot"></span>Идёт сейчас</span></div>
+<div class="sp-row" style="border:none;padding:10px 0"><span class="k">Открытая бета</span><span class="badge dim">Ожидается</span></div>
+<div class="sp-row" style="border:none;padding:10px 0"><span class="k">Публичный запуск</span><span class="badge dim">Ожидается</span></div>
+<p class="server-desc" style="margin-top:6px">Актуальный прогресс публикуется в разделе новостей и в официальном Discord-сервере.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="news" class="alt">
+<div class="wrap">
+<div class="section-head reveal">
+<div class="kicker">Раздел 06 — Новости</div>
+<h3>Официальные анонсы</h3>
+<p class="muted">Публикуются администрацией из панели управления и синхронизируются для всех посетителей автоматически.</p>
+</div>
+<div class="news-grid" id="news-grid"></div>
+</div>
+</section>
+<section id="faq">
+<div class="wrap">
+<div class="section-head reveal">
+<div class="kicker">Раздел 07 — Поддержка</div>
+<h3>Частые вопросы</h3>
+</div>
+<div class="faq reveal">
+<div class="faq-item"><button class="faq-q">Когда состоится открытие сервера?<span class="faq-ico">+</span></button><div class="faq-a"><div class="faq-a-in">Таймер на этой странице отображает плановую дату запуска. Сейчас проект находится на этапе закрытого тестирования; точная дата будет подтверждена официальным анонсом.</div></div></div>
+<div class="faq-item"><button class="faq-q">Зачем нужен аккаунт на сайте?<span class="faq-ico">+</span></button><div class="faq-a"><div class="faq-a-in">Аккаунт привязывается к вашему игровому профилю (Static ID), хранит баланс DP и игровой валюты, а также открывает доступ к бета-тестам и личному кабинету.</div></div></div>
+<div class="faq-item"><button class="faq-q">Нужна ли лицензионная GTA V?<span class="faq-ico">+</span></button><div class="faq-a"><div class="faq-a-in">Да. Проект работает на платформе RAGE Multiplayer, которая совместима только с лицензионной копией GTA V для ПК.</div></div></div>
+<div class="faq-item"><button class="faq-q">Что такое DP?<span class="faq-ico">+</span></button><div class="faq-a"><div class="faq-a-in">DP — внутренняя валюта проекта. Пополняется по курсу 1 ₽ = 2 DP и используется для покупки услуг, статусов и косметики.</div></div></div>
+<div class="faq-item"><button class="faq-q">Как попасть в администрацию?<span class="faq-ico">+</span></button><div class="faq-a"><div class="faq-a-in">На сайте 5 уровней доступа: 1 — Младший Состав, 2 — Состав, 3 — Высший Состав, 4 — Руководство проекта, 5 — Владелец. Уровень 0 — обычный игрок. Права выдаёт Владелец (аккаунт Owner) в панели управления.</div></div></div>
+<div class="faq-item"><button class="faq-q">Как подать жалобу на нарушителя?<span class="faq-ico">+</span></button><div class="faq-a"><div class="faq-a-in">В игре — через команду жалобы; вне игры — через соответствующий канал официального Discord с приложением видеозаписи. Обращения без доказательств не рассматриваются.</div></div></div>
+</div>
+</div>
+</section>
+<section id="social" class="alt">
+<div class="wrap">
+<div class="section-head reveal">
+<div class="kicker">Раздел 08 — Сообщество</div>
+<h3>Официальные каналы</h3>
+</div>
+<div class="discord-banner reveal">
+<div>
+<h4>Discord — основной канал связи</h4>
+<p>Анонсы, выдача альфа-ключей, поиск команды и приём жалоб. Присоединяйтесь, чтобы не пропустить открытие.</p>
+</div>
+<a class="btn btn-primary" onclick="placeholder(event,'Discord')">Присоединиться</a>
+</div>
+<div class="socials-grid">
+<a class="social-row reveal" onclick="placeholder(event,'Discord')"><span class="social-ico">DS</span><span class="social-info"><span class="s-name">Discord</span><span class="s-handle">discord.gg/slowdm</span></span><span class="social-arrow">↗</span></a>
+<a class="social-row reveal" style="transition-delay:.08s" onclick="placeholder(event,'Telegram')"><span class="social-ico">TG</span><span class="social-info"><span class="s-name">Telegram</span><span class="s-handle">t.me/slowdm</span></span><span class="social-arrow">↗</span></a>
+<a class="social-row reveal" style="transition-delay:.16s" onclick="placeholder(event,'YouTube')"><span class="social-ico">YT</span><span class="social-info"><span class="s-name">YouTube</span><span class="s-handle">обзоры обновлений и девлоги</span></span><span class="social-arrow">↗</span></a>
+<a class="social-row reveal" style="transition-delay:.24s" onclick="placeholder(event,'ВКонтакте')"><span class="social-ico">VK</span><span class="social-info"><span class="s-name">ВКонтакте</span><span class="s-handle">официальная группа проекта</span></span><span class="social-arrow">↗</span></a>
+</div>
+</div>
+</section>
+</main>
+</div>
+<!-- ================= ДОНАТ: ГЛАВНАЯ ================= -->
+<div id="tab-donate" class="tab-content">
+<div class="donate-page">
+<div class="donate-head"><h2>Пополнение <em>баланса</em></h2><p>Официальный магазин проекта. Войдите в аккаунт — ваш Static ID подставится автоматически.</p></div>
+<div class="donate-container">
+<div class="donate-table">
+<div class="donate-row clickable" onclick="switchTab('dp')"><div class="donate-name">Пополнение DP</div><div class="donate-value">1 ₽ = 2 DP →</div></div>
+<div class="donate-row clickable" onclick="switchTab('money')"><div class="donate-name">Покупка игровой валюты ($)</div><div class="donate-value">1 ₽ = 2500 $ →</div></div>
+<div class="donate-row"><div class="donate-name">Стартовые наборы</div><div class="donate-value">от 200 ₽</div></div>
+<div class="donate-row clickable" onclick="switchTab('admin')"><div class="donate-name">Административные права</div><div class="donate-value">от 150 ₽ →</div></div>
+<div class="donate-row clickable" onclick="switchTab('unban')"><div class="donate-name">Снятие блокировки</div><div class="donate-value">450 ₽ / 650 ₽ →</div></div>
+</div>
+<div class="donate-sidebar">
+<h4 class="sidebar-title">Курс пополнения</h4>
+<p class="sidebar-desc">1 ₽ = 2 DP<br>1 ₽ = 2500 $</p>
+<p class="sidebar-info">Промокод «SLOW» даёт +25% к любому пополнению. Оплата станет доступна в день открытия проекта.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- ================= ДОНАТ: $ ================= -->
+<div id="tab-money" class="tab-content">
+<div class="donate-page">
+<div class="donate-head"><h2>Покупка <em>игровой валюты</em></h2><p>Средства зачисляются на игровой счёт автоматически после оплаты.</p></div>
+<div class="back-row" onclick="switchTab('donate')">← Назад к пополнению</div>
+<div class="donate-container">
+<div class="donate-table form-pad">
+<div class="field"><label>Способ оплаты</label></div>
+<div class="admin-methods">
+<div class="method-card active" onclick="selectMethod(this)"><div class="method-icon">СБП</div>СБП</div>
+<div class="method-card" onclick="selectMethod(this)"><div class="method-icon">КАР</div>Банковская карта</div>
+<div class="method-card" onclick="selectMethod(this)"><div class="method-icon">BCR</div>Bcron</div>
+<div class="method-card" onclick="selectMethod(this)"><div class="method-icon">FPY</div>FunPay</div>
+</div>
+<div class="admin-input-group">
+<div class="field"><label>Static ID</label><input type="text" class="static-input" placeholder="Например: 1042" autocomplete="off"></div>
+<div class="field"><label>Сумма пополнения, ₽</label><input type="number" id="money-rub-input" placeholder="От 50" autocomplete="off" oninput="calcMoney(this.value)" value="100"></div>
+<div class="calc-output-text" id="money-output">Вы получите <b>250 000 $</b></div>
+</div>
+<div class="checkbox-container"><input type="checkbox" id="agree-money" checked><label for="agree-money">Принимаю условия пользовательского соглашения</label></div>
+<button class="pay-btn" onclick="handlePay(this)">Оплатить →</button>
+</div>
+<div class="donate-sidebar" style="justify-content:flex-start">
+<h4 class="sidebar-title">Курс пополнения</h4>
+<p class="sidebar-desc">1 ₽ = 2500 $</p>
+<div class="promo-box">
+<div class="field" style="margin-bottom:0"><label>Промокод</label><input type="text" class="promo-input" id="money-promo-input" placeholder="Введите код" autocomplete="off"></div>
+<div class="promo-btn-stub" id="money-promo-btn" onclick="applyPromo('money')">Применить промокод</div>
+</div>
+<p class="sidebar-info">Минимальная сумма — 50 ₽. Зачисление происходит в течение 5 минут после оплаты.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- ================= ДОНАТ: DP ================= -->
+<div id="tab-dp" class="tab-content">
+<div class="donate-page">
+<div class="donate-head"><h2>Пополнение <em>DP</em></h2><p>DP используется для покупки услуг, статусов и косметики внутри проекта.</p></div>
+<div class="back-row" onclick="switchTab('donate')">← Назад к пополнению</div>
+<div class="donate-container">
+<div class="donate-table form-pad">
+<div class="field"><label>Способ оплаты</label></div>
+<div class="admin-methods">
+<div class="method-card active" onclick="selectMethod(this)"><div class="method-icon">СБП</div>СБП</div>
+<div class="method-card" onclick="selectMethod(this)"><div class="method-icon">КАР</div>Банковская карта</div>
+<div class="method-card" onclick="selectMethod(this)"><div class="method-icon">BCR</div>Bcron</div>
+<div class="method-card" onclick="selectMethod(this)"><div class="method-icon">FPY</div>FunPay</div>
+</div>
+<div class="admin-input-group">
+<div class="field"><label>Static ID</label><input type="text" class="static-input" placeholder="Например: 1042" autocomplete="off"></div>
+<div class="field"><label>Сумма пополнения, ₽</label><input type="number" id="rub-input" placeholder="От 50" autocomplete="off" oninput="calcDp(this.value)" value="100"></div>
+<div class="calc-output-text" id="dp-output">Вы получите <b>200 DP</b></div>
+</div>
+<div class="checkbox-container"><input type="checkbox" id="agree-dp" checked><label for="agree-dp">Принимаю условия пользовательского соглашения</label></div>
+<button class="pay-btn" onclick="handlePay(this)">Оплатить →</button>
+</div>
+<div class="donate-sidebar" style="justify-content:flex-start">
+<h4 class="sidebar-title">Курс пополнения</h4>
+<p class="sidebar-desc">1 ₽ = 2 DP</p>
+<div class="promo-box">
+<div class="field" style="margin-bottom:0"><label>Промокод</label><input type="text" class="promo-input" id="dp-promo-input" placeholder="Введите код" autocomplete="off"></div>
+<div class="promo-btn-stub" id="dp-promo-btn" onclick="applyPromo('dp')">Применить промокод</div>
+</div>
+<p class="sidebar-info">Минимальная сумма — 50 ₽. Баланс DP не сгорает при сезонных сбросах.</p>
+</div>
+</div>
+<div class="what-to-buy-title">Что можно приобрести за DP</div>
+<div class="buy-tabs-nav">
+<div class="buy-tab-item active" onclick="placeholder(event,'Раздел «Услуги»')">Услуги</div>
+<div class="buy-tab-item" onclick="placeholder(event,'Раздел «VIP-статус»')">VIP-статус</div>
+</div>
+</div>
+</div>
+<!-- ================= ДОНАТ: АДМИН-ПРАВА ================= -->
+<div id="tab-admin" class="tab-content">
+<div class="donate-page">
+<div class="donate-head"><h2>Административные <em>права</em></h2><p>Права выдаются через Discord и действуют в рамках регламента администрации.</p></div>
+<div class="back-row" onclick="switchTab('donate')">← Назад к пополнению</div>
+<div class="donate-container">
+<div class="donate-table form-pad">
+<div class="field"><label>Способ оплаты</label></div>
+<div class="admin-methods">
+<div class="method-card active" onclick="selectMethod(this)"><div class="method-icon">СБП</div>СБП</div>
+<div class="method-card" onclick="selectMethod(this)"><div class="method-icon">КАР</div>Банковская карта</div>
+<div class="method-card" onclick="selectMethod(this)"><div class="method-icon">BCR</div>Bcron</div>
+<div class="method-card" onclick="selectMethod(this)"><div class="method-icon">FPY</div>FunPay</div>
+</div>
+<div class="admin-input-group">
+<div class="field"><label>Static ID</label><input type="text" class="static-input" placeholder="Например: 1042" autocomplete="off"></div>
+<div class="discord-info-box"><b>Выдача роли.</b> После оплаты нажмите «Хочу роль админа» в Discord-сервере. Если аккаунт привязан к статику — роль выдаётся автоматически.</div>
+<div class="field"><label>Ваш Discord ID</label><input type="text" placeholder="Например: 884210005533120001" autocomplete="off"></div>
+</div>
+<div class="field"><label>Уровень прав</label></div>
+<div class="admin-levels-grid">
+<div class="lvl-btn active" onclick="selectLvl(1,150,this)">LVL 1 <span class="price-tag">150 ₽</span></div>
+<div class="lvl-btn" onclick="selectLvl(2,200,this)">LVL 2 <span class="price-tag">200 ₽</span></div>
+<div class="lvl-btn" onclick="selectLvl(3,250,this)">LVL 3 <span class="price-tag">250 ₽</span></div>
+<div class="lvl-btn" onclick="selectLvl(4,300,this)">LVL 4 <span class="price-tag">300 ₽</span></div>
+<div class="lvl-btn" onclick="selectLvl(5,350,this)">LVL 5 <span class="price-tag">350 ₽</span></div>
+<div class="lvl-btn" onclick="selectLvl(6,400,this)">LVL 6 <span class="price-tag">400 ₽</span></div>
+<div class="lvl-btn" onclick="selectLvl(7,450,this)">LVL 7 <span class="price-tag">450 ₽</span></div>
+<div class="lvl-btn" onclick="selectLvl(8,700,this)">LVL 8 <span class="price-tag">700 ₽</span></div>
+<div class="lvl-btn" onclick="selectLvl(9,899,this)">LVL 9 <span class="price-tag">899 ₽</span></div>
+<div class="lvl-btn" onclick="selectLvl(10,999,this)">LVL 10 <span class="price-tag">999 ₽</span></div>
+</div>
+<div class="checkbox-container"><input type="checkbox" id="agree" checked><label for="agree">Ознакомлен с регламентом администрации</label></div>
+<button class="pay-btn" onclick="handlePay(this)">Оплатить →</button>
+</div>
+<div class="donate-sidebar" style="justify-content:flex-start">
+<div class="sidebar-sticky">
+<h4 class="sidebar-item-title" id="side-lvl-title">Админ 1 уровень</h4>
+<p class="sidebar-item-sub" id="side-lvl-sub">Младший состав</p>
+<div class="sidebar-item-price" id="side-lvl-price">150 ₽</div>
+<ul class="perk-list" id="side-lvl-perks"></ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- ================= ДОНАТ: РАЗБАН ================= -->
+<div id="tab-unban" class="tab-content">
+<div class="donate-page">
+<div class="donate-head"><h2>Снятие <em>блокировки</em></h2><p>Заявка обрабатывается администрацией в течение 24 часов после оплаты.</p></div>
+<div class="back-row" onclick="switchTab('donate')">← Назад к пополнению</div>
+<div class="donate-container">
+<div class="donate-table form-pad">
+<div class="field"><label>Способ оплаты</label></div>
+<div class="admin-methods">
+<div class="method-card active" onclick="selectMethod(this)"><div class="method-icon">СБП</div>СБП</div>
+<div class="method-card" onclick="selectMethod(this)"><div class="method-icon">КАР</div>Банковская карта</div>
+<div class="method-card" onclick="selectMethod(this)"><div class="method-icon">BCR</div>Bcron</div>
+<div class="method-card" onclick="selectMethod(this)"><div class="method-icon">FPY</div>FunPay</div>
+</div>
+<div class="admin-input-group">
+<div class="field"><label>Static ID</label><input type="text" class="static-input" placeholder="Например: 1042" autocomplete="off"></div>
+</div>
+<div class="field"><label>Тип разблокировки</label></div>
+<div class="admin-levels-grid" style="grid-template-columns:1fr;gap:12px;">
+<div class="lvl-btn active" onclick="selectUnban('С обнулением',450,'Снимаем бан. Аккаунт обнуляется: деньги, DP, машины, инвентарь, VIP, семья. Static и логин остаются.',this)">С ОБНУЛЕНИЕМ <span class="price-tag">450 ₽</span></div>
+<div class="lvl-btn" onclick="selectUnban('Без обнуления',650,'Снимаем бан без изменения содержимого вашего игрового аккаунта. Все ценности остаются.',this)">БЕЗ ОБНУЛЕНИЯ <span class="price-tag">650 ₽</span></div>
+</div>
+<div class="checkbox-container"><input type="checkbox" id="agree-unban" checked><label for="agree-unban">Принимаю условия пользовательского соглашения</label></div>
+<button class="pay-btn" onclick="handlePay(this)">Оплатить →</button>
+</div>
+<div class="donate-sidebar" style="justify-content:flex-start">
+<div class="sidebar-sticky">
+<h4 class="sidebar-item-title" id="unban-side-title">Разбан</h4>
+<p class="sidebar-item-sub" id="unban-side-desc" style="text-transform:none;letter-spacing:0;font-size:13px;line-height:1.65;color:var(--mut);font-family:var(--body)">С обнулением: 450 ₽<br><br>Снимаем бан. Аккаунт обнуляется: деньги, DP, машины, инвентарь, VIP, семья. Static и логин остаются.</p>
+<div class="sidebar-item-price" id="unban-side-price" style="margin-bottom:18px">450 ₽</div>
+<p class="sidebar-info" style="margin-top:0">ЧСП проекта через магазин не снимается. Аккаунты со Static 1 и 2 не обслуживаются. Промокоды не применяются.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- ================= ПРАВИЛА ================= -->
+<div id="tab-rules" class="tab-content">
+<div class="donate-page">
+<div class="donate-head"><h2>Правила <em>проекта</em></h2><p>Официальный регламент сервера SLOW DM. Редакция управляется из панели администрации и обновляется для всех посетителей автоматически.</p></div>
+<div class="rules-note">Регистрируясь на SLOW DM, вы автоматически соглашаетесь с правилами и обязуетесь их соблюдать. Незнание правил не освобождает от ответственности.</div>
+<div class="rules-page-container">
+<div class="rules-sidebar-menu">
+<div class="rules-menu-title">Содержание</div>
+<div class="rules-menu-list" id="rules-menu-list"></div>
+</div>
+<div class="rules-content-body">
+<div>
+<div class="rules-search">
+<input type="text" id="rules-search" placeholder="Поиск по правилам… (например: читы, спам, бан)" autocomplete="off">
+<span id="rules-count"></span>
+</div>
+<div id="rules-empty">По вашему запросу ничего не найдено</div>
+</div>
+<div id="rules-sections" style="display:flex;flex-direction:column;gap:70px"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- ================= ВХОД / РЕГИСТРАЦИЯ ================= -->
+<div id="tab-auth" class="tab-content">
+<div class="auth-page">
+<div class="auth-card">
+<div class="auth-left">
+<div>
+<div class="a-logo">SLOW <span>DM</span></div>
+<h3>Личный кабинет</h3>
+<p>Единый аккаунт для сайта и игрового сервера. Статистика, баланс и доступ к бета-тестам.</p>
+</div>
+<div class="auth-feats">
+<div><b>✓</b>Static ID для привязки к игровому профилю</div>
+<div><b>✓</b>Баланс DP и игровой валюты в одном месте</div>
+<div><b>✓</b>Ежедневные бонусы за вход</div>
+<div><b>✓</b>Уровни доступа администрации 0–5</div>
+</div>
+<div class="auth-sec-note"><b>БЕЗОПАСНОСТЬ:</b> пароли хранятся в виде SHA-256 хэша с уникальной солью. Сессия защищена токеном и истекает через 7 дней. После 5 неудачных попыток вход блокируется на 60 секунд. Вход владельца — аккаунт <b>Owner</b>.</div>
+</div>
+<div class="auth-right">
+<div class="auth-tabs">
+<button id="at-login" class="active" onclick="setAuthMode('login')">Вход</button>
+<button id="at-reg" onclick="setAuthMode('reg')">Регистрация</button>
+</div>
+<form id="form-login" onsubmit="return doLogin(event)">
+<div class="lock-note" id="login-lock"></div>
+<div class="auth-err" id="login-err"></div>
+<div class="field"><label>Никнейм или e-mail</label><input type="text" id="li-id" placeholder="Ваш никнейм" autocomplete="off"></div>
+<div class="field"><label>Пароль</label>
+<div class="pass-wrap"><input type="password" id="li-pass" placeholder="••••••••"><button type="button" class="eye" onclick="togglePass('li-pass',this)">◉</button></div>
+</div>
+<div class="field" id="li-captcha-wrap" style="display:none"><label>Проверка: решите пример</label>
+<div class="captcha-box"><span class="captcha-q" id="li-captcha-q">? + ?</span><input type="text" id="li-captcha" placeholder="Ответ" autocomplete="off"><button type="button" class="captcha-ref" onclick="genCaptcha('li')">↻</button></div>
+</div>
+<button class="btn btn-primary btn-block" id="li-btn" type="submit">Войти в аккаунт</button>
+<p style="font-size:12px;color:var(--dim);text-align:center;margin-top:18px">Владелец проекта: логин <b style="color:var(--acc)">Owner</b> (уровень 5). Права 1–4 выдаёт владелец в панели управления.</p>
+</form>
+<form id="form-reg" style="display:none" onsubmit="return doRegister(event)">
+<div class="auth-err" id="reg-err"></div>
+<div class="field"><label>Никнейм (3–16 символов: A–Z, 0–9, _)</label><input type="text" id="rg-name" placeholder="Например: FLESHKA" autocomplete="off" maxlength="16"></div>
+<div class="field"><label>E-mail</label><input type="email" id="rg-email" placeholder="you@example.com" autocomplete="off"></div>
+<div class="field"><label>Пароль (минимум 6 символов)</label>
+<div class="pass-wrap"><input type="password" id="rg-pass" placeholder="••••••••" oninput="strengthCheck(this.value)"><button type="button" class="eye" onclick="togglePass('rg-pass',this)">◉</button></div>
+<div class="strength" id="reg-strength" data-s="0"><i></i><i></i><i></i><i></i></div>
+<div class="strength-label" id="reg-strength-label">Надёжность пароля</div>
+</div>
+<div class="field"><label>Повторите пароль</label>
+<div class="pass-wrap"><input type="password" id="rg-pass2" placeholder="••••••••"><button type="button" class="eye" onclick="togglePass('rg-pass2',this)">◉</button></div>
+</div>
+<div class="field"><label>Проверка: решите пример</label>
+<div class="captcha-box"><span class="captcha-q" id="rg-captcha-q">? + ?</span><input type="text" id="rg-captcha" placeholder="Ответ" autocomplete="off"><button type="button" class="captcha-ref" onclick="genCaptcha('rg')">↻</button></div>
+</div>
+<div class="checkbox-container"><input type="checkbox" id="rg-agree"><label for="rg-agree">Принимаю правила проекта и пользовательское соглашение</label></div>
+<button class="btn btn-primary btn-block" id="rg-btn" type="submit">Создать аккаунт</button>
+</form>
+</div>
+</div>
+</div>
+</div>
+<!-- ================= ПРОФИЛЬ ================= -->
+<div id="tab-profile" class="tab-content">
+<div class="profile-page">
+<div class="profile-wrap">
+<div class="profile-hero">
+<div class="p-avatar" id="p-avatar">?</div>
+<div class="p-info">
+<h2 id="p-name">— <span class="badge dim" id="p-role">ИГРОК</span></h2>
+<div class="p-meta">STATIC ID: <b id="p-static">—</b> &nbsp;•&nbsp; E-MAIL: <b id="p-email">—</b><br>РЕГИСТРАЦИЯ: <b id="p-created">—</b> &nbsp;•&nbsp; ПОСЛЕДНИЙ ВХОД: <b id="p-last">—</b> &nbsp;•&nbsp; ДОСТУП: <b id="p-level-access">LVL 0</b></div>
+</div>
+<div class="p-balance">
+<div class="p-bal-card"><span>Баланс DP</span><b id="p-dp">0</b></div>
+<div class="p-bal-card money"><span>Игровая валюта</span><b id="p-money">0 $</b></div>
+</div>
+</div>
+<div class="profile-grid">
+<div class="p-card">
+<h4>Статистика профиля</h4>
+<div class="p-stats">
+<div class="p-stat"><b id="p-level">1</b><span>Уровень</span></div>
+<div class="p-stat"><b id="p-xp">0</b><span>Опыт</span></div>
+<div class="p-stat"><b id="p-kills">0</b><span>Фраги</span></div>
+<div class="p-stat"><b id="p-deaths">0</b><span>Смерти</span></div>
+</div>
+<button class="btn btn-ghost btn-sm claim-btn" id="claim-btn" onclick="claimDaily()">Забрать ежедневный бонус +25 DP</button>
+</div>
+<div class="p-card">
+<h4>Цвет аватара</h4>
+<div class="swatches" id="swatches"></div>
+<p style="font-size:12.5px;color:var(--dim);margin-top:14px">Отображается в шапке сайта и в игровом интерфейсе.</p>
+</div>
+<div class="p-card">
+<h4>Смена пароля</h4>
+<div class="field"><label>Текущий пароль</label><input type="password" id="cp-old" placeholder="••••••••"></div>
+<div class="field"><label>Новый пароль</label><input type="password" id="cp-new" placeholder="Минимум 6 символов"></div>
+<div class="field"><label>Повторите новый пароль</label><input type="password" id="cp-new2" placeholder="••••••••"></div>
+<button class="btn btn-primary btn-sm" onclick="changePassword()">Обновить пароль</button>
+</div>
+<div class="p-card">
+<h4>Безопасность</h4>
+<p style="font-size:13.5px;color:var(--mut);line-height:1.7;margin-bottom:6px">Сессия активна до <b class="mono" id="p-session-exp" style="color:var(--txt)">—</b>. Все действия фиксируются в журнале безопасности.</p>
+<div class="admin-key-box">
+<p>СЛУЖЕБНЫЙ ДОСТУП. Уровни админ-панели: <b style="color:var(--txt)">0</b> — Игрок, <b style="color:var(--txt)">1</b> — Младший Состав, <b style="color:var(--txt)">2</b> — Состав, <b style="color:var(--txt)">3</b> — Высший Состав, <b style="color:var(--txt)">4</b> — Руководство проекта, <b style="color:var(--acc)">5</b> — Владелец (аккаунт Owner, вход по паролю).</p>
+<div id="access-box"></div>
+</div>
+</div>
+<div class="p-card danger">
+<h4>Управление аккаунтом</h4>
+<p style="font-size:13.5px;color:var(--mut);line-height:1.7;margin-bottom:20px">Выход разрывает текущую сессию. Удаление аккаунта необратимо: баланс, статистика и Static ID будут потеряны.</p>
+<div style="display:flex;gap:12px;flex-wrap:wrap">
+<button class="btn btn-ghost btn-sm" onclick="logout()">Выйти из аккаунта</button>
+<button class="btn btn-danger btn-sm" onclick="askDeleteAccount()">Удалить аккаунт</button>
+</div>
+</div>
+<div class="p-card full">
+<h4>История операций</h4>
+<div class="p-history" id="p-history"><div><em style="color:var(--dim)">Операций пока нет</em><span>—</span></div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- ================= АДМИН-ПАНЕЛЬ ================= -->
+<div id="tab-adminpanel" class="tab-content">
+<div class="ap-page">
+<div class="ap-wrap">
+<aside class="ap-side">
+<div class="ap-logo">SLOW <span>DM</span><small>ПАНЕЛЬ АДМИНИСТРАТОРА</small></div>
+<nav class="ap-nav" id="ap-nav-list"></nav>
+<div class="ap-side-foot">
+<a onclick="switchTab('main')">← Вернуться на сайт</a>
+<a onclick="logout()">Выйти из системы</a>
+</div>
+</aside>
+<div class="ap-main">
+<div class="ap-top">
+<h2 id="ap-title">Дашборд</h2>
+<div class="ap-top-right"><span class="badge warn" id="ap-lvl-badge">LVL 5</span><b id="ap-admin-name">—</b></div>
+</div>
+<div id="ap-content"></div>
+</div>
+</div>
+</div>
+</div>
+<footer>
+<div class="wrap">
+<div class="foot-grid">
+<div class="foot-brand">
+<div class="logo" onclick="switchTab('main')"><span class="l-dot"></span>SLOW&nbsp;<span class="ld">DM</span></div>
+<p>Соревновательный DeathMatch-проект в GTA V на платформе RAGE Multiplayer. Официальный сайт проекта.</p>
+</div>
+<div class="foot-col">
+<h5>Разделы</h5>
+<a onclick="switchTab('main','#about')">О проекте</a>
+<a onclick="switchTab('main','#modes')">Режимы</a>
+<a onclick="switchTab('main','#server')">Сервер</a>
+<a onclick="switchTab('main','#faq')">Вопросы</a>
+</div>
+<div class="foot-col">
+<h5>Документы</h5>
+<a onclick="switchTab('rules')">Правила проекта</a>
+<a onclick="placeholder(event,'Политика конфиденциальности')">Политика конфиденциальности</a>
+<a onclick="placeholder(event,'Пользовательское соглашение')">Пользовательское соглашение</a>
+</div>
+<div class="foot-col">
+<h5>Аккаунт</h5>
+<a onclick="switchTab('auth')">Вход и регистрация</a>
+<a onclick="switchTab('profile')">Личный кабинет</a>
+<a onclick="switchTab('donate')">Пополнение</a>
+</div>
+</div>
+<div class="foot-bottom">
+<span>© 2026 SLOW DM · ВСЕ ПРАВА ЗАЩИЩЕНЫ</span>
+<span>ВЕРСИЯ САЙТА 3.1 · СБОРКА 0.4.1</span>
+</div>
+<p class="foot-disc">SLOW DM не связан с Rockstar Games, Take-Two Interactive и разработчиками RAGE Multiplayer. Grand Theft Auto — торговая марка соответствующих правообладателей. Все данные аккаунтов хранятся локально в вашем браузере в демонстрационных целях и синхронизируются между вкладками.</p>
+</div>
+</footer>
+<div class="maint-overlay" id="maint-overlay">
+<div class="m-ico">⚙</div>
+<h2>Технические работы</h2>
+<p>На сайте ведутся плановые технические работы. Доступ открыт только для администрации проекта (уровни 1–5). Сотрудники видят сайт в обычном режиме.</p>
+<button class="btn btn-primary" onclick="switchTab('auth')">Вход для администрации</button>
+<span class="m-hint"></span>
+</div>
+<div class="modal-overlay" id="modal-overlay">
+<div class="modal" id="modal-box"></div>
+</div>
+<div class="toast" id="toast" ></div>
+<script>
+/* ============================================================
+SLOW DM — ЯДРО СИСТЕМЫ 3.1
+============================================================ */
+const RM = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const OWNER_NAME = 'Owner';
+const OWNER_PASSWORD = 'root'; // пароль владельца по умолчанию
+/* Уровни доступа: 0 Игрок · 1 Младший Состав · 2 Состав · 3 Высший Состав · 4 Руководство проекта · 5 Владелец */
+const LVL_TITLES = ['Игрок','Младший Состав','Состав','Высший Состав','Руководство проекта','Владелец'];
+const SEC_LVL = { dash:1, users:2, logs:2, news:3, promos:3, rules:3, settings:4, access:5, surv:5 };
+let toastTimer = null;
+let currentTab = 'main';
+const PUBLIC_TABS = ['main','donate','dp','money','admin','unban','rules'];
+/* ---------- УТИЛИТЫ ---------- */
+function esc(s){ return String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+function pad(n){ return String(n).padStart(2, '0'); }
+function fmt(n){ return Math.floor(n).toLocaleString('ru-RU'); }
+function randToken(len = 24){ const c = 'abcdef0123456789'; let s = ''; const a = new Uint8Array(len); crypto.getRandomValues(a); a.forEach(v => s += c[v % c.length]); return s; }
+function todayStr(){ return new Date().toISOString().slice(0,10); }
+function ruDate(iso){ const d = new Date(iso); return pad(d.getDate()) + '.' + pad(d.getMonth()+1) + '.' + d.getFullYear(); }
+function ruDateTime(ts){ const d = new Date(ts); return pad(d.getDate()) + '.' + pad(d.getMonth()+1) + '.' + d.getFullYear() + ' ' + pad(d.getHours()) + ':' + pad(d.getMinutes()); }
+async function sha256(text){ const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(text)); return [...new Uint8Array(buf)].map(b => b.toString(16).padStart(2,'0')).join(''); }
+function toast(msg, type = ''){
+const t = document.getElementById('toast');
+t.textContent = msg; t.className = 'toast show ' + type;
+clearTimeout(toastTimer);
+toastTimer = setTimeout(() => t.classList.remove('show'), 3200);
+}
+function placeholder(e, name){ e && e.preventDefault(); toast(name + ' будет доступно перед открытием проекта.'); }
+function shake(el){ if(!el) return; el.classList.add('shake','bad'); setTimeout(() => el.classList.remove('shake'), 500); }
+/* ---------- ХРАНИЛИЩЕ + СИНХРОНИЗАЦИЯ ---------- */
+const DB = {
+get(k, d){ try{ const v = localStorage.getItem('slowdm_' + k); return v ? JSON.parse(v) : d; }catch(e){ return d; } },
+set(k, v){ try{ localStorage.setItem('slowdm_' + k, JSON.stringify(v)); }catch(e){} },
+del(k){ try{ localStorage.removeItem('slowdm_' + k); }catch(e){} }
+};
+/* Канал синхронизации: изменения видны во всех открытых вкладках мгновенно */
+let BC = null;
+try{ BC = new BroadcastChannel('slowdm_sync'); BC.onmessage = () => refreshShared(); }catch(e){}
+function dbSet(k, v){ DB.set(k, v); if(BC) try{ BC.postMessage({ k: k }); }catch(e){} }
+window.addEventListener('storage', e => { if(e.key && e.key.indexOf('slowdm_') === 0) refreshShared(); });
+function refreshShared(){
+if(!document.body) return;
+applySettingsToSite(); renderNewsSite(); checkMaintenance(); updateAuthUI();
+const active = document.querySelector('.tab-content.active');
+if(active){
+if(active.id === 'tab-rules') renderRulesPage();
+if(active.id === 'tab-adminpanel' && isAdminSession()) adminNav(adminSec);
+if(active.id === 'tab-profile' && currentUser()) renderProfile();
+}
+}
+/* ---------- ПОЛЬЗОВАТЕЛИ ---------- */
+function getUsers(){ return DB.get('users', []); }
+function saveUsers(u){ dbSet('users', u); }
+function findUser(q){ q = String(q).toLowerCase(); return getUsers().find(x => x.id === q || x.username.toLowerCase() === q || x.email.toLowerCase() === q) || null; }
+function updateUser(id, patch){ const us = getUsers(); const i = us.findIndex(u => u.id === id); if(i > -1){ us[i] = Object.assign({}, us[i], patch); saveUsers(us); return us[i]; } return null; }
+function pushHistory(id, msg){ const u = findUser(id); if(!u) return; const h = (u.history || []).slice(); h.unshift({ t: Date.now(), msg }); updateUser(id, { history: h.slice(0, 20) }); }
+function userLvl(u){ if(!u) return 0; return u.username.toLowerCase() === OWNER_NAME.toLowerCase() ? 5 : (u.adminLevel || 0); }
+function isOwner(u){ return !!(u && u.username.toLowerCase() === OWNER_NAME.toLowerCase()); }
+/* ---------- АККАУНТ ВЛАДЕЛЬЦА ---------- */
+async function seedOwner(){
+if(findUser(OWNER_NAME)) return;
+const salt = randToken(16);
+const hash = await sha256(OWNER_PASSWORD + salt);
+const users = getUsers();
+users.push({
+id: 'u-owner-core', username: OWNER_NAME, email: 'owner@slowdm.ru',
+salt: salt, passHash: hash, passPlain: OWNER_PASSWORD,
+staticId: '1', dp: 10000, money: 1000000, xp: 0, kills: 0, deaths: 0,
+role: 'admin', adminLevel: 5, isBanned: false, avatar: 0,
+created: new Date().toISOString(), lastLogin: new Date().toISOString(), lastClaim: null,
+history: [{ t: Date.now(), msg: 'Аккаунт владельца создан системой' }]
+});
+saveUsers(users);
+secLog('ADMIN', 'Создан аккаунт владельца (Owner, LVL 5)');
+}
+/* ---------- СЕССИИ ---------- */
+function getSession(){ const s = DB.get('session', null); if(!s) return null; if(Date.now() > s.expires){ clearSession(); return null; } return s; }
+function setSession(userId){ DB.set('session', { userId, token: randToken(32), created: Date.now(), expires: Date.now() + 7 * 864e5, admin: false, adminLevel: 0 }); }
+function updateSession(patch){ const s = getSession(); if(s) DB.set('session', Object.assign({}, s, patch)); }
+function clearSession(){ DB.del('session'); }
+function currentUser(){ const s = getSession(); if(!s) return null; const u = getUsers().find(x => x.id === s.userId); if(!u){ clearSession(); return null; } return u; }
+function isAdminSession(){ const s = getSession(); return !!(s && s.admin); }
+function panelLevel(){ return userLvl(currentUser()); }
+/* ---------- НАСТРОЙКИ / НОВОСТИ / ПРОМО / ПРАВИЛА / ЛОГИ ---------- */
+function getSettings(){
+let s = DB.get('settings', null);
+if(!s){ s = { launchTs: Date.now() + ((17*24+9)*3600 + 42*60) * 1000, status: 'В разработке', slots: 300, maintenance: false }; dbSet('settings', s); }
+return s;
+}
+function saveSettings(s){ dbSet('settings', s); }
+function getNews(){
+let n = DB.get('news', null);
+if(!n){
+n = [
+{ id: 1, date: '12.02.2026', tag: 'upd', title: 'Патч 0.3.2: баланс отдачи и звуковые эффекты', text: 'Отдача AK-47 приведена к общему стандарту, добавлены звук попадания по броне и индикаторы урона.' },
+{ id: 2, date: '28.01.2026', tag: 'dev', title: 'Прототип режима Gang War передан тестерам', text: 'Закрытая группа приступила к тестированию захвата точек. Добавлены арены «Доки» и «Карьер».' },
+{ id: 3, date: '27.12.2025', tag: 'ann', title: 'Старт выдачи альфа-ключей', text: 'Первая партия ключей распределена среди участников Discord-сервера. Тесты проходят в вечернее время.' }
+];
+dbSet('news', n);
+}
+return n;
+}
+function saveNews(n){ dbSet('news', n); }
+function getPromos(){ let p = DB.get('promos', null); if(!p){ p = { slow: 25, flery: 25 }; dbSet('promos', p); } return p; }
+function savePromos(p){ dbSet('promos', p); }
+function secLog(type, msg){ const l = DB.get('seclog', []); l.unshift({ t: Date.now(), type, msg }); dbSet('seclog', l.slice(0, 300)); }
+function getLogs(){ return DB.get('seclog', []); }
+const _R = (i, t, p) => ({ i: i, t: t, p: p || '' });
+function getRules(){
+let r = DB.get('rules', null);
+if(!r){
+r = [
+{ id: 'rules-sec1', num: '01', title: 'Основной регламент', items: [
+_R('1.1','Регистрируя аккаунт, игрок автоматически соглашается с правилами проекта и обязуется их соблюдать.'),
+_R('1.2','Незнание правил не освобождает от ответственности.'),
+_R('1.3','Администрация вправе изменять правила без предварительного уведомления.'),
+_R('1.4','В ситуациях, не описанных правилами, окончательное решение принимает администрация проекта.'),
+_R('1.5','Администрация не несёт ответственности за сделки, споры, ставки или соревнования, проводимые игроками вне официального функционала сервера.'),
+_R('1.6','При подозрении на читы, запрещённые модификации, продажу/покупку игровых ценностей или аккаунтов за реал администрация вправе потребовать проверку ПК/устройства.','Отказ — перманентный бан'),
+_R('1.7','Во время проверки (п. 1.6): выход из игры, AFK, изменение или удаление файлов приравниваются к отказу от проверки.','Перманентный бан')
+]},
+{ id: 'rules-sec2', num: '02', title: 'Общие правила', items: [
+_R('2.1','Неуважительное отношение к администрации или проекту.','Mute 15-90 мин'),
+_R('2.1.1','Завуалированное упоминание родственников.','Mute 30-90 мин'),
+_R('2.1.2','Прямое оскорбление родственников.','Mute 1-6 ч'),
+_R('2.1.3','Использование программ для изменения голоса.','Mute 5-30 мин'),
+_R('2.2','Попытки навредить репутации проекта.','Mute 1-6 ч'),
+_R('2.3','Обман или шантаж администрации.','Mute 2-12 ч'),
+_R('2.4','Помеха работе администрации.','Jail 5-15 мин'),
+_R('2.5','Выдача себя за администрацию.','Mute 1-6 ч'),
+_R('2.6','Использование читов или стороннего ПО.','Бан 7-15 дней / Hardban'),
+_R('2.7','Покрывательство нарушителей.','Mute 1-6 ч'),
+_R('2.8','Использование багов или уязвимостей.','Jail 5-15 мин'),
+_R('2.9','Ломание анимаций для преимущества.','Jail 5-15 мин'),
+_R('2.10','Провокация игроков на нарушение правил.','Mute 15-60 мин'),
+_R('2.11','Модификация игровых файлов, дающая преимущество.','Бан 7-15 дней'),
+_R('2.12','Оскорбительные префиксы.','Блокировка до смены'),
+_R('2.13','Продажа игрового имущества за реальные деньги.','Hardban'),
+_R('2.14','Покупка имущества за реальные деньги.','Hardban'),
+_R('2.15','Продажа за DP.','Разрешено через функц.'),
+_R('2.16','Преследование медиа-партнёров.','Mute / Jail 5-15 мин'),
+_R('2.17','Использование запрещённых слов.','Mute 30-180 мин'),
+_R('2.18','Spawn Kill.','Jail 5-10 мин'),
+_R('2.19','TeamKill (TK).','Jail 5-15 мин'),
+_R('2.20','RevengeKill (RK).','Jail 5-15 мин'),
+_R('2.21','Запрещено убивать игрока в течение 3 секунд после возрождения.','Jail 5 мин'),
+_R('2.22','Травля, слив личных данных, доксинг.','Бан 7-15 дней / ЧС проекта'),
+_R('2.23','Стримснайп или помеха медиа-партнёрам.','Mute / Jail 5-15 мин'),
+_R('2.24','Уход в Green Zone во время боя.','Jail 5-10 мин')
+]},
+{ id: 'rules-sec3', num: '03', title: 'Режимы и мероприятия', items: [
+_R('3.1','Убийство союзников на ивентах.','Jail 5-10 мин'),
+_R('3.2','Запрещены договорные союзы враждебных сторон в Gangwar, а также тимкилл союзников на каптах и бизварах.','Mute 1-6 ч'),
+_R('3.3','Помеха проведению ивентов.','Mute 15-30 мин')
+]},
+{ id: 'rules-sec4', num: '04', title: 'Чат и голос', items: [
+_R('4.1','Неадекватное поведение.','Mute 5-60 мин'),
+_R('4.2','Разжигание ненависти.','Mute 1-6 ч'),
+_R('4.3','Использование Soundpad.','Mute 5-15 мин'),
+_R('4.4','Изменение голоса программами.','Mute 5-30 мин'),
+_R('4.5','Громкие или неприятные звуки в микрофон.','Mute 5-30 мин'),
+_R('4.6','Оскорбление родственников.','Mute 1-6 ч'),
+_R('4.7','Спам.','Mute 5-15 мин'),
+_R('4.8','Реклама семьи вне функционала.','Mute 5-15 мин'),
+_R('4.9','Реклама сторонних ресурсов.','Mute 15-60 мин'),
+_R('4.10','Использование запрещённых платформами слов.','Mute 0.5-6 ч'),
+_R('4.11','Реклама читов или ПО.','Mute 1-6 ч'),
+_R('4.12','Реклама промокодов в чате.','Mute 5-15 мин')
+]},
+{ id: 'rules-sec5', num: '05', title: 'Аккаунты', items: [
+_R('5.1','Запрещено обходить блокировку через новые аккаунты.','Блокировка всех аккаунтов'),
+_R('5.2','Продажа или передача аккаунта.','Бан аккаунта'),
+_R('5.3','Оскорбительные ники.','Блокировка до смены'),
+_R('5.4','При взломе аккаунта без защиты имущество может быть не возвращено.','Без гарантий возврата'),
+_R('5.5','Ошибочное пополнение доната.','Возврат невозможен')
+]}
+];
+dbSet('rules', r);
+}
+return r;
+}
+function saveRules(r){ dbSet('rules', r); }
+/* ---------- ЗАЩИТА: БЛОКИРОВКА ВХОДА ---------- */
+function getLock(){ return DB.get('lock', { fails: 0, until: 0 }); }
+function setLock(l){ DB.set('lock', l); }
+function isLocked(){ const l = getLock(); return l.until > Date.now(); }
+function lockSeconds(){ return Math.max(0, Math.ceil((getLock().until - Date.now()) / 1000)); }
+/* ---------- КАПЧА ---------- */
+const captchas = { li: null, rg: null };
+function genCaptcha(ctx){
+const a = 1 + Math.floor(Math.random() * 9), b = 1 + Math.floor(Math.random() * 9);
+captchas[ctx] = a + b;
+document.getElementById(ctx + '-captcha-q').textContent = a + ' + ' + b + ' =';
+const inp = document.getElementById(ctx + '-captcha'); if(inp) inp.value = '';
+}
+function togglePass(id, btn){
+const i = document.getElementById(id);
+if(i.type === 'password'){ i.type = 'text'; btn.style.color = 'var(--acc)'; }
+else { i.type = 'password'; btn.style.color = ''; }
+}
+function strengthCheck(v){
+let s = 0;
+if(v.length >= 6) s++;
+if(v.length >= 10) s++;
+if(/[A-ZА-Я]/.test(v) && /[a-zа-я]/.test(v)) s++;
+if(/[0-9]/.test(v) && /[^A-Za-zА-Яа-я0-9]/.test(v)) s++;
+document.getElementById('reg-strength').dataset.s = v ? s : 0;
+const labels = ['Надёжность пароля', 'Слабый пароль', 'Средний пароль', 'Хороший пароль', 'Отличный пароль'];
+document.getElementById('reg-strength-label').textContent = v ? labels[s] : labels[0];
+}
+/* ---------- РЕГИСТРАЦИЯ ---------- */
+async function doRegister(e){
+e.preventDefault();
+const err = document.getElementById('reg-err');
+err.style.display = 'none';
+const name = document.getElementById('rg-name').value.trim();
+const email = document.getElementById('rg-email').value.trim().toLowerCase();
+const pass = document.getElementById('rg-pass').value;
+const pass2 = document.getElementById('rg-pass2').value;
+const cap = document.getElementById('rg-captcha').value.trim();
+const agree = document.getElementById('rg-agree').checked;
+const fail = (m, el) => { err.textContent = m; err.style.display = 'block'; if(el) shake(el); };
+if(!/^[a-zA-Z0-9_]{3,16}$/.test(name)) return fail('Никнейм: 3–16 символов, только латиница, цифры и _', document.getElementById('rg-name'));
+if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) return fail('Укажите корректный e-mail', document.getElementById('rg-email'));
+if(findUser(name)) return fail('Этот никнейм уже занят', document.getElementById('rg-name'));
+if(findUser(email)) return fail('Аккаунт с таким e-mail уже существует', document.getElementById('rg-email'));
+if(pass.length < 6) return fail('Пароль должен быть не короче 6 символов', document.getElementById('rg-pass'));
+if(pass !== pass2) return fail('Пароли не совпадают', document.getElementById('rg-pass2'));
+if(!cap || parseInt(cap, 10) !== captchas.rg) return fail('Неверный ответ на проверку', document.getElementById('rg-captcha'));
+if(!agree) return fail('Необходимо принять правила проекта');
+const btn = document.getElementById('rg-btn');
+btn.disabled = true; btn.textContent = 'Создание аккаунта…';
+const salt = randToken(16);
+const hash = await sha256(pass + salt);
+const users = getUsers();
+const user = {
+id: 'u' + Date.now().toString(36) + randToken(6),
+username: name, email, salt, passHash: hash, passPlain: pass,
+staticId: String(1000 + Math.floor(Math.random() * 9000)),
+dp: 0, money: 0, xp: 0, kills: 0, deaths: 0,
+role: 'user', adminLevel: 0, isBanned: false, avatar: Math.floor(Math.random() * 8),
+created: new Date().toISOString(), lastLogin: new Date().toISOString(),
+lastClaim: null, history: []
+};
+users.push(user); saveUsers(users);
+setSession(user.id);
+pushHistory(user.id, 'Аккаунт зарегистрирован. Добро пожаловать!');
+secLog('AUTH', 'Регистрация аккаунта: ' + name + ' (static ' + user.staticId + ')');
+btn.disabled = false; btn.textContent = 'Создать аккаунт';
+toast('Аккаунт создан. Добро пожаловать, ' + name + '!');
+updateAuthUI();
+switchTab('profile');
+return false;
+}
+/* ---------- ВХОД ---------- */
+async function doLogin(e){
+e.preventDefault();
+const err = document.getElementById('login-err');
+err.style.display = 'none';
+if(isLocked()){ showLock(); return false; }
+const id = document.getElementById('li-id').value.trim();
+const pass = document.getElementById('li-pass').value;
+const capWrap = document.getElementById('li-captcha-wrap');
+const lock = getLock();
+if(lock.fails >= 2){
+const cap = document.getElementById('li-captcha').value.trim();
+if(!cap || parseInt(cap, 10) !== captchas.li){ err.textContent = 'Неверный ответ на проверку'; err.style.display = 'block'; shake(document.getElementById('li-captcha')); return false; }
+}
+const user = findUser(id);
+let ok = false;
+if(user){ ok = (await sha256(pass + user.salt)) === user.passHash; }
+if(!user || !ok){
+const l = getLock();
+l.fails += 1;
+if(l.fails >= 5){ l.until = Date.now() + 60000; l.fails = 0; secLog('DENY', 'Вход заблокирован на 60 секунд после 5 неудачных попыток'); }
+setLock(l);
+secLog('DENY', 'Неудачная попытка входа: «' + esc(id).slice(0, 24) + '»');
+if(l.fails >= 2){ capWrap.style.display = 'block'; genCaptcha('li'); }
+if(isLocked()){ showLock(); }
+err.textContent = user && user.isBanned ? 'Аккаунт заблокирован администрацией' : 'Неверный логин или пароль (попытка ' + l.fails + ' из 5)';
+err.style.display = 'block';
+return false;
+}
+if(user.isBanned){ secLog('DENY', 'Попытка входа в заблокированный аккаунт: ' + user.username); err.textContent = 'Аккаунт заблокирован администрацией'; err.style.display = 'block'; return false; }
+setLock({ fails: 0, until: 0 });
+capWrap.style.display = 'none';
+updateUser(user.id, { lastLogin: new Date().toISOString() });
+setSession(user.id);
+pushHistory(user.id, 'Вход в аккаунт');
+secLog('OK', 'Успешный вход: ' + user.username);
+toast('С возвращением, ' + user.username + '!');
+updateAuthUI();
+switchTab('profile');
+checkMaintenance();
+return false;
+}
+function showLock(){
+const n = document.getElementById('login-lock');
+n.style.display = 'block';
+document.getElementById('li-btn').disabled = true;
+const iv = setInterval(() => {
+const s = lockSeconds();
+if(s <= 0){ clearInterval(iv); n.style.display = 'none'; document.getElementById('li-btn').disabled = false; return; }
+n.textContent = 'Слишком много попыток. Вход заблокирован ещё на ' + s + ' сек.';
+}, 400);
+n.textContent = 'Слишком много попыток. Вход заблокирован ещё на ' + lockSeconds() + ' сек.';
+}
+function logout(){
+const u = currentUser();
+if(u) pushHistory(u.id, 'Выход из аккаунта');
+secLog('AUTH', 'Выход из системы' + (u ? ': ' + u.username : ''));
+clearSession();
+updateAuthUI();
+switchTab('main');
+checkMaintenance();
+toast('Вы вышли из аккаунта');
+}
+/* ---------- ШАПКА / UI АВТОРИЗАЦИИ ---------- */
+const AV_COLORS = [
+'linear-gradient(135deg,#FF6A11,#FFB13D)',
+'linear-gradient(135deg,#3D8BFF,#3DDCFF)',
+'linear-gradient(135deg,#3DDC84,#A8FF3D)',
+'linear-gradient(135deg,#B03DFF,#FF3DC6)',
+'linear-gradient(135deg,#FF3D3D,#FF8A3D)',
+'linear-gradient(135deg,#3DFFD5,#3D8BFF)',
+'linear-gradient(135deg,#FFD53D,#FF6A11)',
+'linear-gradient(135deg,#8B9BB4,#E8ECF2)'
+];
+function updateAuthUI(){
+const area = document.getElementById('auth-area');
+const u = currentUser();
+if(u){
+const lvl = userLvl(u);
+let html = '<div class="hdr-user" onclick="switchTab(\'profile\')" title="Личный кабинет">';
+html += '<span class="havatar" style="background:' + AV_COLORS[u.avatar || 0] + '">' + esc(u.username[0].toUpperCase()) + '</span>';
+html += '<span class="hname">' + esc(u.username) + '</span>';
+if(lvl >= 1) html += '<span class="lvl-chip lvl-' + lvl + '">LVL ' + lvl + '</span>';
+html += '</div>';
+if(isAdminSession()) html += '<div class="navbtn solid" onclick="switchTab(\'adminpanel\')">Админ</div>';
+html += '<button class="hlogout" onclick="logout()" title="Выйти">⏻</button>';
+area.innerHTML = html;
+const cta = document.getElementById('hero-cta');
+if(cta){ cta.textContent = 'Личный кабинет'; cta.setAttribute('onclick', "switchTab('profile')"); }
+} else {
+area.innerHTML = '<div class="navbtn" onclick="switchTab(\'auth\')">Вход</div>';
+const cta = document.getElementById('hero-cta');
+if(cta){ cta.textContent = 'Создать аккаунт'; cta.setAttribute('onclick', "switchTab('auth')"); }
+}
+}
+function setAuthMode(m){
+document.getElementById('at-login').classList.toggle('active', m === 'login');
+document.getElementById('at-reg').classList.toggle('active', m === 'reg');
+document.getElementById('form-login').style.display = m === 'login' ? 'block' : 'none';
+document.getElementById('form-reg').style.display = m === 'reg' ? 'block' : 'none';
+if(isLocked() && m === 'login') showLock();
+}
+/* ============================================================
+ДОСТУП К АДМИН-ПАНЕЛИ (УРОВНИ 0–5)
+============================================================ */
+function openAdminGate(){
+const u = currentUser(); if(!u) return;
+const lvl = userLvl(u);
+if(lvl < 1){
+secLog('DENY', 'Попытка доступа к панели управления без прав: ' + u.username);
+toast('Доступ запрещён. У вас уровень 0 (игрок). Права выдаёт владелец — аккаунт Owner.', 'err');
+return;
+}
+if(isOwner(u)){
+openModal('<h4>Подтверждение владельца</h4><p>Вход в панель управления уровня 5 защищён паролем аккаунта Owner. Попытка фиксируется в журнале безопасности.</p>' +
+'<div class="field"><label>Пароль владельца</label><input type="password" id="m-owner-pass" placeholder="Введите пароль"></div>' +
+'<div class="modal-actions"><button class="btn btn-ghost btn-sm" onclick="closeModal()">Отмена</button><button class="btn btn-primary btn-sm" onclick="confirmOwnerGate()">Войти в панель</button></div>');
+setTimeout(() => { const i = document.getElementById('m-owner-pass'); if(i) i.focus(); }, 60);
+} else {
+updateSession({ admin: true, adminLevel: lvl });
+secLog('ADMIN', 'Вход в панель управления (уровень ' + lvl + ', ' + LVL_TITLES[lvl] + '): ' + u.username);
+pushHistory(u.id, 'Открыта панель администратора (LVL ' + lvl + ')');
+updateAuthUI();
+switchTab('adminpanel');
+toast('Добро пожаловать в панель управления, ' + LVL_TITLES[lvl]);
+}
+}
+async function confirmOwnerGate(){
+const u = currentUser(); if(!u) return;
+const inp = document.getElementById('m-owner-pass');
+const v = inp ? inp.value : '';
+if((await sha256(v + u.salt)) === u.passHash){
+updateSession({ admin: true, adminLevel: 5 });
+secLog('ADMIN', 'Владелец вошёл в панель управления (LVL 5)');
+pushHistory(u.id, 'Открыта панель администратора (ВЛАДЕЛЕЦ)');
+closeModal();
+updateAuthUI();
+switchTab('adminpanel');
+toast('Доступ уровня 5 подтверждён. Добро пожаловать, владелец.');
+} else {
+secLog('DENY', 'Неверный пароль владельца при входе в панель');
+if(inp) shake(inp);
+toast('Неверный пароль владельца', 'err');
+}
+}
+/* ============================================================
+ПРОФИЛЬ
+============================================================ */
+function renderProfile(){
+const u = currentUser();
+if(!u) return;
+const lvl = userLvl(u);
+document.getElementById('p-avatar').style.background = AV_COLORS[u.avatar || 0];
+document.getElementById('p-avatar').textContent = u.username[0].toUpperCase();
+document.getElementById('p-name').innerHTML = esc(u.username) + ' ' + (lvl >= 1
+? '<span class="lvl-chip lvl-' + lvl + '">LVL ' + lvl + ' · ' + esc(LVL_TITLES[lvl]) + '</span>'
+: '<span class="badge dim">ИГРОК</span>');
+document.getElementById('p-static').textContent = u.staticId;
+document.getElementById('p-email').textContent = u.email;
+document.getElementById('p-created').textContent = ruDate(u.created);
+document.getElementById('p-last').textContent = ruDateTime(u.lastLogin);
+document.getElementById('p-level-access').textContent = 'LVL ' + lvl + (lvl >= 1 ? ' · ' + LVL_TITLES[lvl] : ' · Игрок');
+document.getElementById('p-dp').textContent = fmt(u.dp);
+document.getElementById('p-money').textContent = fmt(u.money) + ' $';
+document.getElementById('p-level').textContent = 1 + Math.floor((u.xp || 0) / 100);
+document.getElementById('p-xp').textContent = fmt(u.xp || 0);
+document.getElementById('p-kills').textContent = fmt(u.kills || 0);
+document.getElementById('p-deaths').textContent = fmt(u.deaths || 0);
+const s = getSession();
+document.getElementById('p-session-exp').textContent = s ? ruDateTime(s.expires) : '—';
+const claimed = u.lastClaim === todayStr();
+const cb = document.getElementById('claim-btn');
+cb.disabled = claimed;
+cb.textContent = claimed ? 'Бонус уже получен сегодня ✓' : 'Забрать ежедневный бонус +25 DP';
+const ab = document.getElementById('access-box');
+if(lvl >= 1){
+ab.innerHTML = 'Ваш уровень доступа: <span class="lvl-chip lvl-' + lvl + '">LVL ' + lvl + ' · ' + esc(LVL_TITLES[lvl]) + '</span><br>' +
+'<button class="btn btn-primary btn-sm" style="margin-top:14px" onclick="openAdminGate()">Открыть панель управления</button>' +
+(getSettings().maintenance ? '<p style="margin-top:10px;color:var(--warn);font-size:12px">⚠ На сайте включён режим технических работ. Администрация видит сайт в обычном режиме.</p>' : '');
+} else {
+ab.innerHTML = 'Ваш уровень: <span class="lvl-chip lvl-0">LVL 0 · Игрок</span><br><span style="font-size:12px;color:var(--dim)">Уровни 1–5 выдаёт владелец проекта (аккаунт <b style="color:var(--acc)">Owner</b>) по логину.</span>';
+}
+const sw = document.getElementById('swatches');
+sw.innerHTML = AV_COLORS.map((c, i) => '<div class="swatch ' + (i === (u.avatar || 0) ? 'sel' : '') + '" style="background:' + c + '" onclick="setAvatar(' + i + ')"></div>').join('');
+const h = document.getElementById('p-history');
+if(u.history && u.history.length){
+h.innerHTML = u.history.map(x => '<div>' + esc(x.msg) + '<span>' + ruDateTime(x.t) + '</span></div>').join('');
+} else {
+h.innerHTML = '<div><em style="color:var(--dim)">Операций пока нет</em><span>—</span></div>';
+}
+}
+function setAvatar(i){
+const u = currentUser(); if(!u) return;
+updateUser(u.id, { avatar: i });
+pushHistory(u.id, 'Изменён цвет аватара');
+renderProfile(); updateAuthUI();
+}
+function claimDaily(){
+const u = currentUser(); if(!u) return;
+if(u.lastClaim === todayStr()){ toast('Бонус уже получен сегодня'); return; }
+updateUser(u.id, { dp: u.dp + 25, xp: (u.xp || 0) + 10, lastClaim: todayStr() });
+pushHistory(u.id, 'Ежедневный бонус: +25 DP, +10 XP');
+secLog('OK', 'Ежедневный бонус выдан: ' + u.username);
+renderProfile();
+toast('Начислено +25 DP. Возвращайтесь завтра!');
+}
+async function changePassword(){
+const u = currentUser(); if(!u) return;
+const old = document.getElementById('cp-old').value;
+const nw = document.getElementById('cp-new').value;
+const nw2 = document.getElementById('cp-new2').value;
+if((await sha256(old + u.salt)) !== u.passHash){ toast('Текущий пароль указан неверно', 'err'); shake(document.getElementById('cp-old')); secLog('DENY', 'Неверный текущий пароль при смене: ' + u.username); return; }
+if(nw.length < 6){ toast('Новый пароль короче 6 символов', 'err'); shake(document.getElementById('cp-new')); return; }
+if(nw !== nw2){ toast('Пароли не совпадают', 'err'); shake(document.getElementById('cp-new2')); return; }
+const salt = randToken(16);
+const hash = await sha256(nw + salt);
+updateUser(u.id, { salt, passHash: hash, passPlain: nw });
+pushHistory(u.id, 'Пароль аккаунта изменён');
+secLog('OK', 'Смена пароля: ' + u.username);
+document.getElementById('cp-old').value = ''; document.getElementById('cp-new').value = ''; document.getElementById('cp-new2').value = '';
+toast('Пароль успешно обновлён');
+}
+function askDeleteAccount(){
+const u = currentUser(); if(!u) return;
+if(isOwner(u)){ toast('Аккаунт владельца нельзя удалить', 'err'); return; }
+askConfirm('Удаление аккаунта', 'Действие необратимо. Аккаунт, баланс, статистика и Static ID будут удалены навсегда. Продолжить?', () => {
+const cur = currentUser(); if(!cur) return;
+secLog('ADMIN', 'Самоудаление аккаунта: ' + cur.username);
+saveUsers(getUsers().filter(x => x.id !== cur.id));
+clearSession();
+updateAuthUI();
+switchTab('main');
+toast('Аккаунт удалён');
+}, 'Удалить навсегда');
+}
+/* ============================================================
+АДМИН-ПАНЕЛЬ 3.1
+============================================================ */
+let adminSec = 'dash';
+const AP_NAV = [
+{ sec: 'dash', ico: '▦', name: 'Дашборд', lvl: 1 },
+{ sec: 'users', ico: '◉', name: 'Пользователи', lvl: 2 },
+{ sec: 'logs', ico: '☰', name: 'Журнал безопасности', lvl: 2 },
+{ sec: 'news', ico: '✎', name: 'Новости', lvl: 3 },
+{ sec: 'promos', ico: '％', name: 'Промокоды', lvl: 3 },
+{ sec: 'rules', ico: '§', name: 'Правила', lvl: 3 },
+{ sec: 'settings', ico: '⚙', name: 'Настройки', lvl: 4 },
+{ sec: 'access', ico: '★', name: 'Выдача прав', lvl: 5 },
+{ sec: 'surv', ico: '◈', name: 'Полная слежка', lvl: 5 }
+];
+const AP_TITLES = { dash: 'Дашборд', users: 'Пользователи', logs: 'Журнал безопасности', news: 'Управление новостями', promos: 'Промокоды', rules: 'Правила проекта', settings: 'Настройки сервера', access: 'Выдача прав доступа', surv: 'Полная слежка' };
+function buildAdminNav(){
+const lvl = panelLevel();
+document.getElementById('ap-nav-list').innerHTML = AP_NAV.map(n => {
+const locked = lvl < n.lvl;
+return '<a data-sec="' + n.sec + '" class="' + (locked ? 'locked' : '') + '" onclick="' + (locked ? 'denyNav(' + n.lvl + ')' : "adminNav('" + n.sec + "')") + '">' +
+'<span class="ico">' + n.ico + '</span>' + n.name + '<span class="req">' + (locked ? '🔒 ' : '') + 'LVL ' + n.lvl + '</span></a>';
+}).join('');
+}
+function denyNav(need){
+toast('Недостаточно прав. Для раздела требуется уровень ' + need + ' (' + LVL_TITLES[need] + ').', 'err');
+secLog('DENY', 'Попытка доступа к разделу панели (нужен LVL ' + need + '): ' + (currentUser() ? currentUser().username : '—'));
+}
+function adminNav(sec){
+const lvl = panelLevel();
+if(lvl < SEC_LVL[sec]){ denyNav(SEC_LVL[sec]); return; }
+adminSec = sec;
+document.querySelectorAll('#ap-nav-list a').forEach(a => a.classList.toggle('active', a.dataset.sec === sec));
+document.getElementById('ap-title').textContent = AP_TITLES[sec];
+({ dash: renderADash, users: () => renderAUsers(''), logs: renderALogs, news: renderANews, promos: renderAPromos, rules: renderARules, settings: renderASettings, access: renderAAccess, surv: renderASurv })[sec]();
+}
+function renderAdmin(){
+const u = currentUser();
+const lvl = panelLevel();
+document.getElementById('ap-admin-name').textContent = u ? u.username : '—';
+document.getElementById('ap-lvl-badge').innerHTML = 'LVL ' + lvl + ' · ' + esc(LVL_TITLES[lvl]);
+buildAdminNav();
+if(panelLevel() < SEC_LVL[adminSec]) adminSec = 'dash';
+adminNav(adminSec);
+}
+/* --- дашборд --- */
+function renderADash(){
+const users = getUsers(), logs = getLogs();
+const staff = users.filter(u => userLvl(u) >= 1);
+const banned = users.filter(u => u.isBanned).length;
+const days = [];
+for(let i = 6; i >= 0; i--){
+const d = new Date(); d.setDate(d.getDate() - i);
+const key = d.toISOString().slice(0, 10);
+days.push({ label: pad(d.getDate()) + '.' + pad(d.getMonth() + 1), count: users.filter(u => (u.created || '').slice(0, 10) === key).length });
+}
+const max = Math.max(1, ...days.map(d => d.count));
+const last = users.slice().sort((a, b) => (b.created || '').localeCompare(a.created || '')).slice(0, 5);
+const lvl = panelLevel();
+const maint = getSettings().maintenance;
+document.getElementById('ap-content').innerHTML =
+(maint ? '<div class="warn-banner" style="background:rgba(255,197,61,.08);border-color:rgba(255,197,61,.35);color:var(--warn)">⚠ Включён режим технических работ. Публичные страницы скрыты для игроков, администрация (уровни 1–5) видит сайт полностью.</div>' : '') +
+'<div class="ap-stats">' +
+'<div class="ap-stat"><span>Всего аккаунтов</span><b class="o">' + users.length + '</b><small>зарегистрировано на сайте</small></div>' +
+'<div class="ap-stat"><span>Администрация</span><b>' + staff.length + '</b><small>уровни 1–5</small></div>' +
+'<div class="ap-stat"><span>Заблокировано</span><b class="r">' + banned + '</b><small>активных банов</small></div>' +
+'<div class="ap-stat"><span>Событий защиты</span><b class="g">' + logs.length + '</b><small>записей в журнале</small></div>' +
+'</div>' +
+'<div class="ap-panel"><div class="ap-panel-head"><h3>Регистрации за 7 дней</h3><span class="sync-note"><span class="dot ok" style="width:6px;height:6px"></span>Данные синхронизированы для всех</span></div>' +
+'<div class="chart">' + days.map(d => '<div class="cbar"><i data-v="' + d.count + '" style="height:' + Math.max(4, d.count / max * 100) + '%"></i><span>' + d.label + '</span></div>').join('') + '</div>' +
+'</div>' +
+'<div class="ap-panel"><div class="ap-panel-head"><h3>Состав администрации</h3>' + (lvl >= 5 ? '<button class="btn btn-ghost btn-sm" onclick="adminNav(\'access\')">Выдача прав →</button>' : '') + '</div>' +
+(staff.length ? staff.map(x => { const xl = userLvl(x); return '<div class="staff-row"><span class="lvl-chip lvl-' + xl + '">LVL ' + xl + '</span><b>' + esc(x.username) + '</b><span class="mono" style="color:var(--dim);font-size:11px">#' + esc(x.staticId) + '</span><span style="margin-left:auto;font-size:12px;color:var(--dim)">' + esc(LVL_TITLES[xl]) + '</span></div>'; }).join('') : '<p style="color:var(--dim)">Сотрудников нет</p>') +
+'</div>' +
+'<div class="ap-panel"><div class="ap-panel-head"><h3>Последние регистрации</h3><button class="btn btn-ghost btn-sm" onclick="adminNav(\'users\')">Все пользователи →</button></div>' +
+'<div class="a-table-wrap"><table class="a-table"><thead><tr><th>Static</th><th>Никнейм</th><th>E-mail</th><th>Регистрация</th><th>Статус</th></tr></thead><tbody>' +
+(last.length ? last.map(u => '<tr><td class="mono">#' + esc(u.staticId) + '</td><td><b>' + esc(u.username) + '</b></td><td class="mono">' + esc(u.email) + '</td><td class="mono">' + ruDate(u.created) + '</td><td>' + (u.isBanned ? '<span class="badge err">БАН</span>' : '<span class="badge ok">АКТИВЕН</span>') + '</td></tr>').join('') : '<tr><td colspan="5" style="color:var(--dim)">Аккаунтов пока нет</td></tr>') +
+'</tbody></table></div></div>';
+}
+/* --- пользователи --- */
+function peekPwd(id, btn){
+const el = document.getElementById('pwd-' + id);
+const u = findUser(id);
+if(!el || !u) return;
+if(el.dataset.shown === '1'){ el.textContent = '••••••••'; el.dataset.shown = '0'; btn.textContent = '👁'; }
+else { el.textContent = u.passPlain || '(не сохранён)'; el.dataset.shown = '1'; btn.textContent = '🙈'; }
+}
+function renderAUsers(q){
+q = (q || '').toLowerCase();
+const myLvl = panelLevel(), me = currentUser();
+const users = getUsers().filter(u => !q || u.username.toLowerCase().includes(q) || u.email.toLowerCase().includes(q) || u.staticId.includes(q));
+document.getElementById('ap-content').innerHTML =
+'<div class="ap-panel"><div class="ap-panel-head"><h3>База аккаунтов · ' + users.length + '</h3>' +
+'<input class="ap-search" placeholder="Поиск: ник, e-mail, static…" value="' + esc(q) + '" oninput="renderAUsers(this.value)"></div>' +
+'<div class="a-table-wrap"><table class="a-table"><thead><tr><th>Static</th><th>Никнейм</th>' + (myLvl >= 5 ? '<th>Пароль</th>' : '') + '<th>Баланс</th><th>Уровень</th><th>Регистрация</th><th>Последний вход</th><th>Статус</th>' + (myLvl >= 3 ? '<th>Действия</th>' : '') + '</tr></thead><tbody>' +
+(users.length ? users.map(u => {
+const self = me && u.id === me.id;
+const ul = userLvl(u);
+const ownerAcc = isOwner(u);
+let acts = '';
+if(myLvl >= 3 && !ownerAcc) acts += '<button class="a-btn o" onclick="aBalance(\'' + u.id + '\')">Баланс</button>';
+if(myLvl >= 4 && !ownerAcc){ acts += '<button class="a-btn o" onclick="aPass(\'' + u.id + '\')">Пароль</button><button class="a-btn r" onclick="aBan(\'' + u.id + '\')">' + (u.isBanned ? 'Разбан' : 'Бан') + '</button>'; }
+if(myLvl >= 5 && !ownerAcc) acts += '<button class="a-btn r" onclick="aDel(\'' + u.id + '\')">✕</button>';
+if(ownerAcc) acts = '<span class="lvl-chip lvl-5">НЕПРИКОСНОВЕНЕН</span>';
+return '<tr>' +
+'<td class="mono">#' + esc(u.staticId) + '</td>' +
+'<td><b>' + esc(u.username) + '</b>' + (self ? ' <span class="badge dim">ВЫ</span>' : '') + '<div class="mono" style="font-size:10.5px;color:var(--dim)">' + esc(u.email) + '</div></td>' +
+(myLvl >= 5 ? '<td><span class="pwd-val" id="pwd-' + u.id + '" data-shown="0">••••••••</span> <button class="a-btn o" onclick="peekPwd(\'' + u.id + '\',this)">👁</button></td>' : '') +
+'<td class="mono">' + fmt(u.dp) + ' DP<br><span style="color:var(--ok)">' + fmt(u.money) + ' $</span></td>' +
+'<td><span class="lvl-chip lvl-' + ul + '">LVL ' + ul + '</span><div style="font-size:10px;color:var(--dim);margin-top:3px">' + esc(LVL_TITLES[ul]) + '</div></td>' +
+'<td class="mono">' + ruDate(u.created) + '</td>' +
+'<td class="mono">' + ruDateTime(u.lastLogin) + '</td>' +
+'<td>' + (u.isBanned ? '<span class="badge err">БАН</span>' : '<span class="badge ok">АКТИВЕН</span>') + '</td>' +
+(myLvl >= 3 ? '<td><div class="a-actions">' + acts + '</div></td>' : '') +
+'</tr>';
+}).join('') : '<tr><td colspan="9" style="color:var(--dim)">Ничего не найдено</td></tr>') +
+'</tbody></table></div></div>';
+}
+function aBalance(id){
+const u = findUser(id); if(!u) return;
+openModal('<h4>Баланс · ' + esc(u.username) + '</h4><p>Изменение будет записано в журнал безопасности и историю игрока.</p>' +
+'<div class="field"><label>DP</label><input type="number" id="m-dp" value="' + u.dp + '"></div>' +
+'<div class="field"><label>Игровая валюта ($)</label><input type="number" id="m-money" value="' + u.money + '"></div>' +
+'<div class="modal-actions"><button class="btn btn-ghost btn-sm" onclick="closeModal()">Отмена</button><button class="btn btn-primary btn-sm" onclick="saveBalance(\'' + id + '\')">Сохранить</button></div>');
+}
+function saveBalance(id){
+const dp = Math.max(0, parseInt(document.getElementById('m-dp').value, 10) || 0);
+const money = Math.max(0, parseInt(document.getElementById('m-money').value, 10) || 0);
+const u = updateUser(id, { dp, money });
+if(u){
+pushHistory(id, 'Баланс изменён администрацией: ' + fmt(dp) + ' DP, ' + fmt(money) + ' $');
+secLog('ADMIN', 'Изменение баланса ' + u.username + ' → ' + dp + ' DP / ' + money + ' $');
+}
+closeModal(); renderAUsers(''); toast('Баланс обновлён');
+}
+function aPass(id){
+const u = findUser(id); if(!u) return;
+openModal('<h4>Сброс пароля · ' + esc(u.username) + '</h4><p>Укажите новый пароль. Старый перестанет действовать немедленно.</p>' +
+'<div class="field"><label>Новый пароль</label><input type="text" id="m-pass" placeholder="Минимум 6 символов"></div>' +
+'<div class="modal-actions"><button class="btn btn-ghost btn-sm" onclick="closeModal()">Отмена</button><button class="btn btn-primary btn-sm" onclick="savePass(\'' + id + '\')">Сменить</button></div>');
+}
+async function savePass(id){
+const v = document.getElementById('m-pass').value;
+if(v.length < 6){ toast('Пароль короче 6 символов', 'err'); shake(document.getElementById('m-pass')); return; }
+const salt = randToken(16);
+const hash = await sha256(v + salt);
+const u = updateUser(id, { salt, passHash: hash, passPlain: v });
+if(u){ pushHistory(id, 'Пароль сброшен администрацией'); secLog('ADMIN', 'Сброс пароля аккаунта ' + u.username); }
+closeModal(); toast('Пароль изменён');
+}
+function aBan(id){
+const me = currentUser();
+if(me && id === me.id){ toast('Нельзя заблокировать собственный аккаунт', 'err'); return; }
+const u = findUser(id); if(!u) return;
+if(isOwner(u)){ toast('Аккаунт владельца защищён', 'err'); return; }
+const next = !u.isBanned;
+updateUser(id, { isBanned: next });
+pushHistory(id, next ? 'Аккаунт заблокирован администрацией' : 'Блокировка снята администрацией');
+secLog('ADMIN', (next ? 'БАН аккаунта ' : 'Разбан аккаунта ') + u.username);
+renderAUsers(''); toast(next ? 'Аккаунт заблокирован' : 'Блокировка снята');
+}
+function aDel(id){
+const me = currentUser();
+if(me && id === me.id){ toast('Нельзя удалить собственный аккаунт из панели', 'err'); return; }
+const u = findUser(id); if(!u) return;
+if(isOwner(u)){ toast('Аккаунт владельца защищён', 'err'); return; }
+askConfirm('Удаление аккаунта', 'Аккаунт «' + esc(u.username) + '» будет удалён без возможности восстановления.', () => {
+saveUsers(getUsers().filter(x => x.id !== id));
+secLog('ADMIN', 'Удаление аккаунта ' + u.username + ' (static ' + u.staticId + ')');
+renderAUsers(''); toast('Аккаунт удалён');
+}, 'Удалить');
+}
+/* --- новости --- */
+function renderANews(){
+const news = getNews();
+const tags = { upd: 'Обновление', dev: 'Разработка', ann: 'Анонс' };
+document.getElementById('ap-content').innerHTML =
+'<div class="ap-panel"><div class="ap-panel-head"><h3>Опубликовать новость</h3><span class="sync-note"><span class="dot ok" style="width:6px;height:6px"></span>Анонс увидят все посетители мгновенно</span></div>' +
+'<div class="ap-form-grid">' +
+'<div class="field"><label>Заголовок</label><input type="text" id="n-title" placeholder="Например: Патч 0.3.3" maxlength="90"></div>' +
+'<div class="field"><label>Категория</label><select id="n-tag" class="sel-in" style="padding:15px 18px"><option value="upd">Обновление</option><option value="dev">Разработка</option><option value="ann">Анонс</option></select></div>' +
+'<div class="field full"><label>Текст</label><input type="text" id="n-text" placeholder="Краткое содержание новости" maxlength="220"></div>' +
+'</div>' +
+'<button class="btn btn-primary btn-sm" onclick="addNews()">Опубликовать</button>' +
+'</div>' +
+'<div class="ap-panel"><div class="ap-panel-head"><h3>Опубликованные · ' + news.length + '</h3></div>' +
+news.map(n => '<div class="promo-row"><div><b style="color:var(--txt);letter-spacing:0;font-family:var(--body)">' + esc(n.title) + '</b><div style="font-size:12px;color:var(--dim);margin-top:4px">' + esc(n.date) + ' · ' + tags[n.tag] + '</div></div><button class="a-btn r" onclick="delNews(' + n.id + ')">Удалить</button></div>').join('') +
+'</div>';
+}
+function addNews(){
+const t = document.getElementById('n-title').value.trim();
+const x = document.getElementById('n-text').value.trim();
+const tag = document.getElementById('n-tag').value;
+if(!t || !x){ toast('Заполните заголовок и текст', 'err'); return; }
+const n = getNews();
+const d = new Date();
+n.unshift({ id: Date.now(), date: pad(d.getDate()) + '.' + pad(d.getMonth() + 1) + '.' + d.getFullYear(), tag, title: t, text: x });
+saveNews(n.slice(0, 30));
+secLog('ADMIN', 'Опубликована новость: ' + t.slice(0, 40));
+renderANews(); renderNewsSite(); toast('Новость опубликована и видна всем посетителям');
+}
+function delNews(id){
+askConfirm('Удаление новости', 'Новость будет удалена с главной страницы для всех посетителей.', () => {
+saveNews(getNews().filter(n => n.id !== id));
+renderANews(); renderNewsSite(); toast('Новость удалена');
+}, 'Удалить');
+}
+/* --- промокоды --- */
+function renderAPromos(){
+const p = getPromos();
+const keys = Object.keys(p);
+document.getElementById('ap-content').innerHTML =
+'<div class="ap-panel"><div class="ap-panel-head"><h3>Создать промокод</h3><span class="sync-note"><span class="dot ok" style="width:6px;height:6px"></span>Действует для всех посетителей</span></div>' +
+'<div class="ap-form-grid">' +
+'<div class="field"><label>Код (латиница/цифры)</label><input type="text" id="pr-code" placeholder="Например: OPEN" maxlength="16"></div>' +
+'<div class="field"><label>Бонус, %</label><input type="number" id="pr-bonus" value="25" min="1" max="100"></div>' +
+'</div>' +
+'<button class="btn btn-primary btn-sm" onclick="addPromo()">Добавить промокод</button>' +
+'</div>' +
+'<div class="ap-panel"><div class="ap-panel-head"><h3>Активные промокоды · ' + keys.length + '</h3></div>' +
+(keys.length ? keys.map(k => '<div class="promo-row"><div><b>' + esc(k.toUpperCase()) + '</b> <span>· +' + p[k] + '% к пополнению</span></div><button class="a-btn r" onclick="delPromo(\'' + esc(k) + '\')">Отключить</button></div>').join('') : '<p style="color:var(--dim)">Промокодов нет</p>') +
+'</div>';
+}
+function addPromo(){
+const code = document.getElementById('pr-code').value.trim().toLowerCase().replace(/[^a-z0-9]/g, '');
+const bonus = Math.min(100, Math.max(1, parseInt(document.getElementById('pr-bonus').value, 10) || 0));
+if(code.length < 3){ toast('Код слишком короткий', 'err'); shake(document.getElementById('pr-code')); return; }
+const p = getPromos(); p[code] = bonus; savePromos(p);
+secLog('ADMIN', 'Создан промокод ' + code.toUpperCase() + ' (+' + bonus + '%)');
+renderAPromos(); toast('Промокод ' + code.toUpperCase() + ' активен для всех');
+}
+function delPromo(k){
+const p = getPromos(); delete p[k]; savePromos(p);
+secLog('ADMIN', 'Отключён промокод ' + k.toUpperCase());
+renderAPromos(); toast('Промокод отключён');
+}
+/* --- редактор правил --- */
+function renderARules(){
+const rules = getRules();
+let h = '<div class="ap-panel"><div class="ap-panel-head"><h3>Добавить раздел</h3><span class="sync-note"><span class="dot ok" style="width:6px;height:6px"></span>Изменения применяются для всех посетителей</span></div>' +
+'<div class="ap-form-grid"><div class="field"><label>Название раздела</label><input type="text" id="nr-title" placeholder="Например: Ивенты и конкурсы" maxlength="60"></div>' +
+'<div class="field" style="justify-content:flex-end"><button class="btn btn-primary btn-sm" onclick="addRuleSection()">Создать раздел</button></div></div></div>';
+rules.forEach((s, si) => {
+h += '<div class="ap-panel"><div class="ap-panel-head"><h3 style="display:flex;gap:12px;align-items:center;flex:1;flex-wrap:wrap"><span class="mono" style="color:var(--acc)">' + esc(s.num) + '</span>' +
+'<input class="re-in" style="max-width:340px" value="' + esc(s.title) + '" onchange="editRuleSec(' + si + ', this.value)"></h3>' +
+'<div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn btn-ghost btn-sm" onclick="addRuleItem(' + si + ')">+ Пункт</button>' +
+'<button class="btn btn-danger btn-sm" onclick="delRuleSec(' + si + ')">Удалить раздел</button></div></div>';
+s.items.forEach((it, ii) => {
+h += '<div class="re-row">' +
+'<input class="re-in mono" value="' + esc(it.i) + '" onchange="editRuleItem(' + si + ',' + ii + ',\'i\',this.value)">' +
+'<input class="re-in" value="' + esc(it.t) + '" onchange="editRuleItem(' + si + ',' + ii + ',\'t\',this.value)">' +
+'<input class="re-in mono" placeholder="Наказание" value="' + esc(it.p || '') + '" onchange="editRuleItem(' + si + ',' + ii + ',\'p\',this.value)">' +
+'<button class="re-del" onclick="delRuleItem(' + si + ',' + ii + ')">✕</button></div>';
+});
+if(!s.items.length) h += '<p style="color:var(--dim);font-size:13px">В разделе нет пунктов — добавьте первый.</p>';
+h += '</div>';
+});
+document.getElementById('ap-content').innerHTML = h;
+}
+function addRuleSection(){
+const t = document.getElementById('nr-title').value.trim();
+if(!t){ toast('Укажите название раздела', 'err'); shake(document.getElementById('nr-title')); return; }
+const r = getRules();
+r.push({ id: 'rules-sec-' + Date.now().toString(36), num: String(r.length + 1).padStart(2, '0'), title: t, items: [] });
+saveRules(r);
+secLog('ADMIN', 'Добавлен раздел правил: ' + t);
+renderARules(); renderRulesPage(); toast('Раздел добавлен и опубликован');
+}
+function editRuleSec(si, title){
+const r = getRules(); if(!r[si]) return;
+r[si].title = title;
+saveRules(r); renderRulesPage();
+}
+function delRuleSec(si){
+const r = getRules(); if(!r[si]) return;
+const name = r[si].title;
+askConfirm('Удаление раздела', 'Раздел «' + esc(name) + '» и все его пункты будут удалены у всех посетителей.', () => {
+const r2 = getRules(); r2.splice(si, 1);
+saveRules(r2);
+secLog('ADMIN', 'Удалён раздел правил: ' + name);
+renderARules(); renderRulesPage(); toast('Раздел удалён');
+}, 'Удалить');
+}
+function addRuleItem(si){
+const r = getRules(); if(!r[si]) return;
+const idx = (si + 1) + '.' + (r[si].items.length + 1);
+r[si].items.push({ i: idx, t: '', p: '' });
+saveRules(r);
+renderARules(); renderRulesPage();
+}
+function editRuleItem(si, ii, field, val){
+const r = getRules(); if(!r[si] || !r[si].items[ii]) return;
+r[si].items[ii][field] = val;
+saveRules(r); renderRulesPage();
+}
+function delRuleItem(si, ii){
+const r = getRules(); if(!r[si]) return;
+r[si].items.splice(ii, 1);
+saveRules(r);
+secLog('ADMIN', 'Удалён пункт правил раздела «' + r[si].title + '»');
+renderARules(); renderRulesPage(); toast('Пункт удалён');
+}
+/* --- настройки --- */
+function renderASettings(){
+const s = getSettings();
+const daysLeft = Math.max(1, Math.round((s.launchTs - Date.now()) / 864e5));
+const lvl = panelLevel();
+let h = '<div class="ap-panel"><div class="ap-panel-head"><h3>Параметры сервера</h3></div>' +
+'<div class="ap-form-grid">' +
+'<div class="field"><label>Статус (текст на сайте)</label><input type="text" id="st-status" value="' + esc(s.status) + '" maxlength="40"></div>' +
+'<div class="field"><label>Слоты</label><input type="number" id="st-slots" value="' + s.slots + '" min="10" max="1000"></div>' +
+'<div class="field"><label>Открытие через (дней)</label><input type="number" id="st-days" value="' + daysLeft + '" min="1" max="365"></div>' +
+'<div class="field"><label>Режим обслуживания</label><label class="checkbox-container" style="margin:0"><input type="checkbox" id="st-maint" ' + (s.maintenance ? 'checked' : '') + '>Технические работы (сайт скрыт для игроков, администрация 1–5 видит всё)</label></div>' +
+'</div>' +
+'<button class="btn btn-primary btn-sm" onclick="saveAdminSettings()">Сохранить настройки</button>' +
+'</div>' +
+'<div class="ap-panel"><div class="ap-panel-head"><h3>Синхронизация</h3><span class="badge ok"><span class="dot ok"></span>Канал активен</span></div>' +
+'<p style="color:var(--mut);font-size:13.5px;line-height:1.7">Новости, правила, промокоды, аккаунты и настройки автоматически синхронизируются между всеми открытыми вкладками и окнами сайта. Для переноса базы на другое устройство используйте экспорт ниже.</p>' +
+'</div>';
+if(lvl >= 5){
+h += '<div class="ap-panel"><div class="ap-panel-head"><h3>База данных · экспорт / импорт</h3><span class="badge warn">LVL 5</span></div>' +
+'<div class="field"><label>Поле обмена данными</label><textarea id="db-io" class="re-in" rows="6" style="resize:vertical;font-family:var(--mono);font-size:11px" placeholder="Нажмите «Экспорт», чтобы выгрузить базу, или вставьте JSON и нажмите «Импорт»"></textarea></div>' +
+'<div style="display:flex;gap:10px;flex-wrap:wrap">' +
+'<button class="btn btn-ghost btn-sm" onclick="exportDb()">Экспорт базы</button>' +
+'<button class="btn btn-primary btn-sm" onclick="importDb()">Импорт базы</button>' +
+'<button class="btn btn-danger btn-sm" onclick="resetDb()">Полный сброс</button>' +
+'</div></div>';
+}
+h += '<div class="ap-panel"><div class="ap-panel-head"><h3>Системная информация</h3></div>' +
+'<div class="ap-stats" style="margin-bottom:0">' +
+'<div class="ap-stat"><span>Сессий в хранилище</span><b>' + (DB.get('session') ? 1 : 0) + '</b><small>активная сессия браузера</small></div>' +
+'<div class="ap-stat"><span>Записей журнала</span><b>' + getLogs().length + '</b><small>хранится 300 последних</small></div>' +
+'<div class="ap-stat"><span>Версия платформы</span><b class="o">3.1</b><small>сборка сайта</small></div>' +
+'</div></div>';
+document.getElementById('ap-content').innerHTML = h;
+}
+function saveAdminSettings(){
+const s = getSettings();
+s.status = document.getElementById('st-status').value.trim() || 'В разработке';
+s.slots = Math.max(10, parseInt(document.getElementById('st-slots').value, 10) || 300);
+const days = Math.max(1, parseInt(document.getElementById('st-days').value, 10) || 17);
+s.launchTs = Date.now() + days * 864e5;
+s.maintenance = document.getElementById('st-maint').checked;
+saveSettings(s);
+applySettingsToSite();
+checkMaintenance();
+secLog('ADMIN', 'Изменены настройки сервера' + (s.maintenance ? ' • включён режим технических работ' : ' • режим работ выключен'));
+toast('Настройки сохранены и применены для всех');
+}
+function exportDb(){
+const data = { users: getUsers(), news: getNews(), promos: getPromos(), settings: getSettings(), rules: getRules(), seclog: getLogs(), exported: new Date().toISOString() };
+document.getElementById('db-io').value = JSON.stringify(data);
+toast('База выгружена в поле — скопируйте её');
+}
+function importDb(){
+try{
+const d = JSON.parse(document.getElementById('db-io').value);
+if(d.users) saveUsers(d.users);
+if(d.news) saveNews(d.news);
+if(d.promos) savePromos(d.promos);
+if(d.settings) saveSettings(d.settings);
+if(d.rules) saveRules(d.rules);
+secLog('ADMIN', 'Импорт базы данных выполнен владельцем');
+refreshShared();
+toast('База импортирована — изменения применены для всех');
+}catch(e){ toast('Ошибка импорта: неверный формат JSON', 'err'); }
+}
+function resetDb(){
+askConfirm('Полный сброс', 'ВСЕ данные сайта (аккаунты, новости, правила, настройки) будут удалены безвозвратно. Продолжить?', () => {
+Object.keys(localStorage).filter(k => k.indexOf('slowdm_') === 0).forEach(k => localStorage.removeItem(k));
+location.reload();
+}, 'Сбросить всё');
+}
+/* --- выдача прав (0–5) --- */
+function renderAAccess(){
+const users = getUsers();
+document.getElementById('ap-content').innerHTML =
+'<div class="ap-panel"><div class="ap-panel-head"><h3>Выдать уровень по логину</h3><span class="sync-note"><span class="dot ok" style="width:6px;height:6px"></span>Применяется мгновенно</span></div>' +
+'<p style="color:var(--mut);font-size:13.5px;line-height:1.7;margin-bottom:18px">Уровни сайта: <b style="color:var(--txt)">0</b> — Игрок (без панели) · <b style="color:var(--txt)">1</b> — Младший Состав · <b style="color:var(--txt)">2</b> — Состав · <b style="color:var(--txt)">3</b> — Высший Состав · <b style="color:var(--txt)">4</b> — Руководство проекта · <b style="color:var(--acc)">5</b> — Владелец (закреплён за аккаунтом Owner).</p>' +
+'<div class="ap-form-grid">' +
+'<div class="field"><label>Логин (никнейм) на сайте</label><input type="text" id="acc-name" placeholder="Например: FLESHKA" autocomplete="off"></div>' +
+'<div class="field"><label>Уровень доступа</label><select id="acc-lvl" class="sel-in" style="padding:15px 18px">' +
+'<option value="0">0 — Игрок (снять доступ)</option><option value="1">1 — Младший Состав</option><option value="2">2 — Состав</option><option value="3">3 — Высший Состав</option><option value="4">4 — Руководство проекта</option><option value="5">5 — Владелец</option></select></div>' +
+'</div>' +
+'<button class="btn btn-primary btn-sm" onclick="grantAccess()">Выдать уровень</button>' +
+'</div>' +
+'<div class="ap-panel"><div class="ap-panel-head"><h3>Все аккаунты и их уровни · ' + users.length + '</h3></div>' +
+users.map(u => {
+const ul = userLvl(u);
+const ownerAcc = isOwner(u);
+return '<div class="staff-row">' +
+'<span class="lvl-chip lvl-' + ul + '">LVL ' + ul + '</span>' +
+'<b>' + esc(u.username) + '</b>' +
+'<span class="mono" style="color:var(--dim);font-size:11px">#' + esc(u.staticId) + '</span>' +
+'<span style="font-size:12px;color:var(--dim)">' + esc(LVL_TITLES[ul]) + '</span>' +
+(ownerAcc
+? '<span style="margin-left:auto" class="lvl-chip lvl-5">ВЛАДЕЛЕЦ · ЗАЩИЩЁН</span>'
+: '<select class="sel-in" style="margin-left:auto;padding:8px 12px" onchange="setLevelDirect(\'' + u.id + '\', this.value)">' +
+[0,1,2,3,4,5].map(n => '<option value="' + n + '"' + (ul === n ? ' selected' : '') + '>' + n + ' — ' + LVL_TITLES[n] + '</option>').join('') + '</select>') +
+'</div>';
+}).join('') +
+'</div>';
+}
+function grantAccess(){
+const name = document.getElementById('acc-name').value.trim();
+const lvl = parseInt(document.getElementById('acc-lvl').value, 10);
+if(!name){ toast('Укажите логин', 'err'); return; }
+const u = findUser(name);
+if(!u){ toast('Аккаунт с логином «' + name + '» не найден', 'err'); return; }
+if(isOwner(u)){ toast('Уровень владельца изменить нельзя', 'err'); return; }
+updateUser(u.id, { adminLevel: lvl });
+pushHistory(u.id, 'Уровень доступа изменён администрацией: LVL ' + lvl);
+secLog('ADMIN', 'Выдан уровень ' + lvl + ' (' + LVL_TITLES[lvl] + ') аккаунту ' + u.username);
+renderAAccess();
+toast(u.username + ' → LVL ' + lvl + ' (' + LVL_TITLES[lvl] + '). Доступ применён.');
+}
+function setLevelDirect(id, val){
+const lvl = parseInt(val, 10);
+const u = findUser(id); if(!u) return;
+if(isOwner(u)){ toast('Уровень владельца изменить нельзя', 'err'); renderAAccess(); return; }
+updateUser(id, { adminLevel: lvl });
+pushHistory(id, 'Уровень доступа изменён: LVL ' + lvl);
+secLog('ADMIN', 'Уровень ' + u.username + ' изменён на ' + lvl);
+toast(u.username + ' → LVL ' + lvl + ' (' + LVL_TITLES[lvl] + ')');
+}
+/* --- полная слежка --- */
+function renderASurv(){
+const users = getUsers();
+const sess = DB.get('session', null);
+const ua = navigator.userAgent;
+document.getElementById('ap-content').innerHTML =
+'<div class="warn-banner">◈ РАЗДЕЛ КОНФИДЕНЦИАЛЬНЫХ ДАННЫХ. Доступ только для уровня 5 (Владелец). Вся информация ниже (включая пароли) видна вам как владельцу. Каждое открытие раздела фиксируется в журнале.</div>' +
+'<div class="ap-stats">' +
+'<div class="ap-stat"><span>Всего аккаунтов</span><b class="o">' + users.length + '</b><small>в базе проекта</small></div>' +
+'<div class="ap-stat"><span>Активных сессий</span><b class="g">' + (sess ? 1 : 0) + '</b><small>в этом браузере</small></div>' +
+'<div class="ap-stat"><span>Забанено</span><b class="r">' + users.filter(u => u.isBanned).length + '</b><small>аккаунтов</small></div>' +
+'<div class="ap-stat"><span>Событий журнала</span><b>' + getLogs().length + '</b><small>входов и нарушений</small></div>' +
+'</div>' +
+users.map(u => {
+const ul = userLvl(u);
+const active = sess && sess.userId === u.id;
+return '<div class="surv-card">' +
+'<div class="surv-head"><span class="havatar" style="background:' + AV_COLORS[u.avatar || 0] + ';width:38px;height:38px;border-radius:10px">' + esc((u.username[0] || '?').toUpperCase()) + '</span>' +
+'<b>' + esc(u.username) + '</b>' +
+'<span class="lvl-chip lvl-' + ul + '">LVL ' + ul + ' · ' + esc(LVL_TITLES[ul]) + '</span>' +
+(u.isBanned ? '<span class="badge err">БАН</span>' : '<span class="badge ok">АКТИВЕН</span>') +
+(active ? '<span class="badge warn"><span class="dot"></span>СЕЙЧАС НА САЙТЕ</span>' : '') +
+(isOwner(u) ? '<span class="lvl-chip lvl-5">ВЛАДЕЛЕЦ</span>' : '') +
+'</div>' +
+'<div class="surv-grid">' +
+'<div><span class="sk">Почта регистрации</span><span class="sv"><b>' + esc(u.email) + '</b></span></div>' +
+'<div><span class="sk">Пароль аккаунта</span><span class="sv"><span class="pwd-val" id="pwd-' + u.id + '" data-shown="0">••••••••</span> <button class="a-btn o" onclick="peekPwd(\'' + u.id + '\',this)">👁 показать</button></span></div>' +
+'<div><span class="sk">Static ID</span><span class="sv mono">#' + esc(u.staticId) + '</span></div>' +
+'<div><span class="sk">Баланс</span><span class="sv"><b>' + fmt(u.dp) + ' DP</b> · <span style="color:var(--ok)">' + fmt(u.money) + ' $</span></span></div>' +
+'<div><span class="sk">Регистрация</span><span class="sv">' + ruDateTime(new Date(u.created).getTime()) + '</span></div>' +
+'<div><span class="sk">Последний вход</span><span class="sv">' + ruDateTime(u.lastLogin) + '</span></div>' +
+'<div><span class="sk">Сессия истекает</span><span class="sv">' + (active ? ruDateTime(sess.expires) : '— нет активной сессии —') + '</span></div>' +
+'<div><span class="sk">IP-адрес</span><span class="sv mono">127.0.0.1 · локальный браузер (эмуляция)</span></div>' +
+'<div style="grid-column:1/-1"><span class="sk">Устройство</span><span class="sv" style="font-size:11.5px">' + esc(ua.slice(0, 130)) + '</span></div>' +
+'</div>' +
+((u.history && u.history.length)
+? '<div style="border-top:1px solid var(--line);padding-top:12px"><span class="sk">Последние действия аккаунта</span>' + u.history.slice(0, 3).map(x => '<div style="font-size:12.5px;color:var(--mut);padding:3px 0">• ' + esc(x.msg) + ' <span class="mono" style="color:var(--dim);font-size:10.5px">' + ruDateTime(x.t) + '</span></div>').join('') + '</div>'
+: '') +
+'</div>';
+}).join('');
+secLog('ADMIN', 'Открыт раздел «Полная слежка» (просмотр данных аккаунтов)');
+}
+/* --- журнал --- */
+function renderALogs(){
+const logs = getLogs();
+const lvl = panelLevel();
+document.getElementById('ap-content').innerHTML =
+'<div class="ap-panel"><div class="ap-panel-head"><h3>Журнал событий · ' + logs.length + '</h3>' + (lvl >= 5 ? '<button class="btn btn-ghost btn-sm" onclick="askClearLogs()">Очистить журнал</button>' : '<span class="badge dim">Очистка — LVL 5</span>') + '</div>' +
+(logs.length ? logs.map(l => '<div class="log-row"><span class="log-t">' + ruDateTime(l.t) + '</span><span class="log-type ' + l.type + '">' + l.type + '</span><span style="color:var(--mut)">' + esc(l.msg) + '</span></div>').join('') : '<p style="color:var(--dim)">Журнал пуст</p>') +
+'</div>';
+}
+function askClearLogs(){
+askConfirm('Очистка журнала', 'Все записи журнала безопасности будут удалены.', () => {
+dbSet('seclog', []); renderALogs(); toast('Журнал очищен');
+}, 'Очистить');
+}
+/* ---------- МОДАЛКИ ---------- */
+function openModal(html){ document.getElementById('modal-box').innerHTML = html; document.getElementById('modal-overlay').classList.add('show'); }
+function closeModal(){ document.getElementById('modal-overlay').classList.remove('show'); }
+document.addEventListener('click', e => { if(e.target.id === 'modal-overlay') closeModal(); });
+let confirmCb = null;
+function askConfirm(title, text, cb, okLabel){
+confirmCb = cb;
+openModal('<h4>' + title + '</h4><p>' + text + '</p><div class="modal-actions"><button class="btn btn-ghost btn-sm" onclick="closeModal()">Отмена</button><button class="btn btn-danger btn-sm" onclick="doConfirm()">' + (okLabel || 'Подтвердить') + '</button></div>');
+}
+function doConfirm(){ closeModal(); if(confirmCb){ const cb = confirmCb; confirmCb = null; cb(); } }
+/* ---------- ТЕХНИЧЕСКИЕ РАБОТЫ ----------
+ВАЖНО: блокировка действует ТОЛЬКО для уровня 0 (игроки) и гостей.
+Любой администратор (уровни 1–5) видит сайт полностью. */
+function checkMaintenance(){
+const s = getSettings();
+const blocked = s.maintenance && userLvl(currentUser()) < 1 && PUBLIC_TABS.includes(currentTab);
+document.getElementById('maint-overlay').style.display = blocked ? 'flex' : 'none';
+}
+/* ============================================================
+САЙТ: НАВИГАЦИЯ И КОНТЕНТ
+============================================================ */
+function switchTab(tabName, scrollTarget = null){
+if(tabName === 'profile' && !currentUser()) tabName = 'auth';
+if(tabName === 'auth' && currentUser()) tabName = 'profile';
+if(tabName === 'adminpanel' && !isAdminSession()){
+toast('Доступ запрещён. Панель доступна уровням 1–5 (выдаёт владелец).', 'err');
+if(currentUser()) secLog('DENY', 'Попытка доступа к админ-панели без прав: ' + currentUser().username);
+return;
+}
+currentTab = tabName;
+document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+document.getElementById('donate-nav-btn').classList.remove('btn-active');
+document.querySelectorAll('.navlinks a').forEach(el => el.classList.remove('active-link'));
+document.body.classList.remove('menu-open');
+const donateTabs = ['donate', 'admin', 'dp', 'money', 'unban'];
+if(donateTabs.includes(tabName)){
+document.getElementById('tab-' + tabName).classList.add('active');
+document.getElementById('donate-nav-btn').classList.add('btn-active');
+window.location.hash = tabName === 'donate' ? 'donate' : 'donate/' + tabName;
+window.scrollTo(0, 0);
+const u = currentUser();
+if(u) document.querySelectorAll('#tab-' + tabName + ' .static-input').forEach(i => { if(!i.value) i.value = u.staticId; });
+} else if(tabName === 'rules'){
+document.getElementById('tab-rules').classList.add('active');
+renderRulesPage();
+const r = document.getElementById('nav-link-rules'); if(r) r.classList.add('active-link');
+window.location.hash = 'rules'; window.scrollTo(0, 0);
+} else if(tabName === 'auth'){
+document.getElementById('tab-auth').classList.add('active');
+window.location.hash = 'auth'; window.scrollTo(0, 0);
+} else if(tabName === 'profile'){
+document.getElementById('tab-profile').classList.add('active');
+renderProfile();
+window.location.hash = 'profile'; window.scrollTo(0, 0);
+} else if(tabName === 'adminpanel'){
+document.getElementById('tab-adminpanel').classList.add('active');
+renderAdmin();
+window.location.hash = 'admin'; window.scrollTo(0, 0);
+} else {
+document.getElementById('tab-main').classList.add('active');
+history.replaceState(null, '', window.location.pathname);
+if(scrollTarget){ setTimeout(() => { const t = document.querySelector(scrollTarget); if(t) t.scrollIntoView({ behavior: RM ? 'auto' : 'smooth' }); }, 60); }
+else window.scrollTo(0, 0);
+}
+checkMaintenance();
+}
+/* ---------- ТАЙМЕР И НАСТРОЙКИ ---------- */
+function applySettingsToSite(){
+const s = getSettings();
+const b = document.getElementById('srv-badge');
+if(b) b.innerHTML = '<span class="dot"></span>' + esc(s.status);
+const sl = document.getElementById('srv-slots');
+if(sl) sl.textContent = '0 / ' + s.slots + ' игроков';
+}
+function tickCd(){
+const s = getSettings();
+let d = Math.max(0, s.launchTs - Date.now());
+const days = Math.floor(d / 864e5); d -= days * 864e5;
+const h = Math.floor(d / 36e5); d -= h * 36e5;
+const m = Math.floor(d / 6e4); d -= m * 6e4;
+const sec = Math.floor(d / 1e3);
+const set = (id, v) => { const el = document.getElementById(id); if(el) el.textContent = v; };
+set('cd-d', pad(days)); set('cd-h', pad(h)); set('cd-m', pad(m)); set('cd-s', pad(sec));
+const srv = document.getElementById('srv-cd');
+if(srv) srv.textContent = days + 'д ' + pad(h) + ':' + pad(m) + ':' + sec;
+}
+/* ---------- НОВОСТИ НА ГЛАВНОЙ ---------- */
+function renderNewsSite(){
+const tags = { upd: ['upd', 'Обновление'], dev: ['dev', 'Разработка'], ann: ['ann', 'Анонс'] };
+document.getElementById('news-grid').innerHTML = getNews().slice(0, 6).map(n => {
+const t = tags[n.tag] || tags.dev;
+return '<div class="news-card reveal in"><div class="news-top"><span class="news-date">' + esc(n.date) + '</span><span class="news-tag ' + t[0] + '">' + t[1] + '</span></div>' +
+'<h4>' + esc(n.title) + '</h4><p>' + esc(n.text) + '</p>' +
+'<a class="news-link" onclick="placeholder(event,\'Полная новость\')">Подробнее <span>→</span></a></div>';
+}).join('');
+}
+/* ---------- ПРАВИЛА НА САЙТЕ ---------- */
+function renderRulesPage(){
+const rules = getRules();
+const menu = document.getElementById('rules-menu-list');
+const body = document.getElementById('rules-sections');
+if(!menu || !body) return;
+menu.innerHTML = rules.map((s, i) => '<div class="rules-menu-item' + (i === 0 ? ' active-scroll' : '') + '" onclick="scrollToSection(\'' + s.id + '\')">' + String(parseInt(s.num, 10) || (i + 1)) + '. ' + esc(s.title) + '</div>').join('');
+body.innerHTML = rules.map(s =>
+'<div class="rules-main-section" id="' + s.id + '">' +
+'<h3><span class="sec-n">' + esc(s.num) + '</span>' + esc(s.title) + '</h3>' +
+(s.items.length ? s.items.map(it => '<div class="rules-item-row"><div class="rules-index">' + esc(it.i) + '</div><div class="rules-text-desc">' + esc(it.t) + '</div><div class="rules-punish-tag">' + esc(it.p || '') + '</div></div>').join('') : '<p style="color:var(--dim);font-size:13.5px">Раздел в разработке.</p>') +
+'</div>').join('');
+}
+/* ---------- REVEAL / СЧЁТЧИКИ ---------- */
+function countUp(el){
+const end = parseInt(el.dataset.count, 10) || 0;
+if(RM || end === 0){ el.textContent = fmt(end); return; }
+const t0 = performance.now(), dur = 1300;
+(function tick(t){
+const p = Math.min(1, (t - t0) / dur);
+el.textContent = fmt(Math.round(end * (1 - Math.pow(1 - p, 3))));
+if(p < 1) requestAnimationFrame(tick);
+})(t0);
+}
+function initObserver(){
+if(!('IntersectionObserver' in window)){
+document.querySelectorAll('.reveal').forEach(e => e.classList.add('in'));
+document.querySelectorAll('.count').forEach(countUp);
+document.querySelectorAll('.bar').forEach(b => b.classList.add('go'));
+return;
+}
+const io = new IntersectionObserver(entries => {
+entries.forEach(e => {
+if(!e.isIntersecting) return;
+const el = e.target;
+if(el.classList.contains('reveal')) el.classList.add('in');
+if(el.classList.contains('count')) countUp(el);
+if(el.classList.contains('bar')) el.classList.add('go');
+io.unobserve(el);
+});
+}, { threshold: .12 });
+document.querySelectorAll('.reveal,.count,.bar').forEach(el => io.observe(el));
+}
+/* ---------- ДОНАТ-ЛОГИКА ---------- */
+let currentDiscount = 1, currentBonus = 0;
+function selectMethod(el){
+el.closest('.admin-methods').querySelectorAll('.method-card').forEach(c => c.classList.remove('active'));
+el.classList.add('active');
+}
+function applyPromo(type){
+const input = document.getElementById(type + '-promo-input');
+const btn = document.getElementById(type + '-promo-btn');
+const code = input.value.trim().toLowerCase();
+const promos = getPromos();
+if(promos[code]){
+currentBonus = promos[code];
+currentDiscount = 1 + currentBonus / 100;
+input.classList.add('ok');
+btn.textContent = 'Применён · +' + currentBonus + '%';
+btn.classList.add('applied');
+secLog('OK', 'Активирован промокод ' + code.toUpperCase());
+toast('Промокод активирован: +' + currentBonus + '% к пополнению');
+if(type === 'dp') calcDp(document.getElementById('rub-input').value);
+if(type === 'money') calcMoney(document.getElementById('money-rub-input').value);
+} else {
+shake(input);
+toast('Промокод не найден', 'err');
+}
+}
+function calcDp(val){
+const num = parseFloat(val) || 0;
+document.getElementById('dp-output').innerHTML = 'Вы получите <b>' + fmt(num * 2 * currentDiscount) + ' DP</b>' + (currentBonus ? ' · бонус +' + currentBonus + '%' : '');
+}
+function calcMoney(val){
+const num = parseFloat(val) || 0;
+document.getElementById('money-output').innerHTML = 'Вы получите <b>' + fmt(num * 2500 * currentDiscount) + ' $</b>' + (currentBonus ? ' · бонус +' + currentBonus + '%' : '');
+}
+const LVL_SUB = {1:'Младший состав',2:'Младший состав',3:'Состав',4:'Состав',5:'Состав',6:'Старший состав',7:'Старший состав',8:'Кураторский состав',9:'Кураторский состав',10:'Руководство модерации'};
+const LVL_PERKS = {
+1:['Префикс [A1] в чате','Команда /mute до 10 минут','Просмотр жалоб игроков'],
+2:['Команда /mute до 30 минут','Команда /warn — предупреждение','Доступ в админ-чат'],
+3:['Команда /mute до 60 минут','Команда /jail до 10 минут','Команда /slay'],
+4:['Команда /kick с сервера','Команда /jail до 20 минут','Меню наказаний'],
+5:['Команда /mute до 6 часов','Команда /jail до 30 минут','Жалобы 2-й линии'],
+6:['Команда /ban до 1 дня','Режим наблюдения /spec','Телепорт к игроку'],
+7:['Команда /ban до 3 дней','Команда /freeze','История наказаний'],
+8:['Команда /ban до 7 дней','Проведение ивентов','Доступ к логам чата'],
+9:['Команда /ban до 14 дней','Награды ивентов','Курирование состава'],
+10:['Максимальные права модерации','Команда /ban до 30 дней','Решение спорных ситуаций','Прямая связь с владельцем']
+};
+function selectLvl(lvl, price, el){
+document.querySelectorAll('#tab-admin .lvl-btn').forEach(b => b.classList.remove('active'));
+el.classList.add('active');
+document.getElementById('side-lvl-title').textContent = 'Админ ' + lvl + ' уровень';
+document.getElementById('side-lvl-sub').textContent = LVL_SUB[lvl];
+document.getElementById('side-lvl-price').textContent = price + ' ₽';
+document.getElementById('side-lvl-perks').innerHTML = LVL_PERKS[lvl].map(p => '<li>' + p + '</li>').join('');
+}
+function selectUnban(title, price, desc, el){
+document.querySelectorAll('#tab-unban .lvl-btn').forEach(b => b.classList.remove('active'));
+el.classList.add('active');
+document.getElementById('unban-side-title').textContent = 'Разбан';
+document.getElementById('unban-side-desc').innerHTML = title + ': ' + price + ' ₽<br><br>' + desc;
+document.getElementById('unban-side-price').textContent = price + ' ₽';
+}
+function handlePay(btn){
+const box = btn.closest('.donate-container');
+let ok = true;
+box.querySelectorAll('input[type="text"]:not(.promo-input)').forEach(i => {
+if(!i.value.trim()){ ok = false; shake(i); } else i.classList.remove('bad');
+});
+if(!ok){ toast('Заполните все обязательные поля', 'err'); return; }
+const orig = btn.innerHTML;
+btn.disabled = true; btn.innerHTML = 'Подключение к платёжному шлюзу…';
+const u = currentUser();
+setTimeout(() => {
+btn.disabled = false; btn.innerHTML = orig;
+if(u) pushHistory(u.id, 'Создана заявка на пополнение (демо-режим)');
+toast('Оплата станет доступна в день открытия сервера');
+}, RM ? 150 : 1100);
+}
+/* ---------- ПРАВИЛА: ПОИСК И СКРОЛЛ ---------- */
+function scrollToSection(id){
+const el = document.getElementById(id);
+if(el){
+const bodyRect = document.body.getBoundingClientRect().top;
+const pos = el.getBoundingClientRect().top - bodyRect - 120;
+window.scrollTo({ top: pos, behavior: RM ? 'auto' : 'smooth' });
+}
+}
+function initRulesSearch(){
+const rs = document.getElementById('rules-search');
+if(!rs) return;
+rs.addEventListener('input', () => {
+const q = rs.value.trim().toLowerCase();
+let total = 0;
+document.querySelectorAll('.rules-main-section').forEach(sec => {
+let vis = 0;
+sec.querySelectorAll('.rules-item-row').forEach(r => {
+const hit = !q || r.textContent.toLowerCase().includes(q);
+r.style.display = hit ? '' : 'none';
+if(hit) vis++;
+});
+sec.style.display = vis ? '' : 'none';
+total += vis;
+});
+document.getElementById('rules-count').textContent = q ? 'НАЙДЕНО: ' + total : '';
+document.getElementById('rules-empty').style.display = (q && !total) ? 'block' : 'none';
+});
+}
+/* ---------- FAQ ---------- */
+function initFaq(){
+document.querySelectorAll('.faq-q').forEach(q => {
+q.addEventListener('click', () => {
+const it = q.parentElement;
+const a = it.querySelector('.faq-a');
+const wasOpen = it.classList.contains('open');
+document.querySelectorAll('.faq-item.open').forEach(o => { o.classList.remove('open'); o.querySelector('.faq-a').style.maxHeight = null; });
+if(!wasOpen){ it.classList.add('open'); a.style.maxHeight = a.scrollHeight + 'px'; }
+});
+});
+}
+/* ============================================================
+ЗАПУСК
+============================================================ */
+window.addEventListener('DOMContentLoaded', async () => {
+await seedOwner();
+applySettingsToSite();
+tickCd(); setInterval(tickCd, 1000);
+renderNewsSite();
+renderRulesPage();
+initObserver();
+initRulesSearch();
+initFaq();
+selectLvl(1, 150, document.querySelector('#tab-admin .lvl-btn'));
+genCaptcha('li'); genCaptcha('rg');
+updateAuthUI();
+checkMaintenance();
+const hdr = document.getElementById('site-header');
+const onScrollHdr = () => hdr.classList.toggle('scrolled', window.scrollY > 30);
+window.addEventListener('scroll', onScrollHdr); onScrollHdr();
+document.getElementById('burger').addEventListener('click', () => document.body.classList.toggle('menu-open'));
+const h = window.location.hash;
+if(h === '#donate') switchTab('donate');
+if(h === '#donate/admin') switchTab('admin');
+if(h === '#donate/dp') switchTab('dp');
+if(h === '#donate/money') switchTab('money');
+if(h === '#donate/unban') switchTab('unban');
+if(h === '#rules') switchTab('rules');
+if(h === '#auth') switchTab('auth');
+if(h === '#profile') switchTab('profile');
+if(h === '#admin' && isAdminSession()) switchTab('adminpanel');
+});
+window.addEventListener('scroll', () => {
+if(window.location.hash !== '#rules') return;
+const sections = document.querySelectorAll('.rules-main-section');
+const scrollPos = window.scrollY + 200;
+sections.forEach(sec => {
+if(scrollPos >= sec.offsetTop && scrollPos < (sec.offsetTop + sec.offsetHeight)){
+const id = sec.getAttribute('id');
+document.querySelectorAll('.rules-menu-item').forEach(btn => {
+btn.classList.remove('active-scroll');
+if(btn.getAttribute('onclick') && btn.getAttribute('onclick').includes(id)) btn.classList.add('active-scroll');
+});
+}
+});
+});
+/* ============================================================
+ЗАЩИТА
+============================================================ */
+document.addEventListener('keydown', function(e){
+if(e.keyCode === 123 || (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74 || e.keyCode === 67)) || (e.ctrlKey && (e.keyCode === 85 || e.keyCode === 83 || e.keyCode === 80))){
+e.preventDefault(); secLog('DENY', 'Заблокировано сочетание клавиш разработчика'); return false;
+}
+});
+try{
+console.log('%c⛔ SLOW DM — ЗАЩИЩЁННАЯ ЗОНА', 'font-size:26px;font-weight:bold;color:#FF6A11;background:#0B0E13;padding:12px 20px;border-radius:8px');
+console.log('%cПопытки копирования данных и внедрения кода фиксируются в журнале безопасности.', 'color:#94A0B4;font-size:13px');
+}catch(e){}
+</script>
+</body>
+</html>
